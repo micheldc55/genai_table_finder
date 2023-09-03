@@ -1,0 +1,53 @@
+WITH EmployeeSales AS (
+  SELECT 
+    e.EmployeeID, 
+    e.FirstName, 
+    e.LastName, 
+    o.OrderID,
+    o.OrderDate,
+    od.ProductID,
+    od.Quantity
+  FROM 
+    HRDB.dbo.Employees e
+  JOIN
+    SalesDB.dbo.Orders o
+  ON
+    e.EmployeeID = o.EmployeeID
+  JOIN
+    SalesDB.dbo.OrderDetails od
+  ON
+    o.OrderID = od.OrderID
+  WHERE 
+    o.OrderDate BETWEEN '2023-01-01' AND '2023-12-31'
+),
+ProductSales AS (
+  SELECT
+    p.ProductID,
+    p.ProductName,
+    SUM(es.Quantity) as TotalQuantitySold
+  FROM
+    InventoryDB.dbo.Products p
+  JOIN
+    EmployeeSales es
+  ON
+    p.ProductID = es.ProductID
+  GROUP BY
+    p.ProductID, p.ProductName
+)
+SELECT 
+  es.EmployeeID,
+  es.FirstName,
+  es.LastName,
+  ps.ProductID,
+  ps.ProductName,
+  ps.TotalQuantitySold
+FROM 
+  EmployeeSales es
+JOIN
+  ProductSales ps
+ON
+  es.ProductID = ps.ProductID
+WHERE
+  ps.TotalQuantitySold > 100
+ORDER BY
+  ps.TotalQuantitySold DESC;

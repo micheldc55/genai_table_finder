@@ -27,4 +27,4 @@ class MessageHistory:
 
     def populate_from_list(self, message_list: list):
         for message in message_list:
-            self.add_message(Message(message["role"], message["content"]))
+            self.add_message(Message(message.role, message.message))

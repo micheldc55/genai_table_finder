@@ -1,0 +1,5 @@
+[
+    "aws_fr_bi_mkt.datalogger.calendar_days",
+    "aws_customer_logs_fr_bi.mktg_cust_info_db_23.cust_order",
+    "aws_customer_logs_fr_bi.dynamic_orders.order_line"
+]

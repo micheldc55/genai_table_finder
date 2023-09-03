@@ -1,0 +1,6 @@
+[
+    "HRDB.dbo.Employees",
+    "SalesDB.dbo.Orders",
+    "SalesDB.dbo.OrderDetails",
+    "InventoryDB.dbo.Products"
+]

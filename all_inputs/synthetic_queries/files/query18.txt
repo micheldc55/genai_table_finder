@@ -1,0 +1,60 @@
+select p.passengerid,
+     b.bookingdate,
+     outbound_checkin.checkindate,
+     ancillary.createddate,
+     ancillary.code,
+     ancillary.suppliercode,
+     ancillary.chargeamount,
+     If(TO_DATE(ancillary.createddate) = TO_DATE(bookingdate),TRUE,FALSE) during_booking,
+     If(TO_DATE(ancillary.createddate) > TO_DATE(bookingdate) and TO_DATE(ancillary.createddate) <> if(TO_DATE(outbound_checkin.checkindate) is NULL,TO_DATE('1900-01-01'),TO_DATE(outbound_checkin.checkindate)),TRUE,FALSE) post_booking,
+     If(TO_DATE(ancillary.createddate) = TO_DATE(outbound_checkin.checkindate) and TO_DATE(outbound_checkin.checkindate) <> TO_DATE(bookingdate),TRUE,FALSE) during_checkin
+from sl_ods.booking b
+join sl_ods.bookingpassenger p on p.bookingid = b.bookingid
+
+-- ********* Outbound Check-in Time *****************
+-- liftstatus=1 -> CheckedIn.
+left join(
+      select passengerid,
+              min(versionstartdate) checkindate
+       from sl_ods.passengerjourneylegversion pjlv
+       where liftstatus=1 and journeynumber=1
+       group by passengerid) outbound_checkin
+       on p.passengerid=outbound_checkin.passengerid
+
+-- ********* Ancillaries  *****************************
+-- PassengerJourneySSR joins on passengerjounreysegment to ensure we are not
+-- including SSR's for cancelled flights. Naviatire deletes this data.
+left join(
+          select pjssr.passengerid,
+                  SSRCode code,
+                  createddate,
+                  '' suppliercode,
+                  null chargeamount
+          from sl_ods.passengerjourneyssr pjssr
+          join discovery.segment s on s.segmentid = pjssr.segmentid
+          where status='HK' and ssrcode in ('SPRT','SKI','GOLF','BIKE','BULK','MUSC')
+
+          union all
+          select passengerid,code,createddate,suppliercode,chargeamount from(
+
+                  select passengerid,
+                        chargecode code,
+                        min(createddate) createddate,
+                        '' suppliercode,
+                        sum(if(chargetype = 1,abs(chargeamount) * -1,chargeamount)) chargeamount
+                  from sl_ods.passengerfeecharge
+                  where chargecode in ('SEAT','SETH','SETL','BAG','BAG1','BAG2','BBG','BBG1','DBBG','GBAG','VBBG','BBBG','PS')
+                  group by passengerid,feenumber,chargecode
+           ) a
+           where chargeamount > 0
+
+           union all
+           select passengerid,
+                  itemtypecode code,
+                  createddate,
+                  suppliercode,
+                  null chargeamount
+           from sl_ods.bookingcomponent
+           where status='HK' and itemtypecode in ('ACT','INS','HTL','CAR')
+      ) ancillary
+ on p.passengerid = ancillary.passengerid

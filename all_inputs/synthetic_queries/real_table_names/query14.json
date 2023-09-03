@@ -1,0 +1,7 @@
+[
+    "PharmaDatabase.dbo.Medicines",
+    "PharmaDatabase.dbo.MedicinePrices",
+    "PharmaDatabase.dbo.Doctors",
+    "PharmaDatabase.dbo.Prescriptions",
+    "PharmaDatabase.dbo.CustomerInvoices"
+]

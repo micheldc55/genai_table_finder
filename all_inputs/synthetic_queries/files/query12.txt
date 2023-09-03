@@ -1,0 +1,25 @@
+SELECT
+c.calendar_date,
+c.calendar_year,
+c.calendar_month,
+c.calendar_dayname,
+COUNT(DISTINCT sub.order_id) AS num_orders,
+COUNT(sub.book_id) AS num_books,
+SUM(sub.price) AS total_price,
+SUM(COUNT(sub.book_id)) OVER (
+  PARTITION BY c.calendar_year, c.calendar_month
+  ORDER BY c.calendar_date
+) AS running_total_num_books,
+LAG(COUNT(sub.book_id), 7) OVER (ORDER BY c.calendar_date) AS prev_books
+FROM aws_fr_bi_mkt.datalogger.calendar_days c
+LEFT JOIN (
+  SELECT
+  co.order_date,
+  co.order_id,
+  ol.book_id,
+  ol.price
+  FROM aws_customer_logs_fr_bi.mktg_cust_info_db_23.cust_order co
+  INNER JOIN aws_customer_logs_fr_bi.dynamic_orders.order_line ol ON co.order_id = ol.order_id
+) sub ON c.calendar_date = sub.order_date
+GROUP BY c.calendar_date, c.calendar_year, c.calendar_month, c.calendar_dayname
+ORDER BY c.calendar_date ASC;

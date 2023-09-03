@@ -1,4 +1,4 @@
-from messages import Message
+from src.messages.messages import Message
 
 
 class MessageWithContext(Message):
@@ -33,6 +33,12 @@ class MensajeConContexto(Message):
         user_end = f"\n\nPregunta: {self.prompt}\nRespuesta:"
 
         return user_start + context + "\n\n---\n\n" + user_end
+
+
+sql_query_template = """This is a SQL query for which I want you to find the relevant table names. You must only find the 
+table names, not CTEs or subqueries: 
+{sql_query}
+Please provide all table names as a Python list."""
 
 
 if __name__ == "__main__":

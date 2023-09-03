@@ -1,0 +1,22 @@
+WITH SalesCTE AS (
+    SELECT ProductID, SUM(Quantity) AS TotalSales
+    FROM SalesDB.SalesTable
+    GROUP BY ProductID
+),
+InventorySubQuery AS (
+    SELECT *
+    FROM (SELECT ProductID, COUNT(*) AS InStock
+          FROM InventoryDB.InventoryTable
+          GROUP BY ProductID) AS T1
+    WHERE T1.InStock > 10
+),
+JoinedData AS (
+    SELECT C.ProductID, C.TotalSales, I.InStock
+    FROM SalesCTE C
+    JOIN InventorySubQuery I ON C.ProductID = I.ProductID
+)
+SELECT J.ProductID, J.TotalSales, J.InStock, P.ProductName
+FROM JoinedData J
+LEFT JOIN ProductDB.ProductTable P ON J.ProductID = P.ProductID
+WHERE J.TotalSales > 100
+ORDER BY J.TotalSales DESC;

@@ -1,0 +1,7 @@
+[
+    "AdventureWorks.HumanResources.Employee",
+    "AdventureWorks.HumanResources.EmployeeDepartmentHistory",
+    "AdventureWorks.Sales.SalesPerson",
+    "AdventureWorks.Sales.SalesOrderHeader",
+    "AdventureWorks.HumanResources.Department"
+]

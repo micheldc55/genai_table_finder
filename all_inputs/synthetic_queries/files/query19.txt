@@ -1,0 +1,247 @@
+with
+conversions as (
+    select
+        versionstartutc as fromconversiondate,
+        coalesce(lead(versionstartutc) over (partition by fromcurrencycode order by versionstartutc), '${yesterday} 23:59:59') as toconversiondate,
+        fromcurrencycode,
+        tocurrencycode,
+        conversionrate
+    from ${navitaire_db}.currencyconversionhistory
+    where tocurrencycode='${to_currency_code}'
+),
+conversions_filtered as (
+    select
+    	*
+    from conversions
+    where toconversiondate >= '${yesterday}'
+),
+pjl as (
+	select passengerid, segmentid, inventorylegid, legnumber
+    from ${navitaire_db}.passengerjourneyleg
+    where date(CreatedDate) = '${yesterday}'
+    	and deleted=0
+),
+pjs as (
+	select passengerid, segmentid, ArrivalStation, DepartureStation, DepartureDate, FareBasis
+    from ${navitaire_db}.passengerjourneysegment
+	where deleted=0
+		and date(CreatedDate) = '${yesterday}'
+
+),
+pjc as (
+	select passengerid, segmentid, foreignamount,
+		chargeamount, createddate, createdagentid, foreigncurrencycode,
+		chargecode, chargeamount, chargetype
+    from ${navitaire_db}.passengerjourneycharge
+    where deleted=0
+		and date(CreatedDate) = '${yesterday}'
+),
+il as (
+	select inventorylegid, ArrivalStation, DepartureStation, DepartureDate, std, `capacity` as flightcapacity, lid
+    from ${navitaire_db}.inventoryleg
+	where DepartureDate >= '${yesterday}'
+),
+rg as (
+	select *
+    from ${navitaire_db}.route_groups
+),
+ag as (
+	select locationcode, agentid
+    from ${navitaire_db}.agent
+),
+loc as (
+	select locationcode
+    from ${navitaire_db}.`location`
+),
+joined_ag_loc as (
+	select ag.agentid, loc.locationcode
+	from ag
+	join loc
+	on ag.locationcode=loc.locationcode
+),
+charges as (
+    select
+        pjc.segmentid,
+        pjc.passengerid,
+        pjl.inventorylegid,
+        pjl.legnumber,
+        pjc.foreignamount as chargeamount,
+        pjc.foreigncurrencycode,
+        pjc.chargecode,
+        coalesce(c.fromcurrencycode, pjc.foreigncurrencycode) as fromcurrencycode,
+        IF(pjc.foreigncurrencycode in ('${to_currency_code}'), 1, c.conversionrate) as conversionrate,
+        IF(pjc.foreigncurrencycode in (${static_currencies}), 1, c.conversionrate) as conversionrate_static,
+        jal.locationcode,
+        il.flightcapacity,
+        il.lid as lid,
+        il.std as departure_dt,
+        jal.locationcode in ('MWEB', 'INET') as valid_locationcode,
+        pjc.chargetype,
+        pjs.farebasis
+    from pjl
+    join pjs
+        on pjs.passengerid=pjl.passengerid and pjl.segmentid=pjs.segmentid
+    join pjc
+        on pjc.passengerid=pjs.passengerid and pjc.segmentid=pjs.segmentid
+    join il
+    	on il.inventorylegid=pjl.inventorylegid
+    left join conversions_filtered as c
+        on pjc.foreigncurrencycode=c.fromcurrencycode
+        and cast(pjc.createddate as string) >= cast(c.fromconversiondate as string)
+        and cast(pjc.createddate  as string)< cast(c.toconversiondate as string)
+    left join joined_ag_loc as jal
+    	on jal.agentid=pjc.createdagentid
+),
+yesterday_pax as (
+	select *,
+		trim(substr(cast(booking_ts as string), 11, 9)) as booking_hour,
+		concat(origin, destination) as route,
+		classofservice as fare_class
+	from ${navitaire_discovery_db}.flightpax
+	where booking_date = '${yesterday}'
+),
+unique_all_past_pax as (
+	select distinct carrier_code, flight_number, departure_date, booking_date,
+		trim(substr(cast(booking_ts as string), 11, 9)) as booking_hour, passengerid, bookingid
+	from ${navitaire_discovery_db}.flightpax
+	where booking_date <= '${yesterday}'
+	and departure_date >= '${yesterday}'
+),
+paxs as (
+	 select
+			carrier_code,
+			flight_number,
+			departure_date,
+			booking_date,
+			booking_hour,
+			bookingid,
+			passengerid,
+			count(1) over (partition by carrier_code, flight_number, departure_date, booking_date order by booking_hour asc, passengerid) as cumpax_daily,
+			count(1) over (partition by carrier_code, flight_number, departure_date order by booking_date asc, booking_hour asc, passengerid) as cumpax,
+			count(1) over (partition by flight_number, carrier_code, departure_date, bookingid) as booking_pax,
+			1 as pax
+		from unique_all_past_pax
+),
+with_cumpax as (
+    select
+        yesterday_pax.*,
+        rg.routegroup,
+        rg.routesubgroup,
+        paxs.cumpax_daily,
+        paxs.cumpax,
+        paxs.pax,
+        max(paxs.cumpax_daily) over (partition by paxs.flight_number, paxs.carrier_code, paxs.departure_date, paxs.booking_date) as max_cumpax_daily,
+        max(paxs.cumpax) over (partition by paxs.flight_number, paxs.carrier_code, paxs.departure_date) as max_cumpax,
+        paxs.booking_pax
+    from yesterday_pax
+    join paxs
+        on paxs.flight_number=yesterday_pax.flight_number
+        and paxs.carrier_code=yesterday_pax.carrier_code
+        and paxs.departure_date=yesterday_pax.departure_date
+        and paxs.booking_date=yesterday_pax.booking_date
+        and paxs.booking_hour=yesterday_pax.booking_hour
+        and paxs.bookingid=yesterday_pax.bookingid
+        and paxs.passengerid=yesterday_pax.passengerid
+    left join rg
+    	on yesterday_pax.route=rg.route
+),
+amounts as (
+    select
+        inventorylegid,
+        flightcapacity,
+        lid,
+        origin,
+        destination,
+        routegroup,
+        routesubgroup,
+        fare_class,
+        departure_date,
+        ch.departure_dt as departure_dt,
+        carrier_code,
+        flight_number,
+        booking_date,
+        booking_hour,
+        with_cumpax.passengerid as passengerid,
+        with_cumpax.segmentid as segmentid,
+        with_cumpax.bookingid as bookingid,
+        ch.fromcurrencycode,
+        ch.chargeamount as fromchargeamount,
+        ch.conversionrate as conversionrate,
+        ch.valid_locationcode as valid_locationcode,
+        coalesce(ch.chargeamount*ch.conversionrate, 0.0)*-1.0 as chargeamount,
+        coalesce(ch.chargeamount*ch.conversionrate_static, 0.0)*-1.0 as static_chargeamount,
+        with_cumpax.booking_pax,
+        pax,
+        IF(ch.passengerid is null, 0, pax) as pax_with_charge,
+        ch.chargecode as chargecode,
+        ch.legnumber as legnumber,
+        ch.locationcode as locationcode,
+        cumpax_daily,
+        cumpax,
+        max_cumpax_daily,
+        max_cumpax,
+        chargetype,
+        ch.farebasis
+    from with_cumpax
+    left join charges as ch
+        on with_cumpax.passengerid=ch.passengerid
+        and with_cumpax.segmentid=ch.segmentid
+),
+with_all_pax as (
+  select
+        *,
+        IF(chargeamount=0, 0, pax) as affected_pax,
+        max(segmentid) over (partition by amounts.flight_number, amounts.fare_class, amounts.departure_date,
+        	amounts.carrier_code, amounts.flight_number, amounts.booking_date, amounts.booking_hour, amounts.bookingid,
+        	amounts.inventorylegid, amounts.passengerid) as first_segmentid,
+        max(segmentid) over (partition by amounts.flight_number, amounts.fare_class, amounts.departure_date,
+        	amounts.carrier_code, amounts.flight_number, amounts.booking_date, amounts.booking_hour, amounts.bookingid,
+        	amounts.inventorylegid, amounts.bookingid) as first_segmentid_booking
+  from amounts
+)
+select
+	origin,
+	destination,
+	routegroup,
+	routesubgroup,
+	fare_class,
+	cast(departure_date as string) as departure_date,
+	cast(dayofweek(departure_date) as string) as departure_dow,
+	cast(departure_dt as string) as departure_dt,
+	carrier_code,
+	flight_number,
+	cast(booking_date as string) as booking_date,
+	cast(dayofweek(booking_date) as string) as booking_dow,
+	booking_hour,
+	cast(bookingid as long) as bookingid,
+	cast(segmentid as long) as segmentid,
+	cast(first_segmentid as long) as first_segmentid,
+	cast(first_segmentid_booking as long) as first_segmentid_booking,
+	cast(inventorylegid as long) as inventorylegid,
+	cast(passengerid as long) as passengerid,
+	cast(flightcapacity as long) as flightcapacity,
+	cast(lid as long) as lid,
+	cast(pax as long) as pax,
+	cast(pax_with_charge as long) as pax_with_charge,
+	cast(booking_pax as long) as booking_pax,
+	cast(cumpax_daily as long) as cumpax_daily,
+	cast(max_cumpax_daily as long) as max_cumpax_daily,
+	cast(cumpax as long) as cumpax,
+	cast(max_cumpax as long) as max_cumpax,
+	cast(cumpax*1.0/flightcapacity as double) as load_factor,
+	cast(cumpax*1.0/lid as double) as load_factor_lid,
+	cast(affected_pax as long) as affected_pax,
+	cast(chargeamount as double) as chargeamount,
+	cast(static_chargeamount as double) as static_chargeamount,
+	fromcurrencycode,
+	cast(fromchargeamount as double) as fromchargeamount,
+	cast(conversionrate as double) as conversionrate,
+	cast(DATEDIFF(date(departure_date), date(booking_date)) as long) as ndo,
+	valid_locationcode,
+	cast(legnumber as long) as legnumber,
+	locationcode,
+	chargecode,
+	cast(chargetype as long) as chargetype,
+	farebasis,
+	'${import_dt}' as import_date
+from with_all_pax

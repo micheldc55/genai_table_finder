@@ -4,7 +4,7 @@ FROM python:3.11-slim-buster
 # Docker remains within this directory in the container
 WORKDIR /workspace
 
-# Add your company's certificate
+# Add our company's certificate to the docker container instance certificates
 ADD zscaler.pem /usr/local/share/ca-certificates/zscaler.pem
 
 # Update certificate store

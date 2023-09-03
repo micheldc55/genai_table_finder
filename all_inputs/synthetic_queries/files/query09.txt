@@ -1,0 +1,45 @@
+WITH FirstCTE AS (
+  SELECT 
+    EmployeeID, 
+    FirstName, 
+    LastName, 
+    Sales.Database.dbo.Orders.OrderID,
+    Sales.Database.dbo.Orders.OrderDate
+  FROM 
+    HumanResources.Database.dbo.Employees
+  JOIN
+    Sales.Database.dbo.Orders
+  ON
+    HumanResources.Database.dbo.Employees.EmployeeID = Sales.Database.dbo.Orders.EmployeeID
+  WHERE 
+    Sales.Database.dbo.Orders.OrderDate BETWEEN '2022-01-01' AND '2022-12-31'
+),
+SecondCTE AS (
+  SELECT
+    ProductID,
+    ProductName,
+    (SELECT SUM(Quantity) FROM Sales.Database.dbo.OrderDetails WHERE OrderDetails.ProductID = Products.ProductID) as TotalQuantitySold
+  FROM
+    Inventory.Database.dbo.Products
+)
+SELECT 
+  f.EmployeeID,
+  f.FirstName,
+  f.LastName,
+  s.ProductID,
+  s.ProductName,
+  s.TotalQuantitySold
+FROM 
+  FirstCTE f
+JOIN
+  Sales.Database.dbo.OrderDetails od
+ON
+  f.OrderID = od.OrderID
+JOIN
+  SecondCTE s
+ON
+  od.ProductID = s.ProductID
+WHERE
+  s.TotalQuantitySold > 100
+ORDER BY
+  s.TotalQuantitySold DESC;

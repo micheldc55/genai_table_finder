@@ -1,0 +1,186 @@
+{
+    "query01.txt": {
+        "file_name": "query01.txt",
+        "extracted_table": [
+            "Employees",
+            "Departments",
+            "Orders"
+        ],
+        "real_table": [
+            "Employees",
+            "Departments",
+            "Orders"
+        ]
+    },
+    "query02.txt": {
+        "file_name": "query02.txt",
+        "extracted_table": [
+            "SalesDB.SalesTable",
+            "InventoryDB.InventoryTable",
+            "ProductDB.ProductTable"
+        ],
+        "real_table": [
+            "SalesDB.SalesTable",
+            "InventoryDB.InventoryTable",
+            "ProductDB.ProductTable"
+        ]
+    },
+    "query03.txt": {
+        "file_name": "query03.txt",
+        "extracted_table": [
+            "Northwind.dbo.Customers",
+            "Northwind.dbo.Orders"
+        ],
+        "real_table": [
+            "Northwind.dbo.Customers",
+            "Northwind.dbo.Orders"
+        ]
+    },
+    "query04.txt": {
+        "file_name": "query04.txt",
+        "extracted_table": [
+            "AdventureWorks.HumanResources.Employee",
+            "AdventureWorks.HumanResources.Department"
+        ],
+        "real_table": [
+            "AdventureWorks.HumanResources.Employee",
+            "AdventureWorks.HumanResources.Department"
+        ]
+    },
+    "query05.txt": {
+        "file_name": "query05.txt",
+        "extracted_table": [
+            "HRDatabase.dbo.Employees",
+            "Sales"
+        ],
+        "real_table": [
+            "HRDatabase.dbo.Employees",
+            "Sales"
+        ]
+    },
+    "query06.txt": {
+        "file_name": "query06.txt",
+        "extracted_table": [
+            "AdventureWorks.HumanResources.Employee",
+            "AdventureWorks.HumanResources.EmployeeDepartmentHistory",
+            "AdventureWorks.HumanResources.Department",
+            "AdventureWorks.Sales.SalesOrderHeader",
+            "AdventureWorks.Sales.SalesPerson"
+        ],
+        "real_table": [
+            "AdventureWorks.HumanResources.Employee",
+            "AdventureWorks.HumanResources.EmployeeDepartmentHistory",
+            "AdventureWorks.Sales.SalesPerson",
+            "AdventureWorks.Sales.SalesOrderHeader",
+            "AdventureWorks.HumanResources.Department"
+        ]
+    },
+    "query07.txt": {
+        "file_name": "query07.txt",
+        "extracted_table": [
+            "Northwind.dbo.Orders",
+            "CustomerOrders",
+            "TopCustomers",
+            "Northwind.dbo.[Order Details]",
+            "Northwind.dbo.Products",
+            "OrderDetails"
+        ],
+        "real_table": [
+            "Northwind.dbo.Orders",
+            "Northwind.dbo.[Order Details]",
+            "Northwind.dbo.Products"
+        ]
+    },
+    "query08.txt": {
+        "file_name": "query08.txt",
+        "extracted_table": [
+            "Northwind.dbo.Employees",
+            "Northwind.dbo.Orders"
+        ],
+        "real_table": [
+            "Northwind.dbo.Employees",
+            "Northwind.dbo.Orders"
+        ]
+    },
+    "query09.txt": {
+        "file_name": "query09.txt",
+        "extracted_table": [
+            "HumanResources.Database.dbo.Employees",
+            "Sales.Database.dbo.Orders",
+            "Sales.Database.dbo.OrderDetails",
+            "Inventory.Database.dbo.Products"
+        ],
+        "real_table": [
+            "HumanResources.Database.dbo.Employees",
+            "Sales.Database.dbo.Orders",
+            "Sales.Database.dbo.OrderDetails",
+            "Inventory.Database.dbo.Products"
+        ]
+    },
+    "query10.txt": {
+        "file_name": "query10.txt",
+        "extracted_table": [
+            "HRDB.dbo.Employees",
+            "SalesDB.dbo.Orders",
+            "SalesDB.dbo.OrderDetails",
+            "InventoryDB.dbo.Products"
+        ],
+        "real_table": [
+            "HRDB.dbo.Employees",
+            "SalesDB.dbo.Orders",
+            "SalesDB.dbo.OrderDetails",
+            "InventoryDB.dbo.Products"
+        ]
+    },
+    "query11.txt": {
+        "file_name": "query11.txt",
+        "extracted_table": [
+            "datascience_dev.targetcurves.metrics_tables_2023_07_no_deltas_10_flights_final_curve",
+            "datascience_dev.targetcurves.metrics_tables_2023_4_no_deltas_4_flights_final_curve",
+            "parquet.`abfss://dbrprdlanding@frbinetraunitycatalog.dfs.core.windows.net/targetcurves/HistoricData/`"
+        ],
+        "real_table": [
+            "datascience_dev.targetcurves.metrics_tables_2023_07_no_deltas_10_flights_final_curve",
+            "datascience_dev.targetcurves.metrics_tables_2023_4_no_deltas_4_flights_final_curve",
+            "abfss://dbrprdlanding@frbinetraunitycatalog.dfs.core.windows.net/targetcurves/HistoricData/"
+        ]
+    },
+    "accuracy_measures": {
+        "accuracy_counts": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+        ],
+        "accuracy_val": 96.96969696969697
+    }
+}

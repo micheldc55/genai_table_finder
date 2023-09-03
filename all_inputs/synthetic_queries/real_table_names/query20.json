@@ -1,0 +1,9 @@
+[
+    "StockMarketDatabase.dbo.Stocks",
+    "StockMarketDatabase.dbo.StockPrices",
+    "StockMarketDatabase.dbo.Brokers",
+    "StockMarketDatabase.dbo.Regions",
+    "StockMarketDatabase.dbo.Transactions",
+    "StockMarketDatabase.dbo.Indexes",
+    "StockMarketDatabase.dbo.StockIndexes"
+]

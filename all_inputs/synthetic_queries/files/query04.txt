@@ -1,0 +1,18 @@
+WITH 
+EmployeeDetails AS (
+  SELECT EmployeeID, FirstName, LastName, DepartmentID
+  FROM AdventureWorks.HumanResources.Employee
+),
+DepartmentDetails AS (
+  SELECT DepartmentID, Name
+  FROM AdventureWorks.HumanResources.Department
+),
+LocalEmployeeDetails AS (
+  SELECT * 
+  FROM (SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) as FullName, DepartmentID FROM EmployeeDetails) as sub
+  WHERE FullName LIKE 'M%'
+)
+SELECT d.Name as DepartmentName, l.FullName
+FROM DepartmentDetails d
+JOIN LocalEmployeeDetails l ON d.DepartmentID = l.DepartmentID
+WHERE d.Name IN ('Engineering', 'Sales');

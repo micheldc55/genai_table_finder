@@ -1,0 +1,5 @@
+[
+    "Northwind.dbo.Orders",
+    "Northwind.dbo.[Order Details]",
+    "Northwind.dbo.Products"
+]

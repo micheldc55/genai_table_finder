@@ -1,0 +1,9 @@
+[
+    "BankingDatabase.dbo.Customers",
+    "BankingDatabase.dbo.CustomerTypes",
+    "BankingDatabase.dbo.Employees",
+    "BankingDatabase.dbo.CustomerEmployees",
+    "BankingDatabase.dbo.LoanPrices",
+    "BankingDatabase.dbo.Loans",
+    "BankingDatabase.dbo.MarketingAdvertisements"
+]

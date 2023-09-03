@@ -1,0 +1,23 @@
+WITH RECURSIVE EmployeeHierarchy AS (
+    SELECT EmployeeId, ManagerId, FullName
+    FROM Employees
+    WHERE ManagerId IS NULL
+    UNION ALL
+    SELECT E.EmployeeId, E.ManagerId, E.FullName
+    FROM Employees E
+    INNER JOIN EmployeeHierarchy EH ON E.ManagerId = EH.EmployeeId
+),
+FilteredDepartments AS (
+    SELECT * 
+    FROM Departments 
+    WHERE DepartmentName LIKE 'Sales%'
+)
+SELECT 
+    EH.FullName as EmployeeName,
+    D.DepartmentName,
+    SUM(O.TotalAmount) as TotalSales
+FROM Orders O
+JOIN EmployeeHierarchy EH ON O.EmployeeId = EH.EmployeeId
+JOIN FilteredDepartments D ON EH.DepartmentId = D.DepartmentId
+GROUP BY EH.FullName, D.DepartmentName
+HAVING TotalSales > 10000;
