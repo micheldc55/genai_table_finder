@@ -1,16 +1,11 @@
 matplotlib
 plotly
 streamlit
-# chromadb
-# pinecone-client
+datasets
 tiktoken
 pandas
 numpy
 scipy
-# pypdf==3.14.0
-# PyPDF2
-# pdfminer
-# textract
 openai
 python-dotenv
 sentence-transformers

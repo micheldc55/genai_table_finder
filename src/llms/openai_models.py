@@ -1,4 +1,5 @@
 import logging
+from tenacity import retry, stop_after_attempt, wait_exponential
 from typing import List
 
 import numpy as np
@@ -9,6 +10,10 @@ import torch
 
 from src.messages.messages import Message, MessageHistory
 
+
+def log_retry(retry_state):
+    logging.error(f"Retrying: {retry_state.attempt_number}...")
+    logging.error(f"Exception: {retry_state.outcome.exception()}")
 
 class TokenCounter:
     def __init__(self, model: str = "gpt-3.5-turbo"):
@@ -35,7 +40,13 @@ class OpenAiChat:
 
     def __call__(self, prompt: str, temperature: float or None = None):
         """Call the OpenAI chat API with the prompt and return the response."""
-        new_message = Message("user", prompt)
+        if isinstance(prompt, str):
+            new_message = Message("user", prompt)
+        elif isinstance(prompt, Message):
+            new_message = prompt
+        else:
+            raise TypeError(f"Prompt must be of the type str or Message. You passed: {type(prompt)}")
+        
         self.history.add_message(new_message)
 
         if temperature is None:
@@ -47,6 +58,60 @@ class OpenAiChat:
             temperature=temperature,
         )
         return response
+
+    def predict_on_messages(self, message_history: MessageHistory, temperature: float or None = None):
+        """Call the OpenAI model on a Message History instead of a message"""
+        if temperature is None:
+            temperature = self.temperature
+
+        response = openai.ChatCompletion.create(
+            messages=message_history.to_list(),
+            model=self.model,
+            temperature=temperature,
+        )
+
+        return response
+    
+
+class OpenAiChatWithRetries:
+    def __init__(
+            self, 
+            history: MessageHistory, 
+            model: str = "gpt-3.5-turbo-0613", 
+            temperature: float = 0.0
+        ):
+
+        self.model = model
+        self.history = history
+        self.temperature = temperature
+
+    def __call__(self, prompt: str, temperature: float or None = None, retries: int = 5):
+        """Call the OpenAI chat API with the prompt and return the response."""
+        if isinstance(prompt, str):
+            new_message = Message("user", prompt)
+        elif isinstance(prompt, Message):
+            new_message = prompt
+        else:
+            raise TypeError(f"Prompt must be of the type str or Message. You passed: {type(prompt)}")
+        
+        self.history.add_message(new_message)
+
+        if temperature is None:
+            temperature = self.temperature
+
+        # apply the retry decorator with the desired arguments (waits are in miliseconds)
+        @retry(stop=stop_after_attempt(retries), wait=wait_exponential(multiplier=1000, max=15000), before_sleep=log_retry)
+        def predict():
+            response = openai.ChatCompletion.create(
+                messages=self.history.to_list(),
+                model=self.model,
+                temperature=temperature,
+            )
+            return response
+
+        response = predict()
+
+        return response    
 
     def predict_on_messages(self, message_history: MessageHistory, temperature: float or None = None):
         """Call the OpenAI model on a Message History instead of a message"""
