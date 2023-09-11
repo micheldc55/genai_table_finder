@@ -15,7 +15,8 @@ from base_data import (
     use_of_ctes_options, 
     length_options, 
     industry_options,
-    schema_options
+    schema_options, 
+    clauses
 )
 
 
@@ -26,8 +27,8 @@ system_message = Message(role="system", message="You are a helpful SQL query gen
 malpaca = Malpaca(user_text)
 
 variable_keys = {
-    "naming_schemas": schema_options, "type_of_join": type_of_join_options, "use_of_CTEs": use_of_ctes_options, 
-    "length": length_options, "company_type": industry_options
+    "naming_schemas": schema_options, "type_of_join": type_of_join_options, "other_clauses": clauses,
+    "use_of_CTEs": use_of_ctes_options, "length": length_options, "company_type": industry_options
 }
 mixer = DataMixer(malpaca, constant_keys={}, variable_keys=variable_keys, combined_keys=None)
 output = mixer.create_random_combinations(200, None, "string")

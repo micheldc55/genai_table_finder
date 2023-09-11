@@ -85,7 +85,7 @@ class OpenAiChatWithRetries:
         self.history = history
         self.temperature = temperature
 
-    def __call__(self, prompt: str, temperature: float or None = None, retries: int = 5):
+    def __call__(self, prompt: str, temperature: float or None = None, retries: int = 5, base_wait: int = 5):
         """Call the OpenAI chat API with the prompt and return the response."""
         if isinstance(prompt, str):
             new_message = Message("user", prompt)
@@ -100,7 +100,7 @@ class OpenAiChatWithRetries:
             temperature = self.temperature
 
         # apply the retry decorator with the desired arguments (waits are in miliseconds)
-        @retry(stop=stop_after_attempt(retries), wait=wait_exponential(multiplier=1000, max=15000), before_sleep=log_retry)
+        @retry(stop=stop_after_attempt(retries), wait=wait_exponential(multiplier=base_wait, max=20), before_sleep=log_retry)
         def predict():
             response = openai.ChatCompletion.create(
                 messages=self.history.to_list(),

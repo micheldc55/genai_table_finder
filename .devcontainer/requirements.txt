@@ -3,12 +3,13 @@ plotly
 streamlit
 datasets
 tiktoken
+networkx
+jupyterlab
 pandas
 numpy
 scipy
 openai
 python-dotenv
-sentence-transformers
 faiss-cpu
 torch
 transformers
