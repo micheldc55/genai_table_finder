@@ -4,6 +4,7 @@ streamlit
 datasets
 tiktoken
 networkx
+sqlparse
 jupyterlab
 pandas
 numpy

@@ -12,7 +12,7 @@ RUN chmod 644 /usr/local/share/ca-certificates/zscaler.pem && update-ca-certific
 ENV REQUESTS_CA_BUNDLE=/usr/local/share/ca-certificates/zscaler.pem
 
 # Set pip default timeout (seconds)
-ENV PIP_DEFAULT_TIMEOUT=200
+ENV PIP_DEFAULT_TIMEOUT=300
 
 # Copy requirements.txt to the docker container
 COPY requirements.txt ./requirements.txt

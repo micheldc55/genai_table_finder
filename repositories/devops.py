@@ -41,6 +41,7 @@ num_files = len(sql_files)
 system_message = Message("system", system_message_en)
 
 responses = []
+sql_query = []
 sql_paths = []
 prompt_tokens = []
 output_tokens = []
@@ -54,10 +55,11 @@ for idx, sql_file in enumerate(sql_files):
     used_model = base_model
     
     with open(sql_file, "r") as f:
-        sql_text = f.read()
+        sql_text = f.read().replace("\n\n\n", "")
 
     encoder = tiktoken.encoding_for_model(model)
-    num_tokens = len(encoder.encode(sql_text))
+    tokens = encoder.encode(sql_text)
+    num_tokens = len(tokens)
 
     if num_tokens > 4096:
         sql_text = re.sub(r"--.*$", "", sql_text, flags=re.MULTILINE).lstrip()
@@ -75,6 +77,7 @@ for idx, sql_file in enumerate(sql_files):
     content, token_dict = openai_response_parser(response)
 
     responses.append(content)
+    sql_query.append(sql_text)
     sql_paths.append(sql_file)
     prompt_tokens.append(token_dict["prompt_tokens"])
     output_tokens.append(token_dict["completion_tokens"])
@@ -83,6 +86,7 @@ for idx, sql_file in enumerate(sql_files):
 
 sql_df = pd.DataFrame({
     "sql_paths": sql_paths, 
+    "sql_query": sql_query,
     "tables": responses, 
     "prompt_tokens": prompt_tokens, 
     "output_tokens": output_tokens, 

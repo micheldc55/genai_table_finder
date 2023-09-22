@@ -1,16 +1,3626 @@
-sql_paths,tables,prompt_tokens,output_tokens,total_tokens
-/workspace/repositories/NetworkPlanning/etl/data_prep.sql,"['datascience_dev.networkplanning.basic_data_v8_extended', 'datascience_dev.networkplanning.competition_cnt', 'datascience_dev.networkplanning.airport_flights_count', 'datascience_dev.networkplanning.city_names', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight']",1137,89,1226
-/workspace/repositories/NetworkPlanning/etl/schedules_import.sql,"[""schedules"", ""future_schedule_v4"", ""future_schedule_with_distance_v4"", ""networkplanning.schedules_input_v4""]",3007,28,3035
-/workspace/repositories/NetworkPlanning/etl/stg_additional_tables_queries.sql,"[""datascience_dev.networkplanning.route_region_info"", ""datascience_dev.networkplanning.stg_route_region_info"", ""datascience_dev.networkplanning.city_names_dict""]",725,38,763
-/workspace/repositories/NetworkPlanning/old_code/additional_tables new.sql,"[""departure_city_names"", ""arrival_city_names"", ""datascience_dev.networkplanning.city_names"", ""datascience_dev.networkplanning.routes_filtered_v2"", ""datascience_dev.networkplanning.distance_info_v2""]",756,47,803
-/workspace/repositories/NetworkPlanning/old_code/additional_tables.sql,"['datascience_dev.networkplanning.schedules_raw', 'businessintelligence_prd.datascience_rpt.vw_paxuplift_pastflightpassenger', 'businessintelligence_prd.datascience_rpt.vw_paxuplift_pastrevenue', 'networkplanning.past_flightpassenger', 'networkplanning.routes_filtered', 'networkplanning.date_info', 'networkplanning.distance_info', 'networkplanning.agg_pax_info']",1797,94,1891
-/workspace/repositories/NetworkPlanning/old_code/city_names.sql,"[""datascience_dev.networkplanning.city_names""]",439,11,450
-/workspace/repositories/NetworkPlanning/old_code/data_prep main (v3).sql,"[""competition_cnt"", ""competition_flag"", ""airport_flights_count"", ""route_region_info"", ""datascience_dev.networkplanning.basic_data_v3"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight"", ""datascience_dev.networkplanning.city_names""]",2180,81,2261
-/workspace/repositories/NetworkPlanning/old_code/data_prep main v4.sql,"[""datascience_dev.networkplanning.basic_data_v4_test2""]",1481,15,1496
-/workspace/repositories/NetworkPlanning/old_code/data_prep main v5.sql,"[""datascience_dev.networkplanning.basic_data_v5_test"", ""datascience_dev.networkplanning.competition_cnt"", ""datascience_dev.networkplanning.airport_flights_count"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight"", ""datascience_dev.networkplanning.city_names""]",985,89,1074
-/workspace/repositories/NetworkPlanning/old_code/data_prep new.sql,"[""datascience_dev.networkplanning.past_flightpassenger_input_v2"", ""networkplanning.past_flightpassenger_fl_add_revenue_per_block_v2"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics"", ""networkplanning.past_flightpassenger_fl_add_schedule_v2"", ""networkplanning.past_flightpassenger_fl_add_airport_flight_cnt_v2"", ""networkplanning.past_flightpassenger_fl_add_competition_v2"", ""networkplanning.basic_data_v2""]",3123,113,3236
-/workspace/repositories/NetworkPlanning/old_code/data_prep.sql,"[""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight"", ""departure_city_names"", ""arrival_city_names"", ""city_names"", ""route_region_info"", ""competition_cnt"", ""competition_flag"", ""airport_flights_count"", ""networkplanning.past_flightpassenger_input"", ""networkplanning.past_flightpassenger_fl_add_schedule"", ""networkplanning.past_flightpassenger_fl_add_airport_flight_cnt"", ""networkplanning.past_flightpassenger_fl_add_competition"", ""networkplanning.basic_data_v1""]",3115,114,3229
-/workspace/repositories/NetworkPlanning/old_code/future_data.sql,"[""city_names"", ""competition_cnt"", ""competition_flag"", ""airport_flights_count"", ""sample_schedule"", ""future_schedule"", ""network_planning.future_data_test"", ""flight_passenger"", ""date_time_info"", ""schedule"", ""route_week_num_distinct_days"", ""dep_airport_flights_week"", ""arr_airport_flights_week"", ""competition_route"", ""competition_route_week"", ""competition_route_day"", ""competition_city"", ""competition_city_week"", ""competition_city_day"", ""ryr_flights_count"", ""competitive_flights_count"", ""perc_RYR_flights_route_week"", ""ukraine_war_stimulated_demand"", ""radians"", ""calc"", ""distance""]",3710,142,3852
-/workspace/repositories/NetworkPlanning/old_code/schedules_import main (v2).sql,"['datascience_dev.networkplanning.schedules_raw_v2', 'version_1_base', 'version_2_base', 'schedules', 'version1', 'version2', 'future_schedule_v2', 'new_base', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight', 'additional_info', 'n...e_v2', 'distance_info', 'future_schedule_v2', 'networkplanning.schedules_input_v2_test', 'schedule_info', 'future_schedule_with_distance_v2', 'competition_cnt', 'competition_flag', 'competitive_flights_count', 'competition_flag_route', 'route_region_info']",2975,134,3109
-/workspace/repositories/NetworkPlanning/old_code/schedules_import main v3.sql,"['datascience_dev.networkplanning.schedules_raw_v3', 'version_1_base', 'version_2_base', 'schedules', 'version1', 'version2', 'future_schedule_v3', 'new_base', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight', 'additional_info', 'n...e_v3', 'future_schedule_v3', 'distance_info', 'networkplanning.schedules_input_v3', 'schedule_info', 'future_schedule_with_distance_v3', 'competitive_flights_count', 'competition_flag_route', 'airport_flights_week', 'route_region_info', 'r', 'fc', 'fa']",3165,140,3305
-/workspace/repositories/NetworkPlanning/old_code/schedules_import.sql,"['datascience_dev.networkplanning.schedules_raw_v2', 'version_1_base', 'version_2_base', 'schedules', 'version1', 'version2', 'future_schedule_v2', 'new_base', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight', 'additional_info', 'dc.City', 'ac.City', 'datascience_dev.networkplanning.city_names_dict', 'fp', 'future_schedule_with_distance_v2', 'distance_info', 'future_schedule_v2', 'datascience_dev.networkplanning.airport_flights_count', 'networkplanning.schedules_input_v4', 'schedule_info', 'competition_cnt', 'competitive_flights_count', 'competition_flag', 'competition_flag_route', 'airport_flights_count', 'fc', 'fa', 'route_region_info']",3051,175,3226
+sql_paths,sql_query,tables,prompt_tokens,output_tokens,total_tokens
+/workspace/repositories/NetworkPlanning/etl/data_prep.sql,"-- Databricks notebook source
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.basic_data_v8_extended
+COMMENT 'Base table for NetworkPlanning - v8 - August'
+
+WITH 
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(_c0) AS Week, 
+    YEAR(_c0) AS DepartureYear,
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    SUM(_c4) AS CompetitiveFlightsCnt
+  FROM datascience_dev.networkplanning.competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    True AS CompetitionRoute
+  FROM datascience_dev.networkplanning.competition_cnt
+),
+
+airport_flights_week AS (
+  SELECT 
+    _c1 AS AirportCode,
+    WEEKOFYEAR(_c0) AS Week,
+    YEAR(_c0) AS DepartureYear,
+    SUM(_c2) AS AirportFlightsWeek
+  FROM datascience_dev.networkplanning.airport_flights_count
+  GROUP BY AirportCode, Week, DepartureYear
+),
+
+city_names AS (
+  SELECT DISTINCT 
+    AirportCode, 
+    City
+  FROM 
+  (
+    SELECT DISTINCT _c0 AS AirportCode, _c2 AS City FROM datascience_dev.networkplanning.city_names WHERE _c2 IS NOT NULL
+    UNION
+    SELECT DISTINCT _c1 AS AirportCode, _c3 AS City FROM datascience_dev.networkplanning.city_names WHERE _c3 IS NOT NULL
+  )
+)
+
+SELECT 
+  InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  CAST(DepartureDay AS INT) AS DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  CAST(DepartureWeekDay AS INT) AS DepartureWeekDay,
+  CAST(fp.Week AS INT) AS Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  Block AS Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  PaxCnt AS TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  fc.AirportFlightsWeek AS DepAirportFlightsWeek,
+  fa.AirportFlightsWeek AS ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  ROUND(SumFlightRevenue / Block, 2) AS BlockRevenue,
+  ROUND(SumFlightRevenue / Block / PaxCnt, 2) AS PaxBlockRevenue,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+  -- FlightStatus
+
+FROM (
+  SELECT * 
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+    USING (Route, Week, DepartureYear)
+  WHERE FlightStatus IN (0, 1)
+) fp
+
+LEFT JOIN airport_flights_week fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear
+LEFT JOIN airport_flights_week fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN city_names ac ON fp.ArrivalStation = ac.AirportCode 
+
+
+-- COMMAND ----------
+
+  -- SELECT * 
+  -- FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  -- INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+  --   USING (Route, Week, DepartureYear)
+","['datascience_dev.networkplanning.basic_data_v8_extended', 'datascience_dev.networkplanning.competition_cnt', 'datascience_dev.networkplanning.airport_flights_count', 'datascience_dev.networkplanning.city_names', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight']",1137,89,1226
+/workspace/repositories/NetworkPlanning/etl/schedules_import.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC import pandas as pd
+-- MAGIC from pyspark.sql import SparkSession
+-- MAGIC from pyspark.sql.functions import lit, from_unixtime, unix_timestamp
+-- MAGIC
+-- MAGIC schedule_versions = [""V8"", ""V10"", ""V12"", ""V15"", ""V22"", ""V24"", ""V26"", ""V29"", ""V31"", ""V32""]
+-- MAGIC dataframes_list = []
+-- MAGIC
+-- MAGIC # append datasets into the list
+-- MAGIC for version in schedule_versions:
+-- MAGIC     temp_df = spark.read\
+-- MAGIC         .format(""csv"")\
+-- MAGIC         .option(""header"", ""true"")\
+-- MAGIC         .load(f""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/schedules/{version}.csv"")\
+-- MAGIC         .withColumn(""Version"", lit(f""{str(version).replace('V', '')}""))\
+-- MAGIC         .withColumn(""DepartureDate"", from_unixtime(unix_timestamp(""Date"", ""dd/MM/yyyy""), ""yyyy-MM-dd""))\
+-- MAGIC         .withColumnRenamed(""Orig"", ""DepartureStation"")\
+-- MAGIC         .withColumnRenamed(""Dest"", ""ArrivalStation"")\
+-- MAGIC         .withColumnRenamed(""STD (Local)"", ""DepartTimeLocal"")\
+-- MAGIC         .withColumnRenamed(""STD (UTC)"", ""DepartTimeUTC"")\
+-- MAGIC         .withColumnRenamed(""STA (Local)"", ""ArriveTimeLocal"")\
+-- MAGIC         .withColumnRenamed(""STA (UTC)"", ""ArriveTimeUTC"")\
+-- MAGIC         .withColumnRenamed(""OrigCtry"", ""Outbound_CountryCode"")\
+-- MAGIC         .withColumnRenamed(""DestCtry"", ""Inbound_CountryCode"")\
+-- MAGIC         .drop(""Subfl"", ""Al"", ""FlNo"", ""Day"", ""Block Time"", ""ST"", ""Base"")\
+-- MAGIC         .toPandas()
+-- MAGIC     dataframes_list.append(temp_df)
+-- MAGIC
+-- MAGIC schedules = pd.concat(dataframes_list)
+-- MAGIC
+-- MAGIC schedules.reset_index(drop=True, inplace=True)
+-- MAGIC schedules[""InventoryLegID""] = schedules.index
+-- MAGIC
+-- MAGIC spark = SparkSession.builder.getOrCreate()
+-- MAGIC schedules = spark.createDataFrame(schedules)
+-- MAGIC schedules.createOrReplaceTempView(""schedules"")
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TEMP VIEW future_schedule_v4
+AS
+WITH new_base AS (
+  SELECT
+    Version,
+    InventoryLegID,
+    DepartureDate,
+    DepartureStation,
+    Outbound_CountryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    CASE 
+      WHEN ArriveTimeUTC = '24:00' THEN ""23:59""
+      ELSE ArriveTimeUTC
+    END AS ArriveTimeUTC
+  FROM schedules
+),
+
+additional_info AS (
+  SELECT * 
+  FROM (
+    SELECT DISTINCT 
+      DepartureStation,
+      ArrivalStation,
+      CASE
+        WHEN Outbound_CountryCode = Inbound_CountryCode THEN False
+        ELSE True
+      END AS International,
+      Route,
+      Group,
+      TRIM(Subgroup) AS Subgroup,
+      DepartureLatitude,
+      DepartureLongitude,
+      ArrivalLatitude,
+      ArrivalLongitude,
+      ROW_NUMBER() OVER (
+        PARTITION BY DepartureStation, ArrivalStation, Group
+        ORDER BY DepartureStation, ArrivalStation, Group
+      ) AS RowNum1
+    FROM new_base
+    LEFT JOIN (
+      SELECT DISTINCT 
+        DepartureStation,
+        ArrivalStation,
+        Route,
+        Group,
+        TRIM(Subgroup) AS Subgroup,
+        DepartureLatitude,
+        DepartureLongitude,
+        ArrivalLatitude,
+        ArrivalLongitude
+      FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+    )
+    USING (DepartureStation, ArrivalStation)
+  )
+  WHERE RowNum1 = 1 
+)
+
+SELECT DISTINCT 
+  Version,
+  InventoryLegID,
+  DepartureDate,
+  DepartureStation,
+  ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartTimeLocal,
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  ArrivetimeUTC,
+  ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  CASE 
+    WHEN n.Route is NOT NULL THEN n.Route
+    ELSE CONCAT(DepartureStation, ArrivalStation)
+  END AS Route,
+  Group,
+  Subgroup,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM new_base fp
+LEFT JOIN datascience_dev.networkplanning.city_names_dict dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names_dict ac ON fp.ArrivalStation = ac.AirportCode 
+LEFT JOIN additional_info n USING (DepartureStation, ArrivalStation)
+
+-- COMMAND ----------
+
+USE CATALOG datascience_dev
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TEMP VIEW future_schedule_with_distance_v4
+AS
+
+WITH
+distance_info AS (
+  SELECT DISTINCT
+    DepartureStation,
+    ArrivalStation,
+    6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+  FROM (
+    SELECT *,
+      POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+      COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+    FROM (
+      SELECT
+        DepartureStation,
+        ArrivalStation,
+        DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+        DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+        ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+        ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+      FROM future_schedule_v4
+    )
+  )
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  YEAR(DepartureDate) AS DepartureYear,
+  MONTH(DepartureDate) AS DepartureMonth,
+  DAY(DepartureDate) AS DepartureDay,
+  HOUR(DepartTimeLocal) AS DepartureHour,
+  CASE 
+    WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+    ELSE 'Other'
+  END AS TimeOfDay,
+  WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay,
+  WEEKOFYEAR(DepartureDate) AS Week,
+  CASE
+    WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+    ELSE False
+  END AS Summer,
+  CASE
+    WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+    ELSE False
+  END AS Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  -- CASE 
+  --   WHEN Blocks <= 0 THEN Blocks + 24
+  --   ELSE Blocks
+  -- END AS Blocks,
+  Blocks,
+  CASE
+    WHEN Outbound_CountryCode IN ('PL', 'RO', 'SK') OR Inbound_CountryCode IN ('PL', 'RO', 'SK') THEN True
+    ELSE False
+  END AS UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM future_schedule_v4 fp
+LEFT JOIN distance_info USING (DepartureStation, ArrivalStation)
+
+-- COMMAND ----------
+
+select * from future_schedule_with_distance_v4
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.schedules_input_v4
+COMMENT 'Future data - NetworkPlanning'
+
+WITH
+schedule_info AS (
+  SELECT
+    Route,
+    Week,
+    DepartureYear,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule,
+    COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays,
+    COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+  FROM future_schedule_with_distance_v4
+  GROUP BY Route, Week, DepartureYear
+),
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(_c0) AS Week, 
+    YEAR(_c0) AS DepartureYear,
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    SUM(_c4) AS CompetitiveFlightsCnt
+  FROM datascience_dev.networkplanning.competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    True AS CompetitionRoute
+  FROM datascience_dev.networkplanning.competition_cnt
+),
+
+airport_flights_week AS (
+  SELECT 
+    _c1 AS AirportCode,
+    WEEKOFYEAR(_c0) AS Week,
+    YEAR(_c0) AS DepartureYear,
+    SUM(_c2) AS AirportFlightsWeek
+  FROM datascience_dev.networkplanning.airport_flights_count
+  GROUP BY AirportCode, Week, DepartureYear
+),
+
+route_region_info AS (
+  SELECT 
+    SUBSTRING(_c0, 1, 3) AS DepartureStation,
+    SUBSTRING(_c0, 4, 6) AS ArrivalStation, 
+    _c0 AS Route,
+    _c1 AS Group,
+    _c3 AS Subgroup
+  FROM datascience_dev.networkplanning.route_region_info
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  fp.Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  fp.Route,
+  CASE 
+    WHEN fp.Group IS NOT NULL THEN fp.Group
+    ELSE r.Group
+  END AS Group,
+  CASE 
+    WHEN fp.Subgroup IS NOT NULL THEN fp.Subgroup
+    ELSE r.Subgroup
+  END AS Subgroup,
+  Distance,
+  Blocks,
+  UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  Schedule,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  fc.AirportFlightsWeek AS DepAirportFlightsWeek,
+  fa.AirportFlightsWeek AS ArrAirportFlightsWeek,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+FROM future_schedule_with_distance_v4 fp
+LEFT JOIN schedule_info USING (Route, Week, DepartureYear)
+LEFT JOIN airport_flights_week fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear
+LEFT JOIN airport_flights_week fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN route_region_info r USING (DepartureStation, ArrivalStation)
+
+-- COMMAND ----------
+
+select * from future_schedule_with_distance_v4
+
+-- COMMAND ----------
+
+
+","[""schedules"", ""future_schedule_v4"", ""future_schedule_with_distance_v4"", ""networkplanning.schedules_input_v4""]",3007,28,3035
+/workspace/repositories/NetworkPlanning/etl/stg_additional_tables_queries.sql,"-- Databricks notebook source
+-- MAGIC %md
+-- MAGIC ### CSV files | Table names 
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC - route_region_info.csv | route_region_info
+-- MAGIC - city_code_names.csv | city_names
+-- MAGIC - competition_cnt.csv | competition_cnt
+-- MAGIC - airport_flight_cnt.csv | airport_flights_count
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC ### Drop tables if exist
+
+-- COMMAND ----------
+
+drop table if exists datascience_dev.networkplanning.route_region_info;
+drop table if exists datascience_dev.networkplanning.stg_route_region_info;
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC ### Create external table
+
+-- COMMAND ----------
+
+create external table datascience_dev.networkplanning.route_region_info
+using csv 
+location
+'abfss://dbrdevlanding@frbinetraunitycatalog.dfs.core.windows.net/DS/NetworkPlanning/CSVInputs/route_region_info.csv'
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC ### Check columns
+
+-- COMMAND ----------
+
+select * from datascience_dev.networkplanning.route_region_info
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC ### Create a delta table
+
+-- COMMAND ----------
+
+ALTER TABLE datascience_dev.networkplanning.route_region_info
+    RENAME TO datascience_dev.networkplanning.stg_route_region_info;
+
+CREATE TABLE datascience_dev.networkplanning.route_region_info
+(
+    _c0 string
+    ,_c1 string
+    ,_c2 string
+    ,_c3 string
+    -- ,_c4 string
+    ,LastUpdatedDate timestamp --GENERATED ALWAYS AS (CURRENT_TIMESTAMP())
+);
+
+INSERT INTO datascience_dev.networkplanning.route_region_info
+(
+    _c0 
+    ,_c1 
+    ,_c2 
+    ,_c3
+    -- ,_c4
+    ,LastUpdatedDate
+)
+SELECT
+    _c0 string
+    ,_c1 string
+    ,_c2 string
+    ,_c3 string
+    -- ,_c4 string
+    ,CURRENT_TIMESTAMP()
+FROM
+    datascience_dev.networkplanning.stg_route_region_info;
+
+-- COMMAND ----------
+
+-- MAGIC %md
+-- MAGIC ### Create a city names dict
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.city_names_dict
+COMMENT 'City names dictionary'
+
+SELECT DISTINCT AirportCode, City 
+FROM (
+  (
+    SELECT DISTINCT
+      _c0 AS AirportCode,
+      _c2 AS City
+    FROM datascience_dev.networkplanning.city_names WHERE _c2 IS NOT NULL
+  )
+  union 
+  (
+    SELECT DISTINCT
+      _c0 AS AirportCode,
+      _c2 AS City
+    FROM datascience_dev.networkplanning.city_names WHERE _c2 IS NOT NULL
+
+  )
+)
+
+
+-- COMMAND ----------
+
+
+","[""datascience_dev.networkplanning.route_region_info"", ""datascience_dev.networkplanning.stg_route_region_info"", ""datascience_dev.networkplanning.city_names_dict""]",725,38,763
+/workspace/repositories/NetworkPlanning/old_code/additional_tables new.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC # City names
+-- MAGIC departure_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""DepartureStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""DepartureCity"", ""City"")\
+-- MAGIC     .drop(""ArrivalStation"", ""ArrivalCity"")
+-- MAGIC departure_city_names.createOrReplaceTempView(""departure_city_names"")
+-- MAGIC
+-- MAGIC arrival_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""ArrivalStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""ArrivalCity"", ""City"")\
+-- MAGIC     .drop(""DepartureStation"", ""DepartureCity"")
+-- MAGIC arrival_city_names.createOrReplaceTempView(""arrival_city_names"")
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.city_names
+COMMENT 'City names corresponding to airport codes'
+
+(SELECT DISTINCT AirportCode, City FROM departure_city_names WHERE City IS NOT NULL)
+UNION
+(SELECT DISTINCT AirportCode, City FROM arrival_city_names WHERE City IS NOT NULL)
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.routes_filtered_v2
+COMMENT 'Routes with over 7 flights'
+
+SELECT DISTINCT Route AS Route
+FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+GROUP BY Route
+HAVING COUNT(DISTINCT InventoryLegID) > 7
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.distance_info_v2
+COMMENT 'Table with distances between airports [km]'
+
+SELECT DISTINCT
+  DepartureStation,
+  ArrivalStation,
+  6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+FROM (
+  SELECT *,
+    POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+    COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+  FROM (
+    SELECT
+      DepartureStation,
+      ArrivalStation,
+      DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+      DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+      ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+      ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+    FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+  )
+)
+","[""departure_city_names"", ""arrival_city_names"", ""datascience_dev.networkplanning.city_names"", ""datascience_dev.networkplanning.routes_filtered_v2"", ""datascience_dev.networkplanning.distance_info_v2""]",756,47,803
+/workspace/repositories/NetworkPlanning/old_code/additional_tables.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC # City names
+-- MAGIC departure_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""DepartureStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""DepartureCity"", ""City"")\
+-- MAGIC     .drop(""ArrivalStation"", ""ArrivalCity"")
+-- MAGIC departure_city_names.createOrReplaceTempView(""departure_city_names"")
+-- MAGIC
+-- MAGIC arrival_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""ArrivalStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""ArrivalCity"", ""City"")\
+-- MAGIC     .drop(""DepartureStation"", ""DepartureCity"")
+-- MAGIC arrival_city_names.createOrReplaceTempView(""arrival_city_names"")
+-- MAGIC
+-- MAGIC city_names = spark.sql(
+-- MAGIC     ""(SELECT DISTINCT AirportCode, City FROM departure_city_names WHERE City IS NOT NULL)\
+-- MAGIC     UNION\
+-- MAGIC     (SELECT DISTINCT AirportCode, City FROM arrival_city_names WHERE City IS NOT NULL)""\
+-- MAGIC )
+-- MAGIC city_names.createOrReplaceTempView(""city_names"")
+
+-- COMMAND ----------
+
+select distinct subgroup from datascience_dev.networkplanning.schedules_raw 
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.past_flightpassenger
+COMMENT 'Necessary info from past_flightpassenger'
+
+SELECT 
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartTimeLocal, 
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  ArriveTimeUTC,
+  FlightCapacity,
+  PassengerID,
+  JourneyNumber,
+  TripType,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  Group,
+  Subgroup,
+  ConfirmationNDO,
+  TripLengthDays,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  CASE
+    WHEN Inbound_CountryCode IN ('PL', 'RO', 'SK') OR Outbound_CountryCode IN ('PL', 'RO', 'SK') THEN True
+    ELSE False
+  END AS UkraineImpact,
+  DepartureDate,
+  HOUR(DepartTimeLocal) AS DepartureHour,
+  CASE 
+    WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+    ELSE 'Other'
+  END AS TimeOfDay,
+  ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks
+FROM businessintelligence_prd.datascience_rpt.vw_paxuplift_pastflightpassenger
+WHERE DepartureDate >= '2022-01-01' 
+  AND FlightStatus = 1 
+  AND Group IS NOT NULL
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.revenue_info
+COMMENT 'Aggregated information about flight revenue'
+
+WITH base AS ( 
+  SELECT 
+    InventoryLegNK,
+    SUM(TotalChargesEUR) OVER (PARTITION BY InventoryLegNK) AS SumFlightRevenue,
+    SUM(TotalChargesEUR) OVER (PARTITION BY PassengerNK) AS SumPaxRevenue
+  FROM businessintelligence_prd.datascience_rpt.vw_paxuplift_pastrevenue
+)
+SELECT DISTINCT
+  CAST(InventoryLegNK AS INT) AS InventoryLegNK,
+  CAST(SumFlightRevenue AS INT) AS SumFlightRevenue,
+  CAST(AVG(SumPaxRevenue) OVER (PARTITION BY InventoryLegNK) AS INT) AS AvgPaxRevenue
+FROM base 
+
+-- COMMAND ----------
+
+USE CATALOG datascience_dev
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.routes_filtered
+COMMENT 'Routes with over 7 flights'
+
+SELECT DISTINCT Route AS Route
+FROM networkplanning.past_flightpassenger
+GROUP BY Route
+HAVING COUNT(DISTINCT InventoryLegID) > 7
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.date_info
+COMMENT 'Additional date-related info'
+
+SELECT DISTINCT
+  DepartureDate,
+  DAY(DepartureDate) AS DepartureDay,
+  MONTH(DepartureDate) AS DepartureMonth,
+  YEAR(DepartureDate) AS DepartureYear,
+  WEEKOFYEAR(DepartureDate) AS Week,
+    CASE
+    WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+    ELSE False
+  END AS Summer,
+  CASE
+    WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+    ELSE False
+  END AS Weekend,
+  WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay
+FROM networkplanning.past_flightpassenger
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.distance_info
+COMMENT 'Table with distances between airports [km]'
+
+SELECT DISTINCT
+  DepartureStation,
+  ArrivalStation,
+  6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+FROM (
+  SELECT *,
+    POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+    COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+  FROM (
+    SELECT
+      DepartureStation,
+      ArrivalStation,
+      DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+      DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+      ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+      ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+    FROM networkplanning.past_flightpassenger  
+  )
+)
+
+-- COMMAND ----------
+
+-- CREATE OR REPLACE TABLE networkplanning.route_info
+-- COMMENT 'Additional route-related info'
+
+-- SELECT DISTINCT 
+--   DepartureStation,
+--   ArrivalStation,
+--   dc.City as DepartureCity,
+--   ac.City as ArrivalCity,
+--   CONCAT(dc.City, '-', ac.City) AS CityRoute
+-- FROM networkplanning.past_flightpassenger 
+-- LEFT JOIN city_names dc ON DepartureStation = dc.AirportCode
+-- LEFT JOIN city_names ac ON ArrivalStation = ac.AirportCode 
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.agg_pax_info
+COMMENT 'Aggregated information about passengers'
+
+SELECT
+  InventoryLegID,
+  COUNT(DISTINCT PassengerID) AS TotalPax,
+  ROUND(SUM(CASE WHEN TripType = 1 THEN 1 ELSE 0 END) / COUNT(DISTINCT PassengerID), 2) AS OneWayPaxShare,
+  ROUND(SUM(CASE WHEN JourneyNumber = 1 THEN 1 ELSE 0 END) / COUNT(DISTINCT PassengerID), 2) AS PointOfOriginShare
+FROM networkplanning.past_flightpassenger
+GROUP BY InventoryLegID
+","['datascience_dev.networkplanning.schedules_raw', 'businessintelligence_prd.datascience_rpt.vw_paxuplift_pastflightpassenger', 'businessintelligence_prd.datascience_rpt.vw_paxuplift_pastrevenue', 'networkplanning.past_flightpassenger', 'networkplanning.routes_filtered', 'networkplanning.date_info', 'networkplanning.distance_info', 'networkplanning.agg_pax_info']",1797,94,1891
+/workspace/repositories/NetworkPlanning/old_code/city_names.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC # City names
+-- MAGIC departure_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""DepartureStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""DepartureCity"", ""City"")\
+-- MAGIC     .drop(""ArrivalStation"", ""ArrivalCity"")
+-- MAGIC departure_city_names.createOrReplaceTempView(""departure_city_names"")
+-- MAGIC
+-- MAGIC arrival_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""ArrivalStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""ArrivalCity"", ""City"")\
+-- MAGIC     .drop(""DepartureStation"", ""DepartureCity"")
+-- MAGIC arrival_city_names.createOrReplaceTempView(""arrival_city_names"")
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.city_names
+COMMENT 'City names corresponding to airport codes'
+
+(SELECT DISTINCT AirportCode, City FROM departure_city_names WHERE City IS NOT NULL)
+UNION
+(SELECT DISTINCT AirportCode, City FROM arrival_city_names WHERE City IS NOT NULL)
+","[""datascience_dev.networkplanning.city_names""]",439,11,450
+/workspace/repositories/NetworkPlanning/old_code/data_prep main (v3).sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC from pyspark.sql.functions import col, lit, trim, weekofyear, year
+-- MAGIC
+-- MAGIC # Competition count
+-- MAGIC competition_cnt = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/competition_cnt.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", trim(""Origin""))\
+-- MAGIC     .withColumn(""ArrivalStation"", trim(""Destination""))\
+-- MAGIC     .drop(""Origin"", ""Destination"")\
+-- MAGIC     .drop(""CompetitorsCnt"")
+-- MAGIC competition_cnt.createOrReplaceTempView(""competition_cnt"")
+-- MAGIC
+-- MAGIC # Competition flag
+-- MAGIC competition_flag = competition_cnt\
+-- MAGIC     .drop(""CarrierCnt"")\
+-- MAGIC     .drop(""CompetitorsCnt"")\
+-- MAGIC     .withColumn(""Competition"", lit(True))
+-- MAGIC competition_flag.createOrReplaceTempView(""competition_flag"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Airport flight counts 
+-- MAGIC airport_flights_count = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/airport_flights_cnt.csv"")\
+-- MAGIC     .withColumn(""Week"", weekofyear(""DepartureDate""))\
+-- MAGIC     .withColumn(""DepartureYear"", year(""DepartureDate""))\
+-- MAGIC     .withColumn(""FlightCount"", col(""FlightCount"").cast('int'))\
+-- MAGIC     .groupBy(""Week"", ""DepartureYear"", ""AirportCode"").sum(""FlightCount"").withColumnRenamed(""sum(FlightCount)"", ""FlightsCnt"")
+-- MAGIC airport_flights_count.createOrReplaceTempView(""airport_flights_count"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Route-region info
+-- MAGIC route_region_info = spark.read\
+-- MAGIC     .format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/route_region_info.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", col(""route"").substr(1,3))\
+-- MAGIC     .withColumn(""ArrivalStation"", col(""route"").substr(4,6))\
+-- MAGIC     .withColumnRenamed(""route"", ""Route"")\
+-- MAGIC     .withColumnRenamed(""route_group"", ""Group"")\
+-- MAGIC     .withColumnRenamed(""new_region"", ""Subgroup"")\
+-- MAGIC     .drop(""old_region"")
+-- MAGIC route_region_info.createOrReplaceTempView(""route_region_info"")
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.basic_data_v3
+COMMENT 'Base table for NetworkPlanning - v3'
+
+WITH 
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    YEAR(DepartureDate) AS DepartureYear,
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    DepartureStation,
+    ArrivalStation, 
+    True AS CompetitionRoute
+  FROM competition_flag
+)
+
+SELECT 
+  InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  CAST(DepartureDay AS INT) AS DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  CAST(DepartureWeekDay AS INT) AS DepartureWeekDay,
+  CAST(fp.Week AS INT) AS Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  Block AS Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  PaxCnt AS TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  fc.FlightsCnt AS DepAirportFlightsWeek,
+  fa.FlightsCnt AS ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  ROUND(SumFlightRevenue / Block, 2) AS BlockRevenue,
+  ROUND(SumFlightRevenue / Block / PaxCnt, 2) AS PaxBlockRevenue,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+
+FROM (
+  SELECT * 
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+    USING (Route, Week, DepartureYear)
+) fp
+
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear 
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN datascience_dev.networkplanning.city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names ac ON fp.ArrivalStation = ac.AirportCode 
+
+WHERE SumFlightRevenue != 0
+
+
+-- COMMAND ----------
+
+with test as (
+
+
+select 
+  DepartureDate,  
+  cast(Week as int) AS Week,
+  cast(DepartureYear as int) as DepartureYear,
+  Route, 
+  DepartureStation,
+  ArrivalStation
+FROM (
+  SELECT * 
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+    USING (Route, Week, DepartureYear)
+) 
+)
+select
+  DepartureDate,  
+  fp.Week,
+  fp.DepartureYear,
+  Route, 
+  DepartureStation,
+  ArrivalStation,
+  fc.FlightsCnt AS DepAirportFlightsWeek
+  -- fa.FlightsCnt AS ArrAirportFlightsWeek
+from test fp
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+-- LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+--   AND fp.Week = fa.Week 
+--   AND fp.DepartureYear = fa.DepartureYear 
+
+where DepartureStation=""AQJ"" and DepartureDate='2022-03-20'
+
+
+
+-- COMMAND ----------
+
+select Week,   DepartureDate,  
+  fp.Week,
+  fp.DepartureYear,
+
+-- COMMAND ----------
+
+with test as (  
+  SELECT * 
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+    USING (Route, Week, DepartureYear)
+  WHERE f.FlightStatus = 1 
+)
+SELECT t.route, count(distinct inventorylegid) as cnt
+from test t
+inner join (
+  select DISTINCT Route
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight s
+  GROUP BY Route
+  HAVING COUNT(DISTINCT InventoryLegID) > 7
+) using(Route)
+group by t.Route
+having count(distinct inventorylegid) <= 7
+
+-- COMMAND ----------
+
+-- with test AS (
+--   SELECT
+--   fp.week,
+--   departuredate, 
+--   route,
+--   DepartureStation, 
+--   arrivalstation,    
+--   fc.FlightsCnt AS DepAirportFlightsWeek,
+--   fa.FlightsCnt AS ArrAirportFlightsWeek
+-- FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight fp
+
+-- LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+--   AND fp.Week = fc.Week 
+--   AND fp.DepartureYear = fc.DepartureYear 
+-- LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+--   AND fp.Week = fa.Week 
+--   AND fp.DepartureYear = fa.DepartureYear 
+
+--   WHERE fp.FlightStatus = 1 
+-- )
+-- select distinct week, departuredate, departurestation, arrivalstation, DepAirportFlightsWeek, ArrAirportFlightsWeek
+-- from test
+-- where DepAirportFlightsWeek is null and year(departuredate)='2022'
+","[""competition_cnt"", ""competition_flag"", ""airport_flights_count"", ""route_region_info"", ""datascience_dev.networkplanning.basic_data_v3"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight"", ""datascience_dev.networkplanning.city_names""]",2180,81,2261
+/workspace/repositories/NetworkPlanning/old_code/data_prep main v4.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC from pyspark.sql.functions import col, lit, trim, weekofyear, year
+-- MAGIC
+-- MAGIC # Competition count
+-- MAGIC competition_cnt = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/competition_cnt.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", trim(""Origin""))\
+-- MAGIC     .withColumn(""ArrivalStation"", trim(""Destination""))\
+-- MAGIC     .drop(""Origin"", ""Destination"")\
+-- MAGIC     .drop(""CompetitorsCnt"")
+-- MAGIC competition_cnt.createOrReplaceTempView(""competition_cnt"")
+-- MAGIC
+-- MAGIC # Competition flag
+-- MAGIC competition_flag = competition_cnt\
+-- MAGIC     .drop(""CarrierCnt"")\
+-- MAGIC     .drop(""CompetitorsCnt"")\
+-- MAGIC     .withColumn(""Competition"", lit(True))
+-- MAGIC competition_flag.createOrReplaceTempView(""competition_flag"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Airport flight counts 
+-- MAGIC airport_flights_count = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/airport_flights_cnt.csv"")\
+-- MAGIC     .withColumn(""Week"", weekofyear(""DepartureDate""))\
+-- MAGIC     .withColumn(""DepartureYear"", year(""DepartureDate""))\
+-- MAGIC     .withColumn(""FlightCount"", col(""FlightCount"").cast('int'))\
+-- MAGIC     .groupBy(""Week"", ""DepartureYear"", ""AirportCode"").sum(""FlightCount"").withColumnRenamed(""sum(FlightCount)"", ""FlightsCnt"")
+-- MAGIC airport_flights_count.createOrReplaceTempView(""airport_flights_count"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Route-region info
+-- MAGIC route_region_info = spark.read\
+-- MAGIC     .format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/route_region_info.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", col(""route"").substr(1,3))\
+-- MAGIC     .withColumn(""ArrivalStation"", col(""route"").substr(4,6))\
+-- MAGIC     .withColumnRenamed(""route"", ""Route"")\
+-- MAGIC     .withColumnRenamed(""route_group"", ""Group"")\
+-- MAGIC     .withColumnRenamed(""new_region"", ""Subgroup"")\
+-- MAGIC     .drop(""old_region"")
+-- MAGIC route_region_info.createOrReplaceTempView(""route_region_info"")
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.basic_data_v4_test2
+COMMENT 'Base table for NetworkPlanning - v4'
+
+WITH 
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    YEAR(DepartureDate) AS DepartureYear,
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    DepartureStation,
+    ArrivalStation, 
+    True AS CompetitionRoute
+  FROM competition_flag
+)
+
+SELECT 
+  InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  CAST(DepartureDay AS INT) AS DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  CAST(DepartureWeekDay AS INT) AS DepartureWeekDay,
+  CAST(fp.Week AS INT) AS Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  Block AS Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  PaxCnt AS TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  fc.FlightsCnt AS DepAirportFlightsWeek,
+  fa.FlightsCnt AS ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  ROUND(SumFlightRevenue / Block, 2) AS BlockRevenue,
+  ROUND(SumFlightRevenue / Block / PaxCnt, 2) AS PaxBlockRevenue,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+
+FROM (
+  SELECT * 
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+    USING (Route, Week, DepartureYear)
+) fp
+
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear 
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN datascience_dev.networkplanning.city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names ac ON fp.ArrivalStation = ac.AirportCode 
+WHERE SumFlightRevenue != 0
+
+
+-- COMMAND ----------
+
+select * from datascience_dev.networkplanning.basic_data_v4 where sumflightrevenue <=0
+","[""datascience_dev.networkplanning.basic_data_v4_test2""]",1481,15,1496
+/workspace/repositories/NetworkPlanning/old_code/data_prep main v5.sql,"-- Databricks notebook source
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.basic_data_v5_test
+COMMENT 'Base table for NetworkPlanning - v5'
+
+WITH 
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(_c0) AS Week, 
+    YEAR(_c0) AS DepartureYear
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    SUM(_c4) AS CompetitiveFlightsCnt
+  FROM datascience_dev.networkplanning.competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    True AS CompetitionRoute
+  FROM datascience_dev.networkplanning.competition_cnt
+),
+
+airport_flights_week AS (
+  SELECT 
+    _c1 AS AirportCode,
+    WEEKOFYEAR(_c0) AS Week,
+    YEAR(_c0) AS DepartureYear,
+    SUM(_c2) AS AirportFlightsWeek
+  FROM datascience_dev.networkplanning.airport_flights_count
+  GROUP BY AirportCode, Week, DepartureYear
+)
+
+SELECT 
+  InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  CAST(DepartureDay AS INT) AS DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  CAST(DepartureWeekDay AS INT) AS DepartureWeekDay,
+  CAST(fp.Week AS INT) AS Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  Block AS Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  PaxCnt AS TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  fc.AirportFlightsWeek AS DepAirportFlightsWeek,
+  fa.AirportFlightsWeek AS ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  ROUND(SumFlightRevenue / Block, 2) AS BlockRevenue,
+  ROUND(SumFlightRevenue / Block / PaxCnt, 2) AS PaxBlockRevenue,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+
+FROM (
+  SELECT * 
+  FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics rwm
+  INNER JOIN businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight f
+    USING (Route, Week, DepartureYear)
+) fp
+
+LEFT JOIN airport_flights_week fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear
+LEFT JOIN airport_flights_week fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN datascience_dev.networkplanning.city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names ac ON fp.ArrivalStation = ac.AirportCode 
+-- WHERE SumFlightRevenue != 0
+
+-- COMMAND ----------
+
+
+","[""datascience_dev.networkplanning.basic_data_v5_test"", ""datascience_dev.networkplanning.competition_cnt"", ""datascience_dev.networkplanning.airport_flights_count"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight"", ""datascience_dev.networkplanning.city_names""]",985,89,1074
+/workspace/repositories/NetworkPlanning/old_code/data_prep new.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC from pyspark.sql.functions import col, lit, trim, weekofyear, year
+-- MAGIC
+-- MAGIC # Competition count
+-- MAGIC competition_cnt = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/competition_cnt.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", trim(""Origin""))\
+-- MAGIC     .withColumn(""ArrivalStation"", trim(""Destination""))\
+-- MAGIC     .drop(""Origin"", ""Destination"")\
+-- MAGIC     .drop(""CompetitorsCnt"")
+-- MAGIC competition_cnt.createOrReplaceTempView(""competition_cnt"")
+-- MAGIC
+-- MAGIC # Competition flag
+-- MAGIC competition_flag = competition_cnt\
+-- MAGIC     .drop(""CarrierCnt"")\
+-- MAGIC     .drop(""CompetitorsCnt"")\
+-- MAGIC     .withColumn(""Competition"", lit(True))
+-- MAGIC competition_flag.createOrReplaceTempView(""competition_flag"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Airport flight counts 
+-- MAGIC airport_flights_count = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/airport_flights_cnt.csv"")\
+-- MAGIC     .withColumn(""Week"", weekofyear(""DepartureDate""))\
+-- MAGIC     .withColumn(""DepartureYear"", year(""DepartureDate""))\
+-- MAGIC     .withColumn(""FlightCount"", col(""FlightCount"").cast('int'))\
+-- MAGIC     .groupBy(""Week"", ""DepartureYear"", ""AirportCode"").sum(""FlightCount"").withColumnRenamed(""sum(FlightCount)"", ""FlightsCnt"")
+-- MAGIC airport_flights_count.createOrReplaceTempView(""airport_flights_count"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Route-region info
+-- MAGIC route_region_info = spark.read\
+-- MAGIC     .format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/route_region_info.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", col(""route"").substr(1,3))\
+-- MAGIC     .withColumn(""ArrivalStation"", col(""route"").substr(4,6))\
+-- MAGIC     .withColumnRenamed(""route"", ""Route"")\
+-- MAGIC     .withColumnRenamed(""route_group"", ""Group"")\
+-- MAGIC     .withColumnRenamed(""new_region"", ""Subgroup"")\
+-- MAGIC     .drop(""old_region"")
+-- MAGIC route_region_info.createOrReplaceTempView(""route_region_info"")
+
+-- COMMAND ----------
+
+USE CATALOG datascience_dev
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE datascience_dev.networkplanning.past_flightpassenger_input_v2
+COMMENT 'Flight_passenger input table'
+
+SELECT 
+  InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  DepartureDate,
+  DepartureYear,
+  DepartureMonth,
+  CAST(DAY(DepartureDate) AS INT) AS DepartureDay,
+  CAST(WEEKOFYEAR(DepartureDate) AS INT) AS Week,
+  CASE
+    WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+    ELSE False
+  END AS Summer,
+  CASE
+    WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+    ELSE False
+  END AS Weekend,
+  WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay,
+  HOUR(DepartTimeLocal) AS DepartureHour,
+  CASE 
+    WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+    ELSE 'Other'
+  END AS TimeOfDay,
+  ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks,
+  DepartTimeLocal, 
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  CASE 
+    WHEN ArriveTimeUTC = '24:00' THEN ""23:59""
+    ELSE ArriveTimeUTC
+  END AS ArriveTimeUTC,
+  FlightCapacity,
+  CASE
+    WHEN Outbound_CountryCode = ArrivalCountryCode THEN False
+    ELSE True
+  END AS International,
+  DepartureCountryCode AS Outbound_CountryCode,
+  ArrivalCountryCode AS Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  fp.Distance,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  CASE
+    WHEN DepartureCountryCode IN ('PL', 'RO', 'SK') OR ArrivalCountryCode IN ('PL', 'RO', 'SK') THEN True
+    ELSE False
+  END AS UkraineImpact,
+  PaxCnt AS TotalPax,
+  ROUND(CAST(OneWayPaxShare AS FLOAT), 2) AS OneWayPaxShare,
+  ROUND(CAST(TotalChargesEUR AS FLOAT), 2) AS SumFlightRevenue,
+  ROUND(CAST(TotalChargesEUR AS FLOAT) / PaxCnt, 2) AS AvgPaxRevenue
+FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight fp
+JOIN datascience_dev.networkplanning.routes_filtered_v2 USING (Route)
+LEFT JOIN datascience_dev.networkplanning.distance_info_v2 USING (DepartureStation, ArrivalStation)
+
+WHERE DepartureDate >= '2022-01-01' 
+  AND FlightStatus = 1 
+  AND Group IS NOT NULL
+  --RouteFlightCnt > 7
+
+-- COMMAND ----------
+
+USE CATALOG datascience_dev
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_revenue_per_block_v2
+COMMENT 'Input table for NetworkPlanning with added rev per block info'
+SELECT *,
+  ROUND(SumFlightRevenue / Blocks, 2) AS BlockRevenue,
+  ROUND(SumFlightRevenue / Blocks / TotalPax, 2) AS PaxBlockRevenue
+FROM networkplanning.past_flightpassenger_input_v2
+
+-- COMMAND ----------
+
+select * from businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_schedule_v2
+COMMENT 'Input table for NetworkPlanning with added schedule info'
+
+WITH 
+schedule_info AS (
+  SELECT 
+    Route,
+    Week,
+    DepartureYear,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule,
+    COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays,
+    COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+  FROM networkplanning.past_flightpassenger_fl_add_revenue_per_block_v2
+  GROUP BY Route, Week, DepartureYear
+)
+
+SELECT *
+FROM networkplanning.past_flightpassenger_fl_add_revenue_per_block_v2 fp
+LEFT JOIN schedule_info USING (Route, Week, DepartureYear)
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_airport_flight_cnt_v2
+COMMENT 'Input table for NetworkPlanning with added airport flight cnt'
+
+SELECT  
+  fp.InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  fp.DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  fp.Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  fp.Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  CASE 
+    WHEN Blocks <= 0 THEN Blocks + 24
+    ELSE Blocks
+  END AS Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  fc.FlightsCnt AS DepAirportFlightsWeek,
+  fa.FlightsCnt AS ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  BlockRevenue,
+  PaxBlockRevenue
+FROM networkplanning.past_flightpassenger_fl_add_schedule_v2 fp
+
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear 
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_competition_v2
+COMMENT 'Input table for NetworkPlanning with added competition info'
+
+WITH 
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    YEAR(DepartureDate) AS DepartureYear,
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    DepartureStation,
+    ArrivalStation, 
+    True AS CompetitionRoute
+  FROM competition_flag
+)
+
+SELECT DISTINCT 
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureDate,
+  DepartureDay,
+  DepartureMonth,
+  DepartureYear,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  Group,
+  Subgroup,
+  Distance,
+  Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  DepAirportFlightsWeek,
+  ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  BlockRevenue,
+  PaxBlockRevenue,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+FROM networkplanning.past_flightpassenger_fl_add_airport_flight_cnt_v2 fp
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.basic_data_v2
+COMMENT 'Base table for NetworkPlanning - Version 2'
+
+SELECT 
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartureDate,
+  DepartureDay,
+  DepartureMonth,
+  DepartureYear,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  fp.Route,
+  CASE 
+    WHEN fp.Group IS NOT NULL THEN fp.Group
+    ELSE r.Group
+  END AS Group,
+  CASE 
+    WHEN fp.Subgroup IS NOT NULL THEN fp.Subgroup
+    ELSE r.Subgroup
+  END AS Subgroup,
+  Distance,
+  Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  TotalPax,
+  OneWayPaxShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  DepAirportFlightsWeek,
+  ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  BlockRevenue,
+  PaxBlockRevenue,
+  CompetitionRoute,
+  PercRYRFlightsRouteWeek
+FROM networkplanning.past_flightpassenger_fl_add_competition_v2 fp
+LEFT JOIN networkplanning.city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN networkplanning.city_names ac ON fp.ArrivalStation = ac.AirportCode 
+LEFT JOIN route_region_info r USING (DepartureStation, ArrivalStation)
+WHERE SumFlightRevenue != 0
+
+-- COMMAND ----------
+
+
+","[""datascience_dev.networkplanning.past_flightpassenger_input_v2"", ""networkplanning.past_flightpassenger_fl_add_revenue_per_block_v2"", ""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_RouteWeekMetrics"", ""networkplanning.past_flightpassenger_fl_add_schedule_v2"", ""networkplanning.past_flightpassenger_fl_add_airport_flight_cnt_v2"", ""networkplanning.past_flightpassenger_fl_add_competition_v2"", ""networkplanning.basic_data_v2""]",3123,113,3236
+/workspace/repositories/NetworkPlanning/old_code/data_prep.sql,"-- Databricks notebook source
+select * from businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+
+-- COMMAND ----------
+
+-- MAGIC %py
+-- MAGIC from pyspark.sql.functions import col, lit, trim, weekofyear, year
+-- MAGIC
+-- MAGIC # City names
+-- MAGIC departure_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""DepartureStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""DepartureCity"", ""City"")\
+-- MAGIC     .drop(""ArrivalStation"", ""ArrivalCity"")
+-- MAGIC departure_city_names.createOrReplaceTempView(""departure_city_names"")
+-- MAGIC
+-- MAGIC arrival_city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")\
+-- MAGIC     .withColumnRenamed(""ArrivalStation"", ""AirportCode"")\
+-- MAGIC     .withColumnRenamed(""ArrivalCity"", ""City"")\
+-- MAGIC     .drop(""DepartureStation"", ""DepartureCity"")
+-- MAGIC arrival_city_names.createOrReplaceTempView(""arrival_city_names"")
+-- MAGIC
+-- MAGIC city_names = spark.sql(
+-- MAGIC     ""(SELECT DISTINCT AirportCode, City FROM departure_city_names WHERE City IS NOT NULL)\
+-- MAGIC     UNION\
+-- MAGIC     (SELECT DISTINCT AirportCode, City FROM arrival_city_names WHERE City IS NOT NULL)""\
+-- MAGIC )
+-- MAGIC city_names.createOrReplaceTempView(""city_names"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Route-region info
+-- MAGIC route_region_info = spark.read\
+-- MAGIC     .format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/route_region_info.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", col(""route"").substr(1,3))\
+-- MAGIC     .withColumn(""ArrivalStation"", col(""route"").substr(4,6))\
+-- MAGIC     .withColumnRenamed(""route"", ""Route"")\
+-- MAGIC     .withColumnRenamed(""route_group"", ""Group"")\
+-- MAGIC     .withColumnRenamed(""new_region"", ""Subgroup"")\
+-- MAGIC     .drop(""old_region"")
+-- MAGIC route_region_info.createOrReplaceTempView(""route_region_info"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Competition count
+-- MAGIC competition_cnt = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/competition_cnt.csv"")\
+-- MAGIC     .withColumn(""DepartureStation"", trim(""Origin""))\
+-- MAGIC     .withColumn(""ArrivalStation"", trim(""Destination""))\
+-- MAGIC     .drop(""Origin"", ""Destination"")\
+-- MAGIC     .drop(""CompetitorsCnt"")
+-- MAGIC competition_cnt.createOrReplaceTempView(""competition_cnt"")
+-- MAGIC
+-- MAGIC # Competition flag
+-- MAGIC competition_flag = competition_cnt\
+-- MAGIC     .drop(""CarrierCnt"")\
+-- MAGIC     .drop(""CompetitorsCnt"")\
+-- MAGIC     .withColumn(""Competition"", lit(True))
+-- MAGIC competition_flag.createOrReplaceTempView(""competition_flag"")
+-- MAGIC
+-- MAGIC
+-- MAGIC # Airport flight counts 
+-- MAGIC airport_flights_count = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/airport_flights_cnt.csv"")\
+-- MAGIC     .withColumn(""Week"", weekofyear(""DepartureDate""))\
+-- MAGIC     .withColumn(""DepartureYear"", year(""DepartureDate""))\
+-- MAGIC     .withColumn(""FlightCount"", col(""FlightCount"").cast('int'))\
+-- MAGIC     .groupBy(""Week"", ""DepartureYear"", ""AirportCode"").sum(""FlightCount"").withColumnRenamed(""sum(FlightCount)"", ""FlightsCnt"")
+-- MAGIC airport_flights_count.createOrReplaceTempView(""airport_flights_count"")
+
+-- COMMAND ----------
+
+USE CATALOG datascience_dev
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_input
+COMMENT 'Flight_passenger input table'
+
+SELECT 
+  InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  -- DepartureCity,
+  -- ArrivalCity,
+  -- CityRoute,
+  DepartureDate,
+  DepartureYear,
+  DepartureMonth,
+  DepartureDay,
+  DepartureHour,
+  DepartureWeekDay,
+  Week,
+  Weekend,
+  Summer,
+  TimeOfDay,
+  Blocks,
+  DepartTimeLocal, 
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  ArriveTimeUTC,
+  FlightCapacity,
+  PassengerID,
+  JourneyNumber,
+  TripType,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  CASE 
+    WHEN fp.Subgroup IS NOT NULL THEN fp.Subgroup
+    ELSE r.Subgroup
+  END AS Subgroup,
+  Distance,
+  ConfirmationNDO,
+  TripLengthDays,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  UkraineImpact,
+  TotalPax,
+  OneWayPaxShare,
+  PointOfOriginShare,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  ROUND(SumFlightRevenue / Blocks, 2) AS BlockRevenue,
+  ROUND(SumFlightRevenue / Blocks / TotalPax) AS PaxBlockRevenue
+FROM networkplanning.past_flightpassenger fp
+JOIN networkplanning.routes_filtered USING (Route)
+LEFT JOIN networkplanning.revenue_info ON InventoryLegID = InventoryLegNK
+LEFT JOIN networkplanning.date_info USING (DepartureDate)
+LEFT JOIN networkplanning.distance_info USING (DepartureStation, ArrivalStation)
+-- LEFT JOIN networkplanning.route_info USING (DepartureStation, ArrivalStation)
+LEFT JOIN networkplanning.agg_pax_info USING (InventoryLegID)
+LEFT JOIN route_region_info r USING (Route)
+
+
+-- COMMAND ----------
+
+-- CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_flight_level
+-- COMMENT 'Flight-level table for NetworkPlanning'
+
+-- SELECT DISTINCT * FROM networkplanning.past_flightpassenger_input
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_schedule
+COMMENT 'Input table for NetworkPlanning with added schedule info'
+
+WITH 
+schedule_info AS (
+  SELECT 
+    Route,
+    Week,
+    DepartureYear,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule,
+    COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays,
+    COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+  FROM networkplanning.past_flightpassenger_flight_level
+  GROUP BY Route, Week, DepartureYear
+)
+
+SELECT *
+FROM networkplanning.past_flightpassenger_flight_level fp
+LEFT JOIN schedule_info USING (Route, Week, DepartureYear)
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_airport_flight_cnt
+COMMENT 'Input table for NetworkPlanning with added airport flight cnt'
+
+SELECT  
+  fp.InventoryLegID,
+  fp.DepartureStation,
+  fp.ArrivalStation,
+  -- DepartureCity,
+  -- ArrivalCity,
+  -- CityRoute,
+  fp.DepartureDate,
+  DepartureDay,
+  DepartureMonth,
+  fp.DepartureYear,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  fp.Week,
+  Summer,
+  Weekend,
+  International,
+  fp.Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  TotalPax,
+  OneWayPaxShare,
+  PointOfOriginShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  fc.FlightsCnt AS DepAirportFlightsWeek,
+  fa.FlightsCnt AS ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  BlockRevenue,
+  PaxBlockRevenue
+FROM networkplanning.past_flightpassenger_fl_add_schedule fp
+
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear 
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.past_flightpassenger_fl_add_competition
+COMMENT 'Input table for NetworkPlanning with added competition info'
+
+WITH 
+-- ryr_flights_count AS (
+--   SELECT 
+--     Week, 
+--     DepartureYear,
+--     DepartureStation, 
+--     ArrivalStation, 
+--     COUNT(DISTINCT InventoryLegID) AS RYRFlightsCnt 
+--   FROM networkplanning.past_flightpassenger_flight_level
+--   GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+-- ),
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    YEAR(DepartureDate) AS DepartureYear,
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    DepartureStation,
+    ArrivalStation, 
+    True AS CompetitionRoute
+  FROM competition_flag
+)
+
+SELECT DISTINCT 
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  -- DepartureCity,
+  -- ArrivalCity,
+  -- CityRoute,
+  DepartureDate,
+  DepartureDay,
+  DepartureMonth,
+  DepartureYear,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  Week,
+  Summer,
+  Weekend,
+  International,
+  Route,
+  Group,
+  Subgroup,
+  Distance,
+  Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  TotalPax,
+  OneWayPaxShare,
+  PointOfOriginShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  DepAirportFlightsWeek,
+  ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  BlockRevenue,
+  PaxBlockRevenue,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+FROM networkplanning.past_flightpassenger_fl_add_airport_flight_cnt fp
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+-- LEFT JOIN ryr_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE networkplanning.basic_data_v1
+COMMENT 'Base table for NetworkPlanning'
+SELECT 
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartureDate,
+  DepartureDay,
+  DepartureMonth,
+  DepartureYear,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  Week,
+  Summer,
+  Weekend,
+  International,
+  Route,
+  Group,
+  Subgroup,
+  Distance,
+  Blocks,
+  Schedule,
+  UkraineImpact,
+  FlightCapacity,
+  TotalPax,
+  OneWayPaxShare,
+  PointOfOriginShare,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  DepAirportFlightsWeek,
+  ArrAirportFlightsWeek,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  SumFlightRevenue,
+  AvgPaxRevenue,
+  BlockRevenue,
+  PaxBlockRevenue,
+  CompetitionRoute,
+  PercRYRFlightsRouteWeek
+FROM networkplanning.past_flightpassenger_fl_add_competition fp
+LEFT JOIN city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN city_names ac ON fp.ArrivalStation = ac.AirportCode 
+WHERE SumFlightRevenue != 0
+
+-- COMMAND ----------
+
+-- CREATE OR REPLACE TABLE networkplanning.basic_data_v1
+-- COMMENT 'Base table for NetworkPlanning'
+-- SELECT *
+-- FROM networkplanning.past_flightpassenger_fl_add_competition
+-- WHERE SumFlightRevenue != 0
+","[""businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight"", ""departure_city_names"", ""arrival_city_names"", ""city_names"", ""route_region_info"", ""competition_cnt"", ""competition_flag"", ""airport_flights_count"", ""networkplanning.past_flightpassenger_input"", ""networkplanning.past_flightpassenger_fl_add_schedule"", ""networkplanning.past_flightpassenger_fl_add_airport_flight_cnt"", ""networkplanning.past_flightpassenger_fl_add_competition"", ""networkplanning.basic_data_v1""]",3115,114,3229
+/workspace/repositories/NetworkPlanning/old_code/future_data.sql,"-- Databricks notebook source
+-- MAGIC %py
+-- MAGIC from pyspark.sql.functions import col, lit, monotonically_increasing_id, row_number, to_date, weekofyear
+
+-- COMMAND ----------
+
+-- MAGIC %py
+-- MAGIC # City names
+-- MAGIC city_names = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/city_code_names.csv"")
+-- MAGIC city_names.createOrReplaceTempView(""city_names"")
+-- MAGIC
+-- MAGIC # Competition count
+-- MAGIC competition_cnt = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/competition_cnt_future.csv"")\
+-- MAGIC     .withColumnRenamed(""Origin"", ""DepartureStation"")\
+-- MAGIC     .withColumnRenamed(""Destination"", ""ArrivalStation"")\
+-- MAGIC     .drop(""CompetitorsCnt"")
+-- MAGIC competition_cnt.createOrReplaceTempView(""competition_cnt"")
+-- MAGIC
+-- MAGIC # Competition flag
+-- MAGIC competition_flag = competition_cnt\
+-- MAGIC     .drop(""CarrierCnt"")\
+-- MAGIC     .drop(""CompetitorsCnt"")\
+-- MAGIC     .withColumn(""Competition"", lit(True))\
+-- MAGIC     .withColumnRenamed(""Origin"", ""DepartureStation"")\
+-- MAGIC     .withColumnRenamed(""Destination"", ""ArrivalStation"")\
+-- MAGIC     .join(city_names, [""DepartureStation"", ""ArrivalStation""], how=""left"")
+-- MAGIC competition_flag.createOrReplaceTempView(""competition_flag"")
+-- MAGIC
+-- MAGIC # Airport flight counts 
+-- MAGIC airport_flights_count = spark.read.format(""csv"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/airport_flights_count_future.csv"")\
+-- MAGIC     .withColumn(""Week"", weekofyear(""DepartureDate""))\
+-- MAGIC     .withColumn(""FlightCount"", col(""FlightCount"").cast('int'))\
+-- MAGIC     .groupBy(""Week"", ""AirportCode"").sum(""FlightCount"").withColumnRenamed(""sum(FlightCount)"", ""FlightsCnt"")
+-- MAGIC airport_flights_count.createOrReplaceTempView(""airport_flights_count"")
+
+-- COMMAND ----------
+
+-- MAGIC %py
+-- MAGIC sample_schedule = spark.read\
+-- MAGIC     .format(""csv"")\
+-- MAGIC     .option(""delimiter"", "";"")\
+-- MAGIC     .option(""header"", ""true"")\
+-- MAGIC     .load(""dbfs:/FileStore/shared_uploads/rejdapa@ryanair.com/sample_schedule.csv"")\
+-- MAGIC     .withColumn(""InventoryLegID"", monotonically_increasing_id())\
+-- MAGIC     .withColumnRenamed(""Orig"", ""DepartureStation"")\
+-- MAGIC     .withColumnRenamed(""Dest"", ""ArrivalStation"")\
+-- MAGIC     .withColumnRenamed(""STD (Local)"", ""DepartTimeLocal"")\
+-- MAGIC     .withColumnRenamed(""STD (UTC)"", ""DepartTimeUTC"")\
+-- MAGIC     .withColumnRenamed(""STA (Local)"", ""ArriveTimeLocal"")\
+-- MAGIC     .withColumnRenamed(""STA (UTC)"", ""ArriveTimeUTC"")\
+-- MAGIC     .withColumnRenamed(""OrigCtry"", ""Outbound_CountryCode"")\
+-- MAGIC     .withColumnRenamed(""DestCtry"", ""Inbound_CountryCode"")\
+-- MAGIC     .drop(""Subfl"", ""Al"", ""FlNo"", ""Day"", ""Block Time"", ""ST"", ""Base"")
+-- MAGIC sample_schedule.createOrReplaceTempView(""sample_schedule"")
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TEMP VIEW future_schedule
+AS
+
+WITH format_date AS (
+  SELECT
+    InventoryLegID,
+    SPLIT(Date, ""/"")[0] AS Day,
+    CASE
+      WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+      WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+      WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+      WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+      WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+      WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+      WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+      WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+      WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+      WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+      WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+      WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+    END AS Month,
+    SPLIT(Date, ""/"")[2] AS Year
+  FROM sample_schedule
+),
+
+new_base AS (
+  SELECT 
+    s.InventoryLegID,
+    CONCAT(Year, '-', Month, '-', Day) AS DepartureDate,
+    DepartureStation,
+    Outbound_CountryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC
+  FROM sample_schedule s
+  JOIN format_date f USING (InventoryLegID)
+),
+
+additional_info AS (
+  SELECT DISTINCT
+    DepartureStation,
+    ArrivalStation,
+    International,
+    Route,
+    Group,
+    Subgroup,
+    -- FlightCapacity,
+    DepartureLatitude,
+    DepartureLongitude,
+    ArrivalLatitude,
+    ArrivalLongitude
+  FROM new_base LEFT JOIN network_planning.basic_data USING (DepartureStation, ArrivalStation)
+),
+  
+drop_duplicates AS (
+  SELECT *,
+    ROW_NUMBER() OVER (
+      PARTITION BY departurestation, arrivalstation, departuredate, DepartTimeLocal
+      ORDER BY departurestation, arrivalstation, departuredate, DepartTimeLocal
+    ) AS RowNum
+  FROM new_base 
+  JOIN additional_info USING (DepartureStation, ArrivalStation)
+)
+SELECT * 
+FROM drop_duplicates 
+WHERE RowNum = 1
+
+-- COMMAND ----------
+
+CREATE OR REPLACE TABLE network_planning.future_data_test
+COMMENT 'Future data - NetworkPlanning'
+
+WITH flight_passenger AS (
+  SELECT *, 
+    CONCAT(DepartureCity, '-', ArrivalCity) AS CityRoute
+  -- FROM paxuplift_ods.pred_flightpassenger
+  FROM future_schedule
+  JOIN city_names USING (DepartureStation, ArrivalStation)
+  WHERE Group IS NOT NULL
+),
+
+date_time_info AS (
+  SELECT DISTINCT
+    InventoryLegID,
+    Route,
+    DAY(DepartureDate) AS DepartureDay,
+    MONTH(DepartureDate) AS DepartureMonth,
+    YEAR(DepartureDate) AS DepartureYear,
+    HOUR(DepartTimeLocal) AS DepartureHour,
+    WEEKOFYEAR(DepartureDate) AS Week,
+    WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay,
+    CASE
+      WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+      ELSE False
+    END AS Summer,
+    CASE
+      WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+      ELSE False
+    END AS Weekend,
+    CASE 
+      WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+      WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+      WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+      WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+      WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+      WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+      ELSE 'Other'
+    END AS TimeOfDay,
+    ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks
+  FROM flight_passenger
+),
+
+schedule AS (
+  SELECT 
+    Route,
+    Week,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule
+  FROM date_time_info
+  GROUP BY Route, Week
+),
+
+route_week_num_distinct_days AS (
+  SELECT Route, Week, COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays
+  FROM date_time_info
+  GROUP BY Route, Week
+),
+
+-- weekly_cnt_per_route AS (
+--   SELECT
+--     Route,
+--     WEEKOFYEAR(DepartureDate) AS Week,
+--     COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+--   FROM flight_passenger
+--   GROUP BY Route, Week
+-- ),
+
+-- route_avg_num_weekly_flights AS (
+--   SELECT Route, ROUND(AVG(RouteTotalNumFlightsPerWeek)) AS RouteAvgWeeklyFlights
+--   FROM weekly_cnt_per_route
+--   GROUP BY Route
+-- ),
+
+dep_airport_flights_week AS (
+  SELECT DISTINCT
+    dt.Week,
+    DepartureStation, 
+    FlightsCnt AS DepAirportFlightsWeek
+  FROM flight_passenger fp
+  JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  JOIN date_time_info dt ON dt.Week = fc.Week
+),
+
+arr_airport_flights_week AS (
+  SELECT DISTINCT
+    dt.Week,
+    ArrivalStation, 
+    FlightsCnt AS ArrAirportFlightsWeek
+  FROM flight_passenger fp
+  JOIN airport_flights_count fc ON fp.ArrivalStation = fc.AirportCode
+  JOIN date_time_info dt ON dt.Week = fc.Week
+),
+
+-- route_avg_flight_duration AS (
+--   SELECT Route, ROUND(AVG(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC))) AS RouteAvgFlightDuration
+--   FROM flight_passenger
+--   GROUP BY Route
+-- ),
+
+competition_route AS (
+  SELECT DISTINCT
+    DepartureStation, 
+    ArrivalStation, 
+    Competition AS CompetitionRoute
+  FROM competition_flag
+),
+
+competition_route_week AS (
+  SELECT DISTINCT
+    WEEKOFYEAR(DepartureDate) AS Week,
+    DepartureStation, 
+    ArrivalStation, 
+    Competition AS CompetitionRouteWeek
+  FROM competition_flag
+),
+
+competition_route_day AS (
+  SELECT DISTINCT
+    DepartureDate,
+    DepartureStation, 
+    ArrivalStation, 
+    Competition AS CompetitionRouteDay
+  FROM competition_flag
+),
+
+competition_city AS (
+  SELECT DISTINCT
+    DepartureCity, 
+    ArrivalCity, 
+    Competition AS CompetitionCity
+  FROM competition_flag
+),
+
+competition_city_week AS (
+  SELECT DISTINCT
+    WEEKOFYEAR(DepartureDate) AS Week,
+    DepartureCity, 
+    ArrivalCity, 
+    Competition AS CompetitionCityWeek
+  FROM competition_flag
+),
+
+competition_city_day AS (
+  SELECT DISTINCT
+    DepartureDate,
+    DepartureCity, 
+    ArrivalCity, 
+    Competition AS CompetitionCityDay
+  FROM competition_flag
+),
+
+ryr_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    DepartureStation, 
+    ArrivalStation, 
+    COUNT(DISTINCT InventoryLegID) AS RYRFlightsCnt 
+  FROM flight_passenger
+  GROUP BY Week, DepartureStation, ArrivalStation
+),
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureStation, ArrivalStation
+),
+
+perc_RYR_flights_route_week AS (
+  SELECT
+    r.Week,
+    r.DepartureStation,
+    r.ArrivalStation,
+    ROUND(100 * RYRFlightsCnt / (RYRFlightsCnt + CompetitiveFlightsCnt), 2) AS PercRYRFlightsRouteWeek
+  FROM ryr_flights_count r
+  LEFT JOIN competitive_flights_count USING (Week, DepartureStation, ArrivalStation)
+),
+
+ukraine_war_stimulated_demand AS (
+  SELECT DISTINCT
+    InventoryLegID,
+    CASE
+      WHEN Inbound_CountryCode IN ('PL', 'RO',' SK') OR Outbound_CountryCode IN ('PL', 'RO', 'SK') THEN True
+      ELSE False
+    END AS UkraineImpact
+  FROM flight_passenger
+),
+
+radians AS (
+  SELECT DISTINCT
+    DepartureStation,
+    ArrivalStation,
+    DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+    DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+    ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+    ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+  FROM flight_passenger
+),
+
+calc AS (
+  SELECT *,
+    POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+    COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+    FROM radians
+), 
+
+distance AS (
+  SELECT 
+    DepartureStation,
+    ArrivalStation,
+    6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+  FROM calc
+)
+
+SELECT DISTINCT
+  fp.InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  fp.DepartureDate,
+  DepartureDay,
+  DepartureMonth,
+  DepartureYear,
+  DepartureHour,
+  DepartureWeekDay,
+  Week,
+  Summer,
+  Weekend,
+  International,
+  fp.Route,
+  Group,
+  Subgroup,
+  Distance,
+  Blocks,
+  Schedule,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  COALESCE(CompetitionRouteWeek, False) AS CompetitionRouteWeek,
+  COALESCE(CompetitionRouteDay, False) AS CompetitionRouteDay,
+  COALESCE(CompetitionCity, False) AS CompetitionCity,
+  COALESCE(CompetitionCityWeek, False) AS CompetitionCityWeek,
+  COALESCE(CompetitionCityDay, False) AS CompetitionCityDay,
+  PercRYRFlightsRouteWeek,
+  UkraineImpact,
+  -- FlightCapacity,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  DepAirportFlightsWeek,
+  ArrAirportFlightsWeek,
+  -- RouteAvgFlightDuration,
+  -- RouteAvgWeeklyFlights,
+  RouteWeekNumDistinctWeekDays
+FROM flight_passenger fp
+JOIN date_time_info USING (InventoryLegID)
+JOIN schedule USING (Route, Week)
+JOIN route_week_num_distinct_days USING (Route, Week)
+-- JOIN route_avg_num_weekly_flights USING (Route)
+JOIN dep_airport_flights_week USING (Week, DepartureStation)
+JOIN arr_airport_flights_week USING (Week, ArrivalStation)
+-- JOIN route_avg_flight_duration USING (Route)
+JOIN perc_RYR_flights_route_week USING (Week, DepartureStation, ArrivalStation)
+JOIN ukraine_war_stimulated_demand USING (InventoryLegID)
+JOIN distance USING (DepartureStation, ArrivalStation)
+LEFT JOIN competition_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competition_route_week USING (Week, DepartureStation, ArrivalStation)
+LEFT JOIN competition_route_day USING (DepartureDate, DepartureStation, ArrivalStation)
+LEFT JOIN competition_city USING (DepartureCity, ArrivalCity)
+LEFT JOIN competition_city_week USING (Week, DepartureCity, ArrivalCity)
+LEFT JOIN competition_city_day USING (DepartureDate, DepartureCity, ArrivalCity)
+
+
+-- COMMAND ----------
+
+
+","[""city_names"", ""competition_cnt"", ""competition_flag"", ""airport_flights_count"", ""sample_schedule"", ""future_schedule"", ""network_planning.future_data_test"", ""flight_passenger"", ""date_time_info"", ""schedule"", ""route_week_num_distinct_days"", ""dep_airport_flights_week"", ""arr_airport_flights_week"", ""competition_route"", ""competition_route_week"", ""competition_route_day"", ""competition_city"", ""competition_city_week"", ""competition_city_day"", ""ryr_flights_count"", ""competitive_flights_count"", ""perc_RYR_flights_route_week"", ""ukraine_war_stimulated_demand"", ""radians"", ""calc"", ""distance""]",3710,142,3852
+/workspace/repositories/NetworkPlanning/old_code/schedules_import main (v2).sql,"CREATE OR REPLACE TABLE datascience_dev.networkplanning.schedules_raw_v2
+AS
+WITH version1 AS (
+  SELECT 
+    CONCAT(
+      SPLIT(Date, ""/"")[2],
+      ""-"",
+      CASE 
+        WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+        WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+        WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+        WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+        WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+        WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+        WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+        WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+        WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+        WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+      END,
+      ""-"",
+      SPLIT(Date, ""/"")[0]
+    ) AS Date,
+    DepartureStation,
+    Outbound_countryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC,
+    Version, 
+    InventoryLegID
+  FROM version_1_base
+),
+
+version2 AS (
+  SELECT 
+    CONCAT(
+      SPLIT(Date, ""/"")[2],
+      ""-"",
+      CASE 
+        WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+        WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+        WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+        WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+        WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+        WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+        WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+        WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+        WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+        WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+      END,
+      ""-"",
+      SPLIT(Date, ""/"")[0]
+    ) AS Date,
+    DepartureStation,
+    Outbound_countryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC,
+    Version, 
+    InventoryLegID
+  FROM version_2_base
+)
+
+SELECT * FROM schedules
+UNION 
+SELECT * FROM version1
+UNION 
+SELECT * FROM version2
+
+
+
+CREATE OR REPLACE TEMP VIEW future_schedule_v2
+AS
+WITH new_base AS (
+  SELECT
+    Version,
+    InventoryLegID,
+    CASE 
+      WHEN Version NOT IN (1, 2) THEN CONCAT (SPLIT(Date, ""/"")[2], '-', SPLIT(Date, ""/"")[0], '-', SPLIT(Date, ""/"")[1])
+      ELSE Date
+    END AS DepartureDate,
+    DepartureStation,
+    Outbound_CountryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    CASE 
+      WHEN ArriveTimeUTC = '24:00' THEN ""23:59""
+      ELSE ArriveTimeUTC
+    END AS ArriveTimeUTC
+  FROM datascience_dev.networkplanning.schedules_raw_v2 
+),
+
+additional_info AS (
+  SELECT * 
+  FROM (
+    SELECT DISTINCT 
+      DepartureStation,
+      ArrivalStation,
+      CASE
+        WHEN Outbound_CountryCode = Inbound_CountryCode THEN False
+        ELSE True
+      END AS International,
+      Route,
+      Group,
+      TRIM(Subgroup) AS Subgroup,
+      DepartureLatitude,
+      DepartureLongitude,
+      ArrivalLatitude,
+      ArrivalLongitude,
+      ROW_NUMBER() OVER (
+        PARTITION BY DepartureStation, ArrivalStation, Group
+        ORDER BY DepartureStation, ArrivalStation, Group
+      ) AS RowNum1
+    FROM new_base
+    LEFT JOIN (
+      SELECT DISTINCT 
+        DepartureStation,
+        ArrivalStation,
+        Route,
+        Group,
+        TRIM(Subgroup) AS Subgroup,
+        DepartureLatitude,
+        DepartureLongitude,
+        ArrivalLatitude,
+        ArrivalLongitude
+      FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+    )
+    USING (DepartureStation, ArrivalStation)
+  )
+  WHERE RowNum1 = 1 
+)
+
+SELECT DISTINCT 
+  Version,
+  InventoryLegID,
+  DepartureDate,
+  DepartureStation,
+  ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartTimeLocal,
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  ArrivetimeUTC,
+  ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  CASE 
+    WHEN n.Route is NOT NULL THEN n.Route
+    ELSE CONCAT(DepartureStation, ArrivalStation)
+  END AS Route,
+  Group,
+  Subgroup,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM new_base fp
+LEFT JOIN datascience_dev.networkplanning.city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names ac ON fp.ArrivalStation = ac.AirportCode 
+LEFT JOIN additional_info n USING (DepartureStation, ArrivalStation)
+
+
+
+USE CATALOG datascience_dev
+
+
+
+CREATE OR REPLACE TEMP VIEW future_schedule_with_distance_v2
+AS
+
+WITH
+distance_info AS (
+  SELECT DISTINCT
+    DepartureStation,
+    ArrivalStation,
+    6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+  FROM (
+    SELECT *,
+      POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+      COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+    FROM (
+      SELECT
+        DepartureStation,
+        ArrivalStation,
+        DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+        DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+        ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+        ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+      FROM future_schedule_v2
+    )
+  )
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  YEAR(DepartureDate) AS DepartureYear,
+  MONTH(DepartureDate) AS DepartureMonth,
+  DAY(DepartureDate) AS DepartureDay,
+  HOUR(DepartTimeLocal) AS DepartureHour,
+  CASE 
+    WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+    ELSE 'Other'
+  END AS TimeOfDay,
+  WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay,
+  WEEKOFYEAR(DepartureDate) AS Week,
+  CASE
+    WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+    ELSE False
+  END AS Summer,
+  CASE
+    WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+    ELSE False
+  END AS Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  
+  
+  
+  
+  Blocks,
+  CASE
+    WHEN Outbound_CountryCode IN ('PL', 'RO', 'SK') OR Inbound_CountryCode IN ('PL', 'RO', 'SK') THEN True
+    ELSE False
+  END AS UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM future_schedule_v2 fp
+LEFT JOIN distance_info USING (DepartureStation, ArrivalStation)
+
+
+
+CREATE OR REPLACE TABLE networkplanning.schedules_input_v2_test
+COMMENT 'Future data - NetworkPlanning'
+
+WITH
+schedule_info AS (
+  SELECT
+    Route,
+    Week,
+    DepartureYear,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule,
+    COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays,
+    COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+  FROM future_schedule_with_distance_v2
+  GROUP BY Route, Week, DepartureYear
+),
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    YEAR(DepartureDate) AS DepartureYear,
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    DepartureStation,
+    ArrivalStation, 
+    True AS CompetitionRoute
+  FROM competition_flag
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  fp.Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  fp.Route,
+  CASE 
+    WHEN fp.Group IS NOT NULL THEN fp.Group
+    ELSE r.Group
+  END AS Group,
+  CASE 
+    WHEN fp.Subgroup IS NOT NULL THEN fp.Subgroup
+    ELSE r.Subgroup
+  END AS Subgroup,
+  Distance,
+  Blocks,
+  UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  Schedule,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  fc.FlightsCnt AS DepAirportFlightsWeek,
+  fa.FlightsCnt AS ArrAirportFlightsWeek,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+FROM future_schedule_with_distance_v2 fp
+LEFT JOIN schedule_info USING (Route, Week, DepartureYear)
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear 
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN route_region_info r USING (DepartureStation, ArrivalStation)
+","['datascience_dev.networkplanning.schedules_raw_v2', 'version_1_base', 'version_2_base', 'schedules', 'version1', 'version2', 'future_schedule_v2', 'new_base', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight', 'additional_info', 'n...e_v2', 'future_schedule_v2', 'distance_info', 'future_schedule_v2', 'networkplanning.schedules_input_v2_test', 'schedule_info', 'future_schedule_with_distance_v2', 'competition_cnt', 'competition_flag', 'competitive_flights_count', 'competition_flag_route']",2975,135,3110
+/workspace/repositories/NetworkPlanning/old_code/schedules_import main v3.sql,"CREATE OR REPLACE TABLE datascience_dev.networkplanning.schedules_raw_v3
+AS
+WITH version1 AS (
+  SELECT 
+    CONCAT(
+      SPLIT(Date, ""/"")[2],
+      ""-"",
+      CASE 
+        WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+        WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+        WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+        WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+        WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+        WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+        WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+        WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+        WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+        WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+      END,
+      ""-"",
+      SPLIT(Date, ""/"")[0]
+    ) AS Date,
+    DepartureStation,
+    Outbound_countryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC,
+    Version, 
+    InventoryLegID
+  FROM version_1_base
+),
+
+version2 AS (
+  SELECT 
+    CONCAT(
+      SPLIT(Date, ""/"")[2],
+      ""-"",
+      CASE 
+        WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+        WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+        WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+        WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+        WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+        WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+        WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+        WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+        WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+        WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+      END,
+      ""-"",
+      SPLIT(Date, ""/"")[0]
+    ) AS Date,
+    DepartureStation,
+    Outbound_countryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC,
+    Version, 
+    InventoryLegID
+  FROM version_2_base
+)
+
+SELECT * FROM schedules
+UNION 
+SELECT * FROM version1
+UNION 
+SELECT * FROM version2
+
+
+
+CREATE OR REPLACE TEMP VIEW future_schedule_v3
+AS
+WITH new_base AS (
+  SELECT
+    Version,
+    InventoryLegID,
+    CASE 
+      WHEN Version NOT IN (1, 2) THEN CONCAT (SPLIT(Date, ""/"")[2], '-', SPLIT(Date, ""/"")[0], '-', SPLIT(Date, ""/"")[1])
+      ELSE Date
+    END AS DepartureDate,
+    DepartureStation,
+    Outbound_CountryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    CASE 
+      WHEN ArriveTimeUTC = '24:00' THEN ""23:59""
+      ELSE ArriveTimeUTC
+    END AS ArriveTimeUTC
+  FROM datascience_dev.networkplanning.schedules_raw_v3
+),
+
+additional_info AS (
+  SELECT * 
+  FROM (
+    SELECT DISTINCT 
+      DepartureStation,
+      ArrivalStation,
+      CASE
+        WHEN Outbound_CountryCode = Inbound_CountryCode THEN False
+        ELSE True
+      END AS International,
+      Route,
+      Group,
+      TRIM(Subgroup) AS Subgroup,
+      DepartureLatitude,
+      DepartureLongitude,
+      ArrivalLatitude,
+      ArrivalLongitude,
+      ROW_NUMBER() OVER (
+        PARTITION BY DepartureStation, ArrivalStation, Group
+        ORDER BY DepartureStation, ArrivalStation, Group
+      ) AS RowNum1
+    FROM new_base
+    LEFT JOIN (
+      SELECT DISTINCT 
+        DepartureStation,
+        ArrivalStation,
+        Route,
+        Group,
+        TRIM(Subgroup) AS Subgroup,
+        DepartureLatitude,
+        DepartureLongitude,
+        ArrivalLatitude,
+        ArrivalLongitude
+      FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+    )
+    USING (DepartureStation, ArrivalStation)
+  )
+  WHERE RowNum1 = 1 
+)
+
+SELECT DISTINCT 
+  Version,
+  InventoryLegID,
+  DepartureDate,
+  DepartureStation,
+  ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartTimeLocal,
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  ArrivetimeUTC,
+  ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  CASE 
+    WHEN n.Route is NOT NULL THEN n.Route
+    ELSE CONCAT(DepartureStation, ArrivalStation)
+  END AS Route,
+  Group,
+  Subgroup,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM new_base fp
+LEFT JOIN datascience_dev.networkplanning.city_names dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names ac ON fp.ArrivalStation = ac.AirportCode 
+LEFT JOIN additional_info n USING (DepartureStation, ArrivalStation)
+
+
+
+USE CATALOG datascience_dev
+
+
+
+CREATE OR REPLACE TEMP VIEW future_schedule_with_distance_v3
+AS
+
+WITH
+distance_info AS (
+  SELECT DISTINCT
+    DepartureStation,
+    ArrivalStation,
+    6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+  FROM (
+    SELECT *,
+      POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+      COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+    FROM (
+      SELECT
+        DepartureStation,
+        ArrivalStation,
+        DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+        DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+        ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+        ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+      FROM future_schedule_v3
+    )
+  )
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  YEAR(DepartureDate) AS DepartureYear,
+  MONTH(DepartureDate) AS DepartureMonth,
+  DAY(DepartureDate) AS DepartureDay,
+  HOUR(DepartTimeLocal) AS DepartureHour,
+  CASE 
+    WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+    ELSE 'Other'
+  END AS TimeOfDay,
+  WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay,
+  WEEKOFYEAR(DepartureDate) AS Week,
+  CASE
+    WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+    ELSE False
+  END AS Summer,
+  CASE
+    WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+    ELSE False
+  END AS Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  
+  
+  
+  
+  Blocks,
+  CASE
+    WHEN Outbound_CountryCode IN ('PL', 'RO', 'SK') OR Inbound_CountryCode IN ('PL', 'RO', 'SK') THEN True
+    ELSE False
+  END AS UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM future_schedule_v3 fp
+LEFT JOIN distance_info USING (DepartureStation, ArrivalStation)
+
+
+
+CREATE OR REPLACE TABLE networkplanning.schedules_input_v3
+COMMENT 'Future data - NetworkPlanning'
+
+WITH
+schedule_info AS (
+  SELECT
+    Route,
+    Week,
+    DepartureYear,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule,
+    COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays,
+    COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+  FROM future_schedule_with_distance_v3
+  GROUP BY Route, Week, DepartureYear
+),
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(_c0) AS Week, 
+    YEAR(_c0) AS DepartureYear,
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    SUM(_c4) AS CompetitiveFlightsCnt
+  FROM datascience_dev.networkplanning.competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    _c1 AS DepartureStation,
+    _c2 AS ArrivalStation, 
+    True AS CompetitionRoute
+  FROM datascience_dev.networkplanning.competition_cnt
+),
+
+airport_flights_week AS (
+  SELECT 
+    _c1 AS AirportCode,
+    WEEKOFYEAR(_c0) AS Week,
+    YEAR(_c0) AS DepartureYear,
+    SUM(_c2) AS AirportFlightsWeek
+  FROM datascience_dev.networkplanning.airport_flights_count
+  GROUP BY AirportCode, Week, DepartureYear
+),
+
+route_region_info AS (
+  SELECT 
+    SUBSTRING(_c0, 1, 3) AS DepartureStation,
+    SUBSTRING(_c0, 4, 6) AS ArrivalStation, 
+    _c0 AS Route,
+    _c1 AS Group,
+    _c3 AS Subgroup
+  FROM datascience_dev.networkplanning.route_region_info
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  fp.Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  fp.Route,
+  CASE 
+    WHEN fp.Group IS NOT NULL THEN fp.Group
+    ELSE r.Group
+  END AS Group,
+  CASE 
+    WHEN fp.Subgroup IS NOT NULL THEN fp.Subgroup
+    ELSE r.Subgroup
+  END AS Subgroup,
+  Distance,
+  Blocks,
+  UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  Schedule,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  fc.AirportFlightsWeek AS DepAirportFlightsWeek,
+  fa.AirportFlightsWeek AS ArrAirportFlightsWeek,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+FROM future_schedule_with_distance_v3 fp
+LEFT JOIN schedule_info USING (Route, Week, DepartureYear)
+LEFT JOIN airport_flights_week fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear
+LEFT JOIN airport_flights_week fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN route_region_info r USING (DepartureStation, ArrivalStation)
+","['datascience_dev.networkplanning.schedules_raw_v3', 'version_1_base', 'version_2_base', 'schedules', 'version1', 'version2', 'future_schedule_v3', 'new_base', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight', 'additional_info', 'n...e_v3', 'future_schedule_v3', 'distance_info', 'networkplanning.schedules_input_v3', 'schedule_info', 'future_schedule_with_distance_v3', 'competitive_flights_count', 'competition_flag_route', 'airport_flights_week', 'route_region_info', 'r', 'fc', 'fa']",3165,140,3305
+/workspace/repositories/NetworkPlanning/old_code/schedules_import.sql,"CREATE OR REPLACE TABLE datascience_dev.networkplanning.schedules_raw_v2
+AS
+WITH version1 AS (
+  SELECT 
+    CONCAT(
+      SPLIT(Date, ""/"")[2],
+      ""-"",
+      CASE 
+        WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+        WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+        WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+        WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+        WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+        WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+        WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+        WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+        WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+        WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+      END,
+      ""-"",
+      SPLIT(Date, ""/"")[0]
+    ) AS Date,
+    DepartureStation,
+    Outbound_countryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC,
+    Version, 
+    InventoryLegID
+  FROM version_1_base
+),
+
+version2 AS (
+  SELECT 
+    CONCAT(
+      SPLIT(Date, ""/"")[2],
+      ""-"",
+      CASE 
+        WHEN SPLIT(Date, ""/"")[1] = 'Jan' THEN '01'
+        WHEN SPLIT(Date, ""/"")[1] = 'Feb' THEN '02'
+        WHEN SPLIT(Date, ""/"")[1] = 'Mar' THEN '03'
+        WHEN SPLIT(Date, ""/"")[1] = 'Apr' THEN '04'
+        WHEN SPLIT(Date, ""/"")[1] = 'May' THEN '05'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jun' THEN '06'
+        WHEN SPLIT(Date, ""/"")[1] = 'Jul' THEN '07'
+        WHEN SPLIT(Date, ""/"")[1] = 'Aug' THEN '08'
+        WHEN SPLIT(Date, ""/"")[1] = 'Sep' THEN '09'
+        WHEN SPLIT(Date, ""/"")[1] = 'Oct' THEN '10'
+        WHEN SPLIT(Date, ""/"")[1] = 'Nov' THEN '11'
+        WHEN SPLIT(Date, ""/"")[1] = 'Dec' THEN '12'
+      END,
+      ""-"",
+      SPLIT(Date, ""/"")[0]
+    ) AS Date,
+    DepartureStation,
+    Outbound_countryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    ArriveTimeUTC,
+    Version, 
+    InventoryLegID
+  FROM version_2_base
+)
+
+SELECT * FROM schedules
+UNION 
+SELECT * FROM version1
+UNION 
+SELECT * FROM version2
+
+
+
+CREATE OR REPLACE TEMP VIEW future_schedule_v2
+AS
+WITH new_base AS (
+  SELECT
+    Version,
+    InventoryLegID,
+    CASE 
+      WHEN Version NOT IN (1, 2) THEN CONCAT (SPLIT(Date, ""/"")[2], '-', SPLIT(Date, ""/"")[0], '-', SPLIT(Date, ""/"")[1])
+      ELSE Date
+    END AS DepartureDate,
+    DepartureStation,
+    Outbound_CountryCode,
+    ArrivalStation,
+    Inbound_CountryCode,
+    DepartTimeLocal,
+    DepartTimeUTC,
+    ArriveTimeLocal,
+    CASE 
+      WHEN ArriveTimeUTC = '24:00' THEN ""23:59""
+      ELSE ArriveTimeUTC
+    END AS ArriveTimeUTC
+  FROM datascience_dev.networkplanning.schedules_raw_v2 
+),
+
+additional_info AS (
+  SELECT * 
+  FROM (
+    SELECT DISTINCT 
+      DepartureStation,
+      ArrivalStation,
+      CASE
+        WHEN Outbound_CountryCode = Inbound_CountryCode THEN False
+        ELSE True
+      END AS International,
+      Route,
+      Group,
+      TRIM(Subgroup) AS Subgroup,
+      DepartureLatitude,
+      DepartureLongitude,
+      ArrivalLatitude,
+      ArrivalLongitude,
+      ROW_NUMBER() OVER (
+        PARTITION BY DepartureStation, ArrivalStation, Group
+        ORDER BY DepartureStation, ArrivalStation, Group
+      ) AS RowNum1
+    FROM new_base
+    LEFT JOIN (
+      SELECT DISTINCT 
+        DepartureStation,
+        ArrivalStation,
+        Route,
+        Group,
+        TRIM(Subgroup) AS Subgroup,
+        DepartureLatitude,
+        DepartureLongitude,
+        ArrivalLatitude,
+        ArrivalLongitude
+      FROM businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight
+    )
+    USING (DepartureStation, ArrivalStation)
+  )
+  WHERE RowNum1 = 1 
+)
+
+SELECT DISTINCT 
+  Version,
+  InventoryLegID,
+  DepartureDate,
+  DepartureStation,
+  ArrivalStation,
+  dc.City as DepartureCity,
+  ac.City as ArrivalCity,
+  CONCAT(dc.City, '-', ac.City) AS CityRoute,
+  DepartTimeLocal,
+  DepartTimeUTC,
+  ArriveTimeLocal,
+  ArrivetimeUTC,
+  ROUND(DATEDIFF(MINUTE, DepartTimeUTC, ArriveTimeUTC) / 60, 2) AS Blocks,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  CASE 
+    WHEN n.Route is NOT NULL THEN n.Route
+    ELSE CONCAT(DepartureStation, ArrivalStation)
+  END AS Route,
+  Group,
+  Subgroup,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM new_base fp
+LEFT JOIN datascience_dev.networkplanning.city_names_dict dc ON fp.DepartureStation = dc.AirportCode
+LEFT JOIN datascience_dev.networkplanning.city_names_dict ac ON fp.ArrivalStation = ac.AirportCode 
+LEFT JOIN additional_info n USING (DepartureStation, ArrivalStation)
+
+
+
+USE CATALOG datascience_dev
+
+
+
+CREATE OR REPLACE TEMP VIEW future_schedule_with_distance_v2
+AS
+
+WITH
+distance_info AS (
+  SELECT DISTINCT
+    DepartureStation,
+    ArrivalStation,
+    6371 * 2 * ATAN2(SQRT(A), SQRT(1-A)) AS Distance
+  FROM (
+    SELECT *,
+      POWER(SIN((ArrivalLatRadian - DepartureLatRadian) / 2), 2) + 
+      COS(DepartureLatRadian) * COS(ArrivalLatRadian) * POWER(SIN((ArrivalLonRadian - DepartureLonRadian) / 2), 2) AS A
+    FROM (
+      SELECT
+        DepartureStation,
+        ArrivalStation,
+        DepartureLatitude * PI() / 180 AS DepartureLatRadian,
+        DepartureLongitude * PI() / 180 AS DepartureLonRadian,
+        ArrivalLatitude * PI() / 180 AS ArrivalLatRadian,
+        ArrivalLongitude * PI() / 180 AS ArrivalLonRadian
+      FROM future_schedule_v2
+    )
+  )
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  YEAR(DepartureDate) AS DepartureYear,
+  MONTH(DepartureDate) AS DepartureMonth,
+  DAY(DepartureDate) AS DepartureDay,
+  HOUR(DepartTimeLocal) AS DepartureHour,
+  CASE 
+    WHEN HOUR(DepartTimeLocal) BETWEEN 5 AND 7 THEN 'AM_FirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 8 AND 11 THEN 'AM_ExclFirstWave'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 12 AND 14 THEN 'PM_Lunch'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 15 AND 17 THEN 'PM_Afternoon'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 18 AND 20 THEN 'PM_Evening'
+    WHEN HOUR(DepartTimeLocal) BETWEEN 21 AND 23 THEN 'PM_Night'
+    ELSE 'Other'
+  END AS TimeOfDay,
+  WEEKDAY(DepartureDate) + 1 AS DepartureWeekDay,
+  WEEKOFYEAR(DepartureDate) AS Week,
+  CASE
+    WHEN MONTH(DepartureDate) IN (6, 7, 8) THEN True
+    ELSE False
+  END AS Summer,
+  CASE
+    WHEN WEEKDAY(DepartureDate) IN (4, 5, 6) THEN True
+    ELSE False
+  END AS Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  Route,
+  fp.Group,
+  Subgroup,
+  Distance,
+  CASE 
+    WHEN Blocks <= 0 THEN Blocks + 24
+    ELSE Blocks
+  END AS Blocks,
+  CASE
+    WHEN Outbound_CountryCode IN ('PL', 'RO', 'SK') OR Inbound_CountryCode IN ('PL', 'RO', 'SK') THEN True
+    ELSE False
+  END AS UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude
+FROM future_schedule_v2 fp
+LEFT JOIN distance_info USING (DepartureStation, ArrivalStation)
+
+
+
+<<<<<<< Updated upstream:old_code/schedules_import.sql
+CREATE OR REPLACE TABLE networkplanning.schedules_input_v2
+=======
+select * from datascience_dev.networkplanning.airport_flights_count
+
+
+
+CREATE OR REPLACE TABLE networkplanning.schedules_input_v4
+>>>>>>> Stashed changes:etl/schedules_import main v4.sql
+COMMENT 'Future data - NetworkPlanning'
+
+WITH
+schedule_info AS (
+  SELECT 
+    Route,
+    Week,
+    DepartureYear,
+    CONCAT(
+      NVL(CASE WHEN ANY(DepartureWeekDay = 1) THEN 1 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 2) THEN 2 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 3) THEN 3 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 4) THEN 4 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 5) THEN 5 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 6) THEN 6 END, '.'),
+      NVL(CASE WHEN ANY(DepartureWeekDay = 7) THEN 7 END, '.')
+    ) AS Schedule,
+    COUNT(DISTINCT DepartureWeekDay) AS RouteWeekNumDistinctWeekDays,
+    COUNT(DISTINCT InventoryLegID) AS RouteTotalNumFlightsPerWeek
+  FROM future_schedule_with_distance_v2
+  GROUP BY Route, Week, DepartureYear
+),
+
+competitive_flights_count AS (
+  SELECT 
+    WEEKOFYEAR(DepartureDate) AS Week, 
+    YEAR(DepartureDate) AS DepartureYear,
+    DepartureStation, 
+    ArrivalStation, 
+    SUM(CarrierCnt) AS CompetitiveFlightsCnt
+  FROM competition_cnt
+  GROUP BY Week, DepartureYear, DepartureStation, ArrivalStation
+),
+
+competition_flag_route AS (
+  SELECT DISTINCT 
+    DepartureStation,
+    ArrivalStation, 
+    True AS CompetitionRoute
+  FROM competition_flag
+)
+
+SELECT 
+  Version,
+  InventoryLegID,
+  DepartureStation,
+  ArrivalStation,
+  DepartureCity,
+  ArrivalCity,
+  CityRoute,
+  DepartureDate,
+  fp.DepartureYear,
+  DepartureMonth,
+  DepartureDay,
+  DepartureHour,
+  TimeOfDay,
+  DepartureWeekDay,
+  fp.Week,
+  Summer,
+  Weekend,
+  International,
+  Outbound_CountryCode,
+  Inbound_CountryCode,
+  fp.Route,
+  CASE 
+    WHEN fp.Group IS NOT NULL THEN fp.Group
+    ELSE r.Group
+  END AS Group,
+  CASE 
+    WHEN fp.Subgroup IS NOT NULL THEN fp.Subgroup
+    ELSE r.Subgroup
+  END AS Subgroup,
+  Distance,
+  Blocks,
+  UkraineImpact,
+  DepartureLatitude,
+  DepartureLongitude,
+  ArrivalLatitude,
+  ArrivalLongitude,
+  Schedule,
+  RouteWeekNumDistinctWeekDays,
+  RouteTotalNumFlightsPerWeek,
+  fc.FlightsCnt AS DepAirportFlightsWeek,
+  fa.FlightsCnt AS ArrAirportFlightsWeek,
+  COALESCE(CompetitionRoute, False) AS CompetitionRoute,
+  ROUND(100 * RouteTotalNumFlightsPerWeek / (RouteTotalNumFlightsPerWeek + COALESCE(CompetitiveFlightsCnt, 0)), 2) AS PercRYRFlightsRouteWeek
+FROM future_schedule_with_distance_v2 fp
+LEFT JOIN schedule_info USING (Route, Week, DepartureYear)
+LEFT JOIN airport_flights_count fc ON fp.DepartureStation = fc.AirportCode
+  AND fp.Week = fc.Week 
+  AND fp.DepartureYear = fc.DepartureYear 
+LEFT JOIN airport_flights_count fa ON fp.ArrivalStation = fa.AirportCode
+  AND fp.Week = fa.Week 
+  AND fp.DepartureYear = fa.DepartureYear 
+LEFT JOIN competition_flag_route USING (DepartureStation, ArrivalStation)
+LEFT JOIN competitive_flights_count USING (Week, DepartureYear, DepartureStation, ArrivalStation)
+LEFT JOIN route_region_info r USING (DepartureStation, ArrivalStation)
+
+
+
+
+","['datascience_dev.networkplanning.schedules_raw_v2', 'version_1_base', 'version_2_base', 'schedules', 'version1', 'version2', 'future_schedule_v2', 'new_base', 'businessintelligence_prd.datascience_rpt.vw_NetworkPlanning_Flight', 'additional_info', 'dc.City', 'ac.City', 'datascience_dev.networkplanning.city_names_dict', 'future_schedule_with_distance_v2', 'distance_info', 'future_schedule_v2', 'datascience_dev.networkplanning.airport_flights_count', 'networkplanning.schedules_input_v4', 'schedule_info', 'competition_cnt', 'competitive_flights_count', 'competition_flag', 'competition_flag_route', 'airport_flights_count', 'fc', 'fa', 'route_region_info', 'r']",3051,175,3226

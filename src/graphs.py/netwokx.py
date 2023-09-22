@@ -11,8 +11,35 @@ print(df.head(2))
 print(df.iloc[1]["sql_paths"])
 
 class GraphNX:
-    def __init__(self, data_dir: str):
+    def __init__(self, repositories: dict):
         self.graph = networkx.Graph()
+
+        connections = []
+
+        for repo in repositories.keys():
+            self.graph.add_node(repo)
+
+            for file in repositories[repo]:
+                self.graph.add_node(file)
+                connections.append((repo, file))
+
+        for connection in connections:
+            self.graph.add_edge(connection)
+
+    def visualize(self):
+        pos = networkx.spring_layout(self.graph)
+        networkx.draw(
+            self.graph, 
+            pos, 
+            with_labels=True, 
+            node_size=3000, 
+            node_color='skyblue', 
+            font_size=15, 
+            width=2, 
+            edge_color='gray'
+        )
+        plt.title('Files and Tables Connections')
+        plt.show()
 
 # def create_graph():
 #     G = nx.Graph()  # Create an undirected graph. Use nx.DiGraph() for directed graph.
