@@ -1,0 +1,25 @@
+-- Get a list of all employees in the 'Sales' department who were hired in the year 2003
+-- and had made sales over $10,000 in the year 2003.
+
+-- Fetch sales data
+SELECT 
+  e.BusinessEntityID, 
+  CONCAT(e.FirstName, ' ', e.LastName) as FullName, 
+  s.SalesYTD, 
+  s.Bonus,
+  (SELECT Name FROM AdventureWorks.HumanResources.Department WHERE DepartmentID = ed.DepartmentID) as DepartmentName,
+  -- Fetch order data
+  (SELECT SUM(TotalDue) 
+   FROM AdventureWorks.Sales.SalesOrderHeader 
+   WHERE SalesPersonID = e.BusinessEntityID 
+     AND YEAR(OrderDate) = 2003) as TotalSales
+FROM AdventureWorks.HumanResources.Employee e
+-- Join Employee with EmployeeDepartmentHistory and SalesPerson
+JOIN AdventureWorks.HumanResources.EmployeeDepartmentHistory ed ON e.BusinessEntityID = ed.BusinessEntityID
+JOIN AdventureWorks.Sales.SalesPerson s ON e.BusinessEntityID = s.BusinessEntityID
+WHERE ed.DepartmentID = 
+  -- Subquery to fetch the DepartmentID of 'Sales' department
+  (SELECT DepartmentID FROM AdventureWorks.HumanResources.Department WHERE Name = 'Sales')
+  AND YEAR(ed.StartDate) = 2003
+HAVING TotalSales > 10000
+ORDER BY TotalSales DESC;

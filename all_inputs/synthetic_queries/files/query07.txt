@@ -1,0 +1,25 @@
+WITH 
+CustomerOrders AS (
+  SELECT CustomerID, OrderID, OrderDate
+  FROM Northwind.dbo.Orders 
+  WHERE OrderDate BETWEEN '1996-01-01' AND '1996-12-31'
+),
+TopCustomers AS (
+  SELECT CustomerID, COUNT(OrderID) as OrderCount
+  FROM CustomerOrders
+  GROUP BY CustomerID
+  HAVING COUNT(OrderID) > 10
+),
+OrderDetails AS (
+  SELECT o.OrderID, o.ProductID, p.ProductName, o.Quantity
+  FROM Northwind.dbo.[Order Details] o
+  JOIN Northwind.dbo.Products p
+  ON o.ProductID = p.ProductID
+)
+SELECT c.CustomerID, c.OrderCount, od.OrderID, od.ProductName, od.Quantity
+FROM TopCustomers c
+JOIN CustomerOrders co
+ON c.CustomerID = co.CustomerID
+JOIN OrderDetails od
+ON co.OrderID = od.OrderID
+ORDER BY c.OrderCount DESC, od.Quantity DESC;

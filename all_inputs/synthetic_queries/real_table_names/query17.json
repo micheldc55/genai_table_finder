@@ -1,0 +1,10 @@
+[
+    "revenue_rpt.FactRevenue",
+    "revenue_rpt.DimService",
+    "revenue_rpt.DimChargeLifeStage",
+    "revenue_rpt.DimInventoryLeg",
+    "revenue_rpt.[DimBooking]",
+    "[datascience_rpt].[vw_AncDynPricing_CBAGPredictionsSnapshots]",
+    "[datascience].[dbo_AncDynPricing_20kgPredictionsVersion]",
+    "[datascience_rpt].[vw_AncDynPricing_PBPredictionsSnapshots]"
+]

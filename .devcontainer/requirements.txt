@@ -1,0 +1,17 @@
+matplotlib
+plotly
+streamlit
+datasets
+tiktoken
+networkx
+sqlparse
+jupyterlab
+pandas
+numpy
+scipy
+openai
+python-dotenv
+faiss-cpu
+torch
+transformers
+tqdm

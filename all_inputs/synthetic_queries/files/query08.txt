@@ -1,0 +1,20 @@
+WITH EmployeeCTE AS (
+    SELECT EmployeeID, FirstName, LastName
+    FROM Northwind.dbo.Employees
+    WHERE City = 'Seattle'
+),
+OrderSubquery AS (
+    SELECT OrderID, CustomerID, EmployeeID
+    FROM (
+        SELECT OrderID, CustomerID, EmployeeID
+        FROM Northwind.dbo.Orders
+    ) AS sub
+    WHERE OrderDate BETWEEN '1996-01-01' AND '1996-12-31'
+)
+
+SELECT e.FirstName, e.LastName, COUNT(o.OrderID) as OrderCount
+FROM EmployeeCTE e
+JOIN OrderSubquery o ON e.EmployeeID = o.EmployeeID
+GROUP BY e.FirstName, e.LastName
+HAVING COUNT(o.OrderID) > 10
+ORDER BY OrderCount DESC;

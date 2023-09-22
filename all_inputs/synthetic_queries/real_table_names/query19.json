@@ -1,0 +1,11 @@
+[
+    "${navitaire_db}.currencyconversionhistory",
+    "${navitaire_db}.passengerjourneyleg",
+    "${navitaire_db}.passengerjourneysegment",
+    "${navitaire_db}.passengerjourneycharge",
+    "${navitaire_db}.inventoryleg",
+    "${navitaire_db}.route_groups",
+    "${navitaire_db}.agent",
+    "${navitaire_db}.`location`",
+    "${navitaire_discovery_db}.flightpax"
+]

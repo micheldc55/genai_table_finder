@@ -1,0 +1,31 @@
+WITH CTE_Sales AS (
+  SELECT s.SaleID, s.CustomerID, s.ProductID, p.ProductName, s.Quantity, s.SalePrice, 
+         (s.Quantity * s.SalePrice) as TotalPrice,
+         RANK() OVER(PARTITION BY s.CustomerID ORDER BY (s.Quantity * s.SalePrice) DESC) as ranking
+  FROM SalesDatabase.dbo.Sales s
+  JOIN ProductsDatabase.dbo.Products p ON s.ProductID = p.ProductID
+  WHERE s.SaleDate BETWEEN '2022-01-01' AND '2022-12-31'
+),
+CTE_Customers AS (
+  SELECT c.CustomerID, c.FirstName, c.LastName, c.City, c.Country,
+         (SELECT COUNT(*) FROM SalesDatabase.dbo.Sales WHERE CustomerID = c.CustomerID) as TotalPurchases
+  FROM CustomersDatabase.dbo.Customers c
+),
+SubQuery1 AS (
+  SELECT a.CustomerID, a.TotalPurchases, b.City, b.Country
+  FROM CTE_Customers a
+  JOIN (
+    SELECT DISTINCT City, Country
+    FROM CustomersDatabase.dbo.Customers
+    WHERE Country = 'USA'
+  ) b ON a.City = b.City AND a.Country = b.Country
+),
+SubQuery2 AS (
+  SELECT CustomerID, ProductName, TotalPrice
+  FROM CTE_Sales
+  WHERE ranking = 1
+)
+SELECT s1.CustomerID, s1.TotalPurchases, s1.City, s1.Country, s2.ProductName, s2.TotalPrice
+FROM SubQuery1 s1
+JOIN SubQuery2 s2 ON s1.CustomerID = s2.CustomerID
+ORDER BY s1.TotalPurchases DESC, s2.TotalPrice DESC;

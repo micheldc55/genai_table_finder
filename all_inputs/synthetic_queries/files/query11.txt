@@ -1,0 +1,39 @@
+WITH 
+lf_10f as (
+    SELECT NDO, RouteGroup, Region, PairedRoute, AVG(FinalTargetLF) as LF
+    FROM datascience_dev.targetcurves.metrics_tables_2023_07_no_deltas_10_flights_final_curve
+    WHERE NDO = 0
+    GROUP BY NDO, RouteGroup, Region, PairedRoute
+),
+lf_04f as (
+    SELECT NDO, RouteGroup, Region, PairedRoute, AVG(FinalTargetLF) as LF
+    FROM datascience_dev.targetcurves.metrics_tables_2023_4_no_deltas_4_flights_final_curve
+    WHERE NDO = 0
+    GROUP BY NDO, RouteGroup, Region, PairedRoute
+),
+real_lf as (
+    SELECT NDO, RouteGroup, Region, PairedRoute, AVG(RunningLF) as RealLF
+    FROM parquet.`abfss://dbrprdlanding@frbinetraunitycatalog.dfs.core.windows.net/targetcurves/HistoricData/`
+    WHERE DepartureDate >= "2022-12-01" AND DepartureDate < "2023-{next_dep_period}-01"
+    AND DeparturePeriod = '{departure_period}'
+    AND NDO = 0
+    GROUP BY NDO, RouteGroup, Region, PairedRoute
+),
+joined_lfs as (
+    SELECT rlf.NDO, rlf.RouteGroup, rlf.Region, rlf.PairedRoute, rlf.RealLF, f10.LF as LF_10, f04.LF as LF_04
+    FROM real_lf rlf
+    LEFT JOIN lf_10f f10
+    ON rlf.RouteGroup = f10.RouteGroup
+    AND rlf.Region = f10.Region
+    AND rlf.PairedRoute = f10.PairedRoute
+    AND rlf.NDO = f10.NDO
+    LEFT JOIN lf_04f f04
+    ON rlf.RouteGroup = f04.RouteGroup
+    AND rlf.Region = f04.Region
+    AND rlf.PairedRoute = f04.PairedRoute
+    AND rlf.NDO = f04.NDO
+) 
+SELECT RouteGroup, Region, PairedRoute,
+ABS(LF_10 - RealLF)/RealLF as MAPE_10, 
+ABS(LF_04 - RealLF)/RealLF as MAPE_04
+FROM joined_lfs

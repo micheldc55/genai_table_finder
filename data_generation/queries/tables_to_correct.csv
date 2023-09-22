@@ -1,0 +1,1227 @@
+;Index;Error Type;corrected_output;SQL_query;;
+;11;Ends in …;"['healthcare.patients', 'healthcare.doctors', 'healthcare.appointments','healthcare.visits', 'healthcare.medications', 'healthcare.pharmacists','healthcare.nurses', 'healthcare.lab_technicians', 'healthcare.radiologists','healthcare.surgeons', 'healthcare.anesthesiologists', 'healthcare.physical_therapists','healthcare.occupational_therapists', 'healthcare.speech_therapists','healthcare.psychiatrists', 'healthcare.counselors', 'healthcare.psychologists','healthcare.surgeon_assistants', 'healthcare.nurse_assistants','healthcare.lab_assistants', 'healthcare.radiology_assistants','healthcare.patient_assistants', 'healthcare.pharmacist_assistants', 'healthcare.admins','healthcare.billings', 'healthcare.finances', 'healthcare.hrs', 'healthcare.its','healthcare.marketings', 'healthcare.operations', 'healthcare.procurements','healthcare.quality_assurances', 'healthcare.research', 'healthcare.security','healthcare.training', 'healthcare.vendors']
+";"SELECT 
+    CONCAT(p.first_name, ' ', p.last_name) AS patient_name,
+    CONCAT(d.first_name, ' ', d.last_name) AS doctor_name,
+    a.appointment_date,
+    a.appointment_time,
+    v.visit_date,
+    v.visit_time,
+    m.medication_name,
+    m.dosage,
+    m.frequency,
+    m.start_date,
+    m.end_date,
+    CONCAT(ph.first_name, ' ', ph.last_name) AS pharmacist_name,
+    CONCAT(n.first_name, ' ', n.last_name) AS nurse_name,
+    CONCAT(l.first_name, ' ', l.last_name) AS lab_technician_name,
+    CONCAT(r.first_name, ' ', r.last_name) AS radiologist_name,
+    CONCAT(s.first_name, ' ', s.last_name) AS surgeon_name,
+    CONCAT(an.first_name, ' ', an.last_name) AS anesthesiologist_name,
+    CONCAT(pt.first_name, ' ', pt.last_name) AS physical_therapist_name,
+    CONCAT(ot.first_name, ' ', ot.last_name) AS occupational_therapist_name,
+    CONCAT(st.first_name, ' ', st.last_name) AS speech_therapist_name,
+    CONCAT(ps.first_name, ' ', ps.last_name) AS psychiatrist_name,
+    CONCAT(c.first_name, ' ', c.last_name) AS counselor_name,
+    CONCAT(phd.first_name, ' ', phd.last_name) AS psychologist_name,
+    CONCAT(su.first_name, ' ', su.last_name) AS surgeon_assistant_name,
+    CONCAT(nu.first_name, ' ', nu.last_name) AS nurse_assistant_name,
+    CONCAT(la.first_name, ' ', la.last_name) AS lab_assistant_name,
+    CONCAT(ra.first_name, ' ', ra.last_name) AS radiology_assistant_name,
+    CONCAT(pa.first_name, ' ', pa.last_name) AS patient_assistant_name,
+    CONCAT(pha.first_name, ' ', pha.last_name) AS pharmacist_assistant_name,
+    CONCAT(ad.first_name, ' ', ad.last_name) AS admin_name,
+    CONCAT(b.first_name, ' ', b.last_name) AS billing_name,
+    CONCAT(f.first_name, ' ', f.last_name) AS finance_name,
+    CONCAT(h.first_name, ' ', h.last_name) AS hr_name,
+    CONCAT(it.first_name, ' ', it.last_name) AS it_name,
+    CONCAT(ma.first_name, ' ', ma.last_name) AS marketing_name,
+    CONCAT(op.first_name, ' ', op.last_name) AS operations_name,
+    CONCAT(pr.first_name, ' ', pr.last_name) AS procurement_name,
+    CONCAT(qa.first_name, ' ', qa.last_name) AS quality_assurance_name,
+    CONCAT(re.first_name, ' ', re.last_name) AS research_name,
+    CONCAT(se.first_name, ' ', se.last_name) AS security_name,
+    CONCAT(tr.first_name, ' ', tr.last_name) AS training_name,
+    CONCAT(ve.first_name, ' ', ve.last_name) AS vendor_name
+FROM
+    healthcare.patients AS p
+        CROSS JOIN
+    healthcare.doctors AS d
+        ON p.doctor_id = d.doctor_id
+        CROSS JOIN
+    healthcare.appointments AS a
+        ON p.patient_id = a.patient_id
+        CROSS JOIN
+    healthcare.visits AS v
+        ON p.patient_id = v.patient_id
+        CROSS JOIN
+    healthcare.medications AS m
+        ON p.patient_id = m.patient_id
+        CROSS JOIN
+    healthcare.pharmacists AS ph
+        ON m.pharmacist_id = ph.pharmacist_id
+        CROSS JOIN
+    healthcare.nurses AS n
+        ON v.nurse_id = n.nurse_id
+        CROSS JOIN
+    healthcare.lab_technicians AS l
+        ON v.lab_technician_id = l.lab_technician_id
+        CROSS JOIN
+    healthcare.radiologists AS r
+        ON v.radiologist_id = r.radiologist_id
+        CROSS JOIN
+    healthcare.surgeons AS s
+        ON v.surgeon_id = s.surgeon_id
+        CROSS JOIN
+    healthcare.anesthesiologists AS an
+        ON v.anesthesiologist_id = an.anesthesiologist_id
+        CROSS JOIN
+    healthcare.physical_therapists AS pt
+        ON v.physical_therapist_id = pt.physical_therapist_id
+        CROSS JOIN
+    healthcare.occupational_therapists AS ot
+        ON v.occupational_therapist_id = ot.occupational_therapist_id
+        CROSS JOIN
+    healthcare.speech_therapists AS st
+        ON v.speech_therapist_id = st.speech_therapist_id
+        CROSS JOIN
+    healthcare.psychiatrists AS ps
+        ON v.psychiatrist_id = ps.psychiatrist_id
+        CROSS JOIN
+    healthcare.counselors AS c
+        ON v.counselor_id = c.counselor_id
+        CROSS JOIN
+    healthcare.psychologists AS phd
+        ON v.psychologist_id = phd.psychologist_id
+        CROSS JOIN
+    healthcare.surgeon_assistants AS su
+        ON v.surgeon_assistant_id = su.surgeon_assistant_id
+        CROSS JOIN
+    healthcare.nurse_assistants AS nu
+        ON v.nurse_assistant_id = nu.nurse_assistant_id
+        CROSS JOIN
+    healthcare.lab_assistants AS la
+        ON v.lab_assistant_id = la.lab_assistant_id
+        CROSS JOIN
+    healthcare.radiology_assistants AS ra
+        ON v.radiology_assistant_id = ra.radiology_assistant_id
+        CROSS JOIN
+    healthcare.patient_assistants AS pa
+        ON v.patient_assistant_id = pa.patient_assistant_id
+        CROSS JOIN
+    healthcare.pharmacist_assistants AS pha
+        ON v.pharmacist_assistant_id = pha.pharmacist_assistant_id
+        CROSS JOIN
+    healthcare.admins AS ad
+        ON v.admin_id = ad.admin_id
+        CROSS JOIN
+    healthcare.billings AS b
+        ON v.billing_id = b.billing_id
+        CROSS JOIN
+    healthcare.finances AS f
+        ON v.finance_id = f.finance_id
+        CROSS JOIN
+    healthcare.hrs AS h
+        ON v.hr_id = h.hr_id
+        CROSS JOIN
+    healthcare.its AS it
+        ON v.it_id = it.it_id
+        CROSS JOIN
+    healthcare.marketings AS ma
+        ON v.marketing_id = ma.marketing_id
+        CROSS JOIN
+    healthcare.operations AS op
+        ON v.operations_id = op.operations_id
+        CROSS JOIN
+    healthcare.procurements AS pr
+        ON v.procurement_id = pr.procurement_id
+        CROSS JOIN
+    healthcare.quality_assurances AS qa
+        ON v.quality_assurance_id = qa.quality_assurance_id
+        CROSS JOIN
+    healthcare.research AS re
+        ON v.research_id = re.research_id
+        CROSS JOIN
+    healthcare.security AS se
+        ON v.security_id = se.security_id
+        CROSS JOIN
+    healthcare.training AS tr
+        ON v.training_id = tr.training_id
+        CROSS JOIN
+    healthcare.vendors AS ve
+        ON v.vendor_id = ve.vendor_id
+WHERE
+    p.age >= 18
+        AND v.visit_date >= '2022-01-01'
+        AND m.start_date <= '2022-12-31'
+GROUP BY p.patient_id , d.doctor_id , a.appointment_id , v.visit_id , m.medication_id , ph.pharmacist_id , n.nurse_id , l.lab_technician_id , r.radiologist_id , s.surgeon_id , an.anesthesiologist_id , pt.physical_therapist_id , ot.occupational_therapist_id , st.speech_therapist_id , ps.psychiatrist_id , c.counselor_id , phd.psychologist_id , su.surgeon_assistant_id , nu.nurse_assistant_id , la.lab_assistant_id , ra.radiology_assistant_id , pa.patient_assistant_id , pha.pharmacist_assistant_id , ad.admin_id , b.billing_id , f.finance_id , h.hr_id , it.it_id , ma.marketing_id , op.operations_id , pr.procurement_id , qa.quality_assurance_id , re.research_id , se.security_id , tr.training_id , ve.vendor_id
+HAVING
+    COUNT(DISTINCT v.visit_id) > 1
+        AND SUM(m.dosage) > 1000
+        AND AVG(v.visit_duration) > 30;";;
+;5;CTEs included;['[FreightCoDB].[OrderManagement].shipment_orders', '[FreightCoDB].[ClientRelations].clients', '[FreightCoDB].[OrderManagement].order_contents', '[FreightCoDB].[Inventory].cargo_items', '[FreightCoDB].[EmployeeManagement].staff_members'];"WITH CustomerDeliveredOrders AS (
+  SELECT 
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+    o.order_id,
+    o.order_date,
+    o.order_status,
+    o.total_price
+  FROM 
+    [FreightCoDB].[OrderManagement].shipment_orders o
+  JOIN 
+    [FreightCoDB].[ClientRelations].clients c ON o.client_id = c.client_id
+  WHERE 
+    o.order_status = 'Delivered'
+),
+
+OrderProducts AS (
+  SELECT 
+    p.item_name,
+    p.item_category,
+    p.item_price,
+    oi.order_id,
+    oi.quantity
+  FROM 
+    [FreightCoDB].[OrderManagement].order_contents oi
+  JOIN 
+    [FreightCoDB].[Inventory].cargo_items p ON oi.item_id = p.item_id
+),
+
+CustomerProductDetails AS (
+  SELECT 
+    cdo.customer_name,
+    cdo.order_id,
+    cdo.order_date,
+    cdo.total_price,
+    op.item_name,
+    op.item_category,
+    op.item_price,
+    op.quantity,
+    op.item_price * op.quantity AS total_item_price
+  FROM 
+    CustomerDeliveredOrders cdo
+  JOIN 
+    OrderProducts op ON cdo.order_id = op.order_id
+),
+
+CategoryTotals AS (
+  SELECT 
+    cpd.customer_name,
+    cpd.order_id,
+    cpd.order_date,
+    cpd.total_price,
+    cpd.item_category,
+    SUM(cpd.total_item_price) AS total_category_price
+  FROM 
+    CustomerProductDetails cpd
+  GROUP BY 
+    cpd.customer_name,
+    cpd.order_id,
+    cpd.order_date,
+    cpd.total_price,
+    cpd.item_category
+),
+
+TopCategoryByCustomer AS (
+  SELECT 
+    ct.customer_name,
+    ct.order_id,
+    ct.order_date,
+    ct.total_price,
+    ct.item_category,
+    ct.total_category_price,
+    CASE 
+      WHEN ct.total_category_price = MAX(ct.total_category_price) OVER (PARTITION BY ct.customer_name) THEN 'Highest'
+      ELSE 'Not Highest'
+    END AS category_status
+  FROM 
+    CategoryTotals ct
+),
+
+FinalData AS (
+  SELECT 
+    tcb.customer_name,
+    tcb.order_id,
+    tcb.order_date,
+    tcb.total_price,
+    tcb.item_category,
+    tcb.total_category_price,
+    tcb.category_status,
+    ROW_NUMBER() OVER (PARTITION BY tcb.customer_name ORDER BY tcb.order_date DESC) AS order_rank,
+    COUNT(*) OVER (PARTITION BY tcb.customer_name) AS total_orders,
+    CASE 
+      WHEN COUNT(*) OVER (PARTITION BY tcb.customer_name) > 5 THEN 'Loyal Client'
+      ELSE 'Regular Client'
+    END AS client_type
+  FROM 
+    TopCategoryByCustomer tcb
+  WHERE 
+    ROW_NUMBER() OVER (PARTITION BY tcb.customer_name ORDER BY tcb.order_date DESC) <= 5
+)
+
+SELECT 
+  fd.*
+FROM 
+  FinalData fd
+CROSS JOIN 
+  [FreightCoDB].[EmployeeManagement].staff_members e
+WHERE 
+  e.staff_id = 1
+ORDER BY 
+  fd.order_date DESC;";;
+;54;Modify entire query (got stuck in a loop of generating infinite CTEs;['real_estate.property', 'real_estate.agent', 'real_estate.inquiry', 'real_estate.review', 'real_estate.booking', 'real_estate.visit', 'real_estate.contract', 'real_estate.payment', 'real_estate.complaint', 'real_estate.repair', 'real_estate.inspection', 'real_estate.appraisal', 'property_tax.IRPF.owners_exemptions'];"WITH cte1 AS (
+  SELECT property.id AS property_id,
+         property.name AS property_name,
+         property.address AS property_address,
+         property.bedrooms AS property_bedrooms,
+         property.bathrooms AS property_bathrooms,
+         property.price AS property_price,
+         agent.name AS agent_name,
+         agent.email AS agent_email
+  FROM real_estate.property
+  JOIN real_estate.agent ON property.agent_id = agent.id
+  WHERE property.status = 'available'
+),
+cte2 AS (
+  SELECT property_id,
+         COUNT(*) AS num_inquiries
+  FROM real_estate.inquiry
+  GROUP BY property_id
+),
+cte3 AS (
+  SELECT property_id,
+         AVG(rating) AS avg_rating
+  FROM real_estate.review
+  GROUP BY property_id
+),
+cte4 AS (
+  SELECT property_id,
+         COUNT(*) AS num_bookings
+  FROM real_estate.booking
+  GROUP BY property_id
+),
+cte5 AS (
+  SELECT property_id,
+         COUNT(*) AS num_visits
+  FROM real_estate.visit
+  GROUP BY property_id
+),
+cte6 AS (
+  SELECT property_id,
+         COUNT(*) AS num_contracts
+  FROM real_estate.contract
+  GROUP BY property_id
+),
+cte7 AS (
+  SELECT property_id,
+         COUNT(*) AS num_payments
+  FROM real_estate.payment
+  GROUP BY property_id
+),
+cte8 AS (
+  SELECT property_id,
+         SUM(amount) AS total_payments
+  FROM real_estate.payment
+  GROUP BY property_id
+),
+cte9 AS (
+  SELECT property_id,
+         COUNT(*) AS num_complaints
+  FROM real_estate.complaint
+  GROUP BY property_id
+),
+cte10 AS (
+  SELECT property_id,
+         COUNT(*) AS num_repairs
+  FROM real_estate.repair
+  GROUP BY property_id
+),
+cte11 AS (
+  SELECT property_id,
+         COUNT(*) AS num_inspections
+  FROM real_estate.inspection
+  GROUP BY property_id
+),
+cte12 AS (
+  SELECT property_id,
+         COUNT(*) AS num_appraisals
+  FROM real_estate.appraisal
+  GROUP BY property_id
+)
+SELECT 
+    cte1.property_id,
+    cte1.property_name,
+    cte1.property_address,
+    cte1.property_bedrooms,
+    cte1.property_bathrooms,
+    cte1.property_price,
+    cte1.agent_name,
+    cte1.agent_email,
+    cte2.num_inquiries,
+    cte3.avg_rating,
+    cte4.num_bookings,
+    cte5.num_visits,
+    cte6.num_contracts,
+    cte7.num_payments,
+    cte8.total_payments,
+    cte9.num_complaints,
+    cte10.num_repairs,
+    cte11.num_inspections,
+    cte12.num_appraisals,
+    oe.owner_name,
+    oe.exemption_amount
+FROM cte1
+LEFT JOIN cte2 ON cte1.property_id = cte2.property_id
+LEFT JOIN cte3 ON cte1.property_id = cte3.property_id
+LEFT JOIN cte4 ON cte1.property_id = cte4.property_id
+LEFT JOIN cte5 ON cte1.property_id = cte5.property_id
+LEFT JOIN cte6 ON cte1.property_id = cte6.property_id
+LEFT JOIN cte7 ON cte1.property_id = cte7.property_id
+LEFT JOIN cte8 ON cte1.property_id = cte8.property_id
+LEFT JOIN cte9 ON cte1.property_id = cte9.property_id
+LEFT JOIN cte10 ON cte1.property_id = cte10.property_id
+LEFT JOIN cte11 ON cte1.property_id = cte11.property_id
+LEFT JOIN cte12 ON cte1.property_id = cte12.property_id
+LEFT JOIN property_tax.IRPF.owners_exemptions oe ON cte1.property_id = oe.property_id;";;
+;60;Query is wrong and output is wrong;['[production_dbo].[products]', '[sales_dbo].[orders]', 'production.manufacturers'];"WITH cte1 AS (
+  SELECT 
+    p.product_id,
+    p.product_name,
+    p.product_category,
+    SUM(o.quantity) AS total_quantity
+  FROM 
+    [production_dbo].[products] AS p
+  JOIN 
+    [sales_dbo].[orders] AS o ON p.product_id = o.product_id
+  WHERE 
+    o.order_date >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+  GROUP BY 
+    p.product_id,
+    p.product_name,
+    p.product_category
+),
+
+cte2 AS (
+  SELECT 
+    p.product_id,
+    p.product_name,
+    p.product_category,
+    AVG(o.unit_price) AS avg_unit_price
+  FROM 
+    [production_dbo].[products] AS p
+  JOIN 
+    [sales_dbo].[orders] AS o ON p.product_id = o.product_id
+  WHERE 
+    o.order_date >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+  GROUP BY 
+    p.product_id,
+    p.product_name,
+    p.product_category
+),
+
+cte3 AS (
+  SELECT 
+    p.product_id,
+    p.product_name,
+    p.product_category,
+    COUNT(o.order_id) AS total_orders
+  FROM 
+    [production_dbo].[products] AS p
+  JOIN 
+    [sales_dbo].[orders] AS o ON p.product_id = o.product_id
+  WHERE 
+    o.order_date >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')
+  GROUP BY 
+    p.product_id,
+    p.product_name,
+    p.product_category
+)
+
+SELECT 
+  cte1.product_id,
+  cte1.product_name,
+  cte1.product_category,
+  cte1.total_quantity,
+  cte2.avg_unit_price,
+  cte3.total_orders,
+  CONCAT('Category: ', UPPER(cte1.product_category)) AS category_label
+FROM 
+  cte1
+JOIN 
+  cte2 ON cte1.product_id = cte2.product_id
+JOIN 
+  cte3 ON cte1.product_id = cte3.product_id
+CROSS JOIN 
+  production.manufacturers AS m
+WHERE 
+  m.manufacturer_id = cte1.product_id
+HAVING 
+  cte1.total_quantity > 100
+ORDER BY 
+  cte1.total_quantity DESC;
+";;
+;71;Kusto language error;['[SuperMart].[Sales].[OrderDetails]', '[SuperMart].[Inventory].[Products]', '[SuperMart].[Customers].[Customers]'];"WITH cte_sales AS (
+  SELECT
+    o.order_id,
+    o.customer_id,
+    o.order_date,
+    o.total_price,
+    p.product_name,
+    p.unit_price,
+    c.customer_name,
+    c.city,
+    c.country
+  FROM
+    [SuperMart].[Sales].[OrderDetails] o
+  JOIN
+    [SuperMart].[Inventory].[Products] p ON o.product_id = p.product_id
+  JOIN
+    [SuperMart].[Customers].[Customers] c ON o.customer_id = c.customer_id
+  WHERE
+    o.order_date >= '2021-01-01'
+    AND o.order_date <= '2021-12-31'
+),
+cte_monthly_sales AS (
+  SELECT
+    DATE_FORMAT(order_date, '%Y-%m') AS month,
+    COUNT(DISTINCT order_id) AS total_orders,
+    SUM(total_price) AS total_sales
+  FROM
+    cte_sales
+  GROUP BY
+    DATE_FORMAT(order_date, '%Y-%m')
+),
+cte_top_customers AS (
+  SELECT
+    customer_id,
+    customer_name,
+    COUNT(DISTINCT order_id) AS total_orders
+  FROM
+    cte_sales
+  GROUP BY
+    customer_id,
+    customer_name
+  HAVING
+    COUNT(DISTINCT order_id) > 5
+),
+cte_product_sales AS (
+  SELECT
+    product_name,
+    SUM(total_price) AS total_sales
+  FROM
+    cte_sales
+  GROUP BY
+    product_name
+  HAVING
+    SUM(total_price) > 1000
+),
+cte_city_sales AS (
+  SELECT
+    city,
+    COUNT(DISTINCT order_id) AS total_orders,
+    SUM(total_price) AS total_sales
+  FROM
+    cte_sales
+  GROUP BY
+    city
+),
+cte_country_sales AS (
+  SELECT
+    country,
+    COUNT(DISTINCT order_id) AS total_orders,
+    SUM(total_price) AS total_sales
+  FROM
+    cte_sales
+  GROUP BY
+    country
+),
+cte_monthly_sales_rank AS (
+  SELECT
+    month,
+    total_sales,
+    RANK() OVER (ORDER BY total_sales DESC) AS sales_rank
+  FROM
+    cte_monthly_sales
+),
+cte_top_customers_rank AS (
+  SELECT
+    customer_id,
+    customer_name,
+    total_orders,
+    RANK() OVER (ORDER BY total_orders DESC) AS orders_rank
+  FROM
+    cte_top_customers
+),
+cte_product_sales_rank AS (
+  SELECT
+    product_name,
+    total_sales,
+    RANK() OVER (ORDER BY total_sales DESC) AS sales_rank
+  FROM
+    cte_product_sales
+),
+cte_city_sales_rank AS (
+  SELECT
+    city,
+    total_orders,
+    total_sales,
+    RANK() OVER (ORDER BY total_sales DESC) AS sales_rank
+  FROM
+    cte_city_sales
+),
+cte_country_sales_rank AS (
+  SELECT
+    country,
+    total_orders,
+    total_sales,
+    RANK() OVER (ORDER BY total_sales DESC) AS sales_rank
+  FROM
+    cte_country_sales
+)
+SELECT
+  msr.month,
+  msr.total_sales AS monthly_sales,
+  tcr.customer_name,
+  tcr.total_orders AS customer_orders,
+  psr.product_name,
+  psr.total_sales AS product_sales,
+  csr.city,
+  csr.total_orders AS city_orders,
+  csr.total_sales AS city_sales,
+  cor.country,
+  cor.total_orders AS country_orders,
+  cor.total_sales AS country_sales
+FROM
+  cte_monthly_sales_rank msr
+JOIN
+  cte_top_customers_rank tcr ON msr.sales_rank = tcr.orders_rank
+JOIN
+  cte_product_sales_rank psr ON msr.sales_rank = psr.sales_rank
+JOIN
+  cte_city_sales_rank csr ON msr.sales_rank = csr.sales_rank
+JOIN
+  cte_country_sales_rank cor ON msr.sales_rank = cor.sales_rank
+ORDER BY
+  msr.sales_rank ASC;
+";;
+;92;Bad output due to kusto;['[manufacturing].[products]', '[manufacturing].[orders]', '[customer_dbo].[customers]'];"SELECT 
+    CONCAT(prd.product_name, ' - ', prd.product_code) AS Product,
+    prd.product_category AS Category,
+    prd.product_price AS Price,
+    DATE_FORMAT(ord.order_date, '%Y-%m-%d') AS OrderDate,
+    ord.order_quantity AS Quantity,
+    CONCAT(cust.first_name, ' ', cust.last_name) AS CustomerName,
+    UPPER(cust.city) AS City,
+    cust.country AS Country,
+    SUM(ord.order_quantity * prd.product_price) AS TotalSales
+FROM 
+    [manufacturing].[products] prd
+CROSS JOIN 
+    [manufacturing].[orders] ord
+CROSS JOIN 
+    [customer_dbo].[customers] cust
+WHERE 
+    prd.product_id = ord.product_id
+    AND ord.customer_id = cust.customer_id
+    AND ord.order_date >= '2021-01-01'
+    AND ord.order_date <= '2021-12-31'
+GROUP BY 
+    prd.product_name,
+    prd.product_code,
+    prd.product_category,
+    prd.product_price,
+    DATE_FORMAT(ord.order_date, '%Y-%m-%d'),
+    cust.first_name,
+    cust.last_name,
+    cust.city,
+    cust.country
+HAVING 
+    COUNT(DISTINCT ord.order_id) > 5
+ORDER BY 
+    TotalSales DESC;";;
+;99;Format query with <> instead of replacing for a database name;"[""[UniLearn].[Enrollment].[Registrations]"", ""[UniLearn].[Students].[AcademicRecords]"", ""[UniLearn].[Faculty].[ResearchGrants]"", ""[UniLearn].[Courses].[Courses]"", ""[UniLearn].[Faculty].[Professors]""]";"WITH cte_enrollment AS (
+    SELECT
+        student_id,
+        COUNT(DISTINCT course_id) AS num_courses_enrolled
+    FROM
+        [UniLearn].[Enrollment].[Registrations]
+    GROUP BY
+        student_id
+    HAVING
+        COUNT(DISTINCT course_id) >= 3
+),
+cte_average_grade AS (
+    SELECT
+        student_id,
+        AVG(grade) AS average_grade
+    FROM
+        [UniLearn].[Students].[AcademicRecords]
+    GROUP BY
+        student_id
+),
+cte_top_students AS (
+    SELECT
+        student_id,
+        MAX(average_grade) AS max_average_grade
+    FROM
+        cte_average_grade
+    GROUP BY
+        student_id
+),
+cte_student_info AS (
+    SELECT
+        s.student_id,
+        s.first_name,
+        s.last_name,
+        s.date_of_birth,
+        c.course_name,
+        e.num_courses_enrolled,
+        g.average_grade
+    FROM
+        [UniLearn].[Faculty].[ResearchGrants] s
+        INNER JOIN [UniLearn].[Courses].[Courses] c ON s.student_id = c.student_id
+        INNER JOIN cte_enrollment e ON s.student_id = e.student_id
+        INNER JOIN cte_average_grade g ON s.student_id = g.student_id
+        INNER JOIN cte_top_students t ON g.student_id = t.student_id
+    WHERE
+        s.date_of_birth >= '1995-01-01'
+        AND c.course_name LIKE '%Math%'
+        AND e.num_courses_enrolled >= 5
+        AND g.average_grade >= 80
+)
+SELECT
+    student_id,
+    CONCAT(first_name, ' ', last_name) AS full_name,
+    DATE_FORMAT(date_of_birth, '%Y-%m-%d') AS formatted_dob,
+    course_name,
+    num_courses_enrolled,
+    average_grade,
+    UPPER(course_name) AS upper_course_name,
+    COUNT(DISTINCT course_name) AS num_distinct_courses
+FROM
+    cte_student_info
+GROUP BY
+    student_id,
+    full_name,
+    formatted_dob,
+    course_name,
+    num_courses_enrolled,
+    average_grade
+HAVING
+    num_distinct_courses > 1
+CROSS JOIN
+    [UniLearn].[Faculty].[Professors]
+ORDER BY
+    student_id ASC,
+    average_grade DESC;";;
+;116;Response uses this <> instead of specifying a table/database name;['[HomeSweetHome].[Properties]', '[HomeSweetHome].[Agents]', '[HomeSweetHome].[Rentals]'];"WITH cte_property AS (
+    SELECT property_id, property_name, property_type, property_price
+    FROM [HomeSweetHome].[Properties]
+    WHERE property_status = 'available'
+),
+cte_agent AS (
+    SELECT agent_id, agent_name, agent_phone, agent_email
+    FROM [HomeSweetHome].[Agents]
+    WHERE agent_status = 'active'
+),
+cte_sale AS (
+    SELECT property_id, agent_id, sale_date, sale_price
+    FROM [HomeSweetHome].[Rentals]
+    WHERE sale_date >= '2021-01-01'
+),
+cte_total_sales AS (
+    SELECT agent_id, SUM(sale_price) AS total_sales
+    FROM cte_sale
+    GROUP BY agent_id
+),
+cte_avg_price AS (
+    SELECT property_type, AVG(property_price) AS avg_price
+    FROM cte_property
+    GROUP BY property_type
+),
+cte_top_agents AS (
+    SELECT agent_id, COUNT(*) AS total_properties
+    FROM cte_property
+    GROUP BY agent_id
+    HAVING total_properties > 5
+),
+cte_agent_performance AS (
+    SELECT a.agent_id, a.agent_name, a.agent_phone, a.agent_email, COALESCE(ts.total_sales, 0) AS total_sales, COALESCE(ap.avg_price, 0) AS avg_price
+    FROM cte_agent a
+    LEFT JOIN cte_total_sales ts ON a.agent_id = ts.agent_id
+    LEFT JOIN cte_avg_price ap ON a.agent_id = ap.agent_id
+),
+cte_top_performing_agents AS (
+    SELECT agent_id, agent_name, agent_phone, agent_email, total_sales, avg_price
+    FROM cte_agent_performance
+    WHERE total_sales > 1000000 AND avg_price > 500000
+),
+cte_agent_ranking AS (
+    SELECT agent_id, agent_name, agent_phone, agent_email, total_sales, avg_price,
+        ROW_NUMBER() OVER (ORDER BY total_sales DESC, avg_price DESC) AS agent_rank
+    FROM cte_agent_performance
+),
+cte_property_details AS (
+    SELECT p.property_id, p.property_name, p.property_type, p.property_price, a.agent_name, a.agent_phone, a.agent_email
+    FROM cte_property p
+    LEFT JOIN cte_agent a ON p.agent_id = a.agent_id
+),
+cte_property_ranking AS (
+    SELECT property_id, property_name, property_type, property_price,
+        ROW_NUMBER() OVER (PARTITION BY property_type ORDER BY property_price DESC) AS property_rank
+    FROM cte_property_details
+),
+cte_top_properties AS (
+    SELECT property_id, property_name, property_type, property_price
+    FROM cte_property_ranking
+    WHERE property_rank <= 5
+)
+SELECT tp.property_name, tp.property_type, tp.property_price, ap.agent_name, ap.agent_phone, ap.agent_email
+FROM cte_top_properties tp
+JOIN cte_top_performing_agents ap ON tp.agent_id = ap.agent_id
+JOIN cte_agent_ranking ar ON tp.agent_id = ar.agent_id
+WHERE ar.agent_rank <= 3
+ORDER BY tp.property_type, tp.property_price DESC;";;
+;134;Stuck in a loop of infinite CTEs;['[RealEstateDB].[Properties].[prop]', '[RealEstateDB].[Agents].[salesAgent]', '[RealEstateDB].[CustomerActivities].[inq]', '[RealEstateDB].[Feedback].[rev]', '[RealEstateDB].[Transactions].[bk]', '[RealEstateDB].[Visits].[vs]', '[RealEstateDB].[Legal].[cn]'];"WITH PropertyDetails AS (
+  SELECT 
+         [prop].[id] AS property_id,
+         [prop].[name] AS property_name,
+         [prop].[address] AS property_address,
+         [prop].[bedrooms] AS property_bedrooms,
+         [prop].[bathrooms] AS property_bathrooms,
+         [prop].[price] AS property_price,
+         [salesAgent].[name] AS agent_name,
+         [salesAgent].[email] AS agent_email
+  FROM [RealEstateDB].[Properties].[prop]
+  JOIN [RealEstateDB].[Agents].[salesAgent] ON [prop].[agent_id] = [salesAgent].[id]
+  WHERE [prop].[status] = 'available'
+),
+
+CustomerInquiries AS (
+  SELECT [inq].[property_id],
+         COUNT(*) AS num_inquiries
+  FROM [RealEstateDB].[CustomerActivities].[inq]
+  GROUP BY [inq].[property_id]
+),
+
+PropertyReviews AS (
+  SELECT [rev].[property_id],
+         AVG([rev].[rating]) AS avg_rating
+  FROM [RealEstateDB].[Feedback].[rev]
+  GROUP BY [rev].[property_id]
+),
+
+BookedProperties AS (
+  SELECT [bk].[property_id],
+         COUNT(*) AS num_bookings
+  FROM [RealEstateDB].[Transactions].[bk]
+  GROUP BY [bk].[property_id]
+),
+
+ScheduledVisits AS (
+  SELECT [vs].[property_id],
+         COUNT(*) AS num_visits
+  FROM [RealEstateDB].[Visits].[vs]
+  GROUP BY [vs].[property_id]
+),
+
+SignedContracts AS (
+  SELECT [cn].[property_id],
+         COUNT(*) AS num_contracts
+  FROM [RealEstateDB].[Legal].[cn]
+  GROUP BY [cn].[property_id]
+)
+
+-- Final SELECT statement:
+SELECT 
+    pd.property_id,
+    pd.property_name,
+    pd.property_address,
+    pd.property_bedrooms,
+    pd.property_bathrooms,
+    pd.property_price,
+    pd.agent_name,
+    pd.agent_email,
+    ci.num_inquiries,
+    pr.avg_rating,
+    bp.num_bookings,
+    sv.num_visits,
+    sc.num_contracts
+FROM 
+    PropertyDetails pd
+LEFT JOIN 
+    CustomerInquiries ci ON pd.property_id = ci.property_id
+LEFT JOIN 
+    PropertyReviews pr ON pd.property_id = pr.property_id
+LEFT JOIN 
+    BookedProperties bp ON pd.property_id = bp.property_id
+LEFT JOIN 
+    ScheduledVisits sv ON pd.property_id = sv.property_id
+LEFT JOIN 
+    SignedContracts sc ON pd.property_id = sc.property_id;";;
+;138;Response uses this <> instead of specifying a table/database name;['[uniEnrollment].[Students]', '[grd_db].[grades]', '[grd_db].[course_stats]'];"WITH cte_enrollment AS (
+    SELECT
+        student_id,
+        COUNT(DISTINCT course_id) AS num_courses_enrolled
+    FROM
+        [uniEnrollment].[Students]
+    GROUP BY
+        student_id
+    HAVING
+        COUNT(DISTINCT course_id) >= 3
+),
+cte_average_grade AS (
+    SELECT
+        student_id,
+        AVG(grade) AS average_grade
+    FROM
+        [grd_db].[grades]
+    WHERE
+        grade IS NOT NULL
+    GROUP BY
+        student_id
+),
+cte_top_students AS (
+    SELECT
+        student_id,
+        average_grade
+    FROM
+        cte_average_grade
+    WHERE
+        average_grade >= 90
+),
+cte_student_rank AS (
+    SELECT
+        student_id,
+        ROW_NUMBER() OVER (ORDER BY average_grade DESC) AS rank
+    FROM
+        cte_average_grade
+),
+cte_course_rank AS (
+    SELECT
+        course_id,
+        ROW_NUMBER() OVER (ORDER BY COUNT(student_id) DESC) AS rank
+    FROM
+        [grd_db].[course_stats]
+    GROUP BY
+        course_id
+),
+cte_course_enrollment AS (
+    SELECT
+        course_id,
+        COUNT(DISTINCT student_id) AS num_students_enrolled
+    FROM
+        [uniEnrollment].[Students]
+    GROUP BY
+        course_id
+),
+cte_course_stats AS (
+    SELECT
+        course_id,
+        num_students_enrolled,
+        rank
+    FROM
+        cte_course_enrollment
+    JOIN
+        cte_course_rank USING (course_id)
+),
+cte_student_course_stats AS (
+    SELECT
+        student_id,
+        course_id,
+        grade,
+        ROW_NUMBER() OVER (PARTITION BY student_id ORDER BY grade DESC) AS rank
+    FROM
+        [grd_db].[course_stats]
+    WHERE
+        grade IS NOT NULL
+),
+cte_student_course_rank AS (
+    SELECT
+        student_id,
+        course_id,
+        rank
+    FROM
+        cte_student_course_stats
+    WHERE
+        rank <= 3
+),
+cte_student_course_info AS (
+    SELECT
+        student_id,
+        course_id,
+        grade,
+        rank,
+        num_students_enrolled,
+        rank AS course_rank
+    FROM
+        cte_student_course_rank
+    JOIN
+        cte_course_stats USING (course_id)
+),
+cte_student_info AS (
+    SELECT
+        student_id,
+        num_courses_enrolled,
+        average_grade,
+        rank AS student_rank
+    FROM
+        cte_enrollment
+    JOIN
+        cte_student_rank USING (student_id)
+)
+SELECT
+    s.student_id,
+    s.num_courses_enrolled,
+    s.average_grade,
+    s.student_rank,
+    sc.course_id,
+    sc.grade,
+    sc.rank AS course_rank,
+    sc.num_students_enrolled
+FROM
+    cte_student_info s
+JOIN
+    cte_student_course_info sc USING (student_id)
+JOIN
+    cte_top_students ts USING (student_id)
+WHERE
+    s.student_rank <= 10
+    AND sc.course_rank <= 5
+ORDER BY
+    s.student_rank,
+    sc.course_rank
+";;
+;162;Kusto language error;['[TravelPortalDB].[US].[customers]', '[TravelPortalDB].[US].[orders]', '[TravelPortalDB].[FlightProducts].[products]', '[TravelPortalDB].[OrderDetails].[order_products]', '[TravelPortalDB].[FR].[customers]', '[TravelPortalDB].[FR].[orders]', '[TravelPortalDB].[DE].[customers]', '[TravelPortalDB].[DE].[orders]', '[TravelPortalDB].[IT].[customers]', '[TravelPortalDB].[IT].[orders]', '[TravelPortalDB].[ES].[customers]', '[TravelPortalDB].[ES].[orders]'];"WITH 
+--United States
+US_Customers AS (
+  SELECT
+    CONCAT(c.[customer_first_name], ' ', c.[customer_last_name]) AS customer_name,
+    COUNT(DISTINCT o.[order_id]) AS total_orders
+  FROM
+    [TravelPortalDB].[US].[customers] c
+  INNER JOIN
+    [TravelPortalDB].[US].[orders] o ON c.[customer_id] = o.[customer_id]
+  WHERE
+    c.[customer_country] = 'United States'
+  GROUP BY
+    c.[customer_id], c.[customer_first_name], c.[customer_last_name]
+  HAVING
+    COUNT(DISTINCT o.[order_id]) > 5
+),
+--Flights
+PopularFlights AS (
+  SELECT
+    p.[product_name],
+    SUM(op.[quantity]) AS total_quantity
+  FROM
+    [TravelPortalDB].[FlightProducts].[products] p
+  INNER JOIN
+    [TravelPortalDB].[OrderDetails].[order_products] op ON p.[product_id] = op.[product_id]
+  WHERE
+    p.[product_category] = 'Flights'
+  GROUP BY
+    p.[product_id], p.[product_name]
+  HAVING
+    SUM(op.[quantity]) > 100
+),
+--France
+FrenchCustomerOrders AS (
+  SELECT
+    c.[customer_id],
+    COUNT(DISTINCT o.[order_id]) AS total_orders
+  FROM
+    [TravelPortalDB].[FR].[customers] c
+  INNER JOIN
+    [TravelPortalDB].[FR].[orders] o ON c.[customer_id] = o.[customer_id]
+  WHERE
+    c.[customer_country] = 'France'
+  GROUP BY
+    c.[customer_id]
+),
+--Germany
+GermanCustomerOrders AS (
+  SELECT
+    c.[customer_id],
+    COUNT(DISTINCT o.[order_id]) AS total_orders
+  FROM
+    [TravelPortalDB].[DE].[customers] c
+  INNER JOIN
+    [TravelPortalDB].[DE].[orders] o ON c.[customer_id] = o.[customer_id]
+  WHERE
+    c.[customer_country] = 'Germany'
+  GROUP BY
+    c.[customer_id]
+),
+--Italy
+ItalianCustomerOrders AS (
+  SELECT
+    c.[customer_id],
+    COUNT(DISTINCT o.[order_id]) AS total_orders
+  FROM
+    [TravelPortalDB].[IT].[customers] c
+  INNER JOIN
+    [TravelPortalDB].[IT].[orders] o ON c.[customer_id] = o.[customer_id]
+  WHERE
+    c.[customer_country] = 'Italy'
+  GROUP BY
+    c.[customer_id]
+),
+--Spain
+SpanishCustomerOrders AS (
+  SELECT
+    c.[customer_id],
+    COUNT(DISTINCT o.[order_id]) AS total_orders
+  FROM
+    [TravelPortalDB].[ES].[customers] c
+  INNER JOIN
+    [TravelPortalDB].[ES].[orders] o ON c.[customer_id] = o.[customer_id]
+  WHERE
+    c.[customer_country] = 'Spain'
+  GROUP BY
+    c.[customer_id]
+)
+
+-- Final SELECT statement
+SELECT 
+    uc.customer_name,
+    pf.product_name,
+    fc.total_orders AS FrenchOrders,
+    gc.total_orders AS GermanOrders,
+    ic.total_orders AS ItalianOrders,
+    sc.total_orders AS SpanishOrders
+FROM 
+    US_Customers uc
+LEFT JOIN 
+    PopularFlights pf ON 1=1 -- This is a sample join; real join condition may vary
+LEFT JOIN 
+    FrenchCustomerOrders fc ON uc.[customer_id] = fc.[customer_id]
+LEFT JOIN 
+    GermanCustomerOrders gc ON uc.[customer_id] = gc.[customer_id]
+LEFT JOIN 
+    ItalianCustomerOrders ic ON uc.[customer_id] = ic.[customer_id]
+LEFT JOIN 
+    SpanishCustomerOrders sc ON uc.[customer_id] = sc.[customer_id];
+";;
+;188;Kusto language error;['[artify_db].[Orders].[Orders]', '[artify_db].[Customers].[customer_info]', '[artify_db].[Orders].[OrderDetails]', '[artify_db].[art].[product_catalog]'];"SELECT 
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+    o.order_id,
+    DATE_FORMAT(o.order_date, '%Y-%m-%d') AS formatted_order_date,
+    p.product_name,
+    p.price,
+    SUM(op.quantity) AS total_quantity,
+    SUM(op.quantity * p.price) AS total_price
+FROM 
+    [artify_db].[Orders].[OrderDetails] o
+JOIN 
+    [artify_db].[Customers].[customer_info] c ON o.customer_id = c.customer_id
+JOIN 
+    [artify_db].[Orders].[Orders] op ON o.order_id = op.order_id
+JOIN 
+    [artify_db].[art].[product_catalog] p ON op.product_id = p.product_id
+WHERE 
+    o.order_status = 'completed'
+    AND YEAR(o.order_date) = 2022
+    AND p.category = 'Electronics'
+GROUP BY 
+    c.first_name,
+    c.last_name,
+    o.order_id,
+    o.order_date,
+    p.product_name,
+    p.price
+HAVING 
+    total_quantity > 5
+ORDER BY 
+    total_price DESC;
+";;
+;191;Kusto language error;['[athletic_wear].[sales].athletes', '[athletic_wear].[sales].purchases', '[athletic_wear].[inventory].gear'];"WITH AthletePurchases AS (
+  SELECT
+    CONCAT(a.first_name, ' ', a.last_name) AS athlete_name,
+    COUNT(p.purchase_id) AS total_purchases
+  FROM
+    [athletic_wear].[sales].athletes a
+  JOIN
+    [athletic_wear].[sales].purchases p ON a.athlete_id = p.athlete_id
+  WHERE
+    p.purchase_date >= DATE_FORMAT(CURRENT_DATE(), '%Y-%m-01')
+  GROUP BY
+    a.athlete_id
+  HAVING
+    COUNT(p.purchase_id) > 5
+),
+
+RecentGear AS (
+  SELECT
+    g.gear_id,
+    g.price AS gear_price,
+    g.type AS gear_type,
+    g.purchase_date,
+    g.status AS gear_status,
+    CONCAT(a.first_name, ' ', a.last_name) AS athlete_name
+  FROM
+    [athletic_wear].[inventory].gear g
+  JOIN
+    [athletic_wear].[sales].athletes a ON g.athlete_id = a.athlete_id
+  WHERE
+    g.purchase_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+),
+
+GearPast60Days AS (
+  SELECT
+    g.gear_id,
+    g.price AS gear_price,
+    g.type AS gear_type,
+    g.purchase_date,
+    g.status AS gear_status,
+    CONCAT(a.first_name, ' ', a.last_name) AS athlete_name
+  FROM
+    [athletic_wear].[inventory].gear g
+  JOIN
+    [athletic_wear].[sales].athletes a ON g.athlete_id = a.athlete_id
+  WHERE
+    g.purchase_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 60 DAY)
+),
+
+GearPast90Days AS (
+  SELECT
+    g.gear_id,
+    g.price AS gear_price,
+    g.type AS gear_type,
+    g.purchase_date,
+    g.status AS gear_status,
+    CONCAT(a.first_name, ' ', a.last_name) AS athlete_name
+  FROM
+    [athletic_wear].[inventory].gear g
+  JOIN
+    [athletic_wear].[sales].athletes a ON g.athlete_id = a.athlete_id
+  WHERE
+    g.purchase_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY)
+)
+
+SELECT
+  AthletePurchases.athlete_name,
+  AthletePurchases.total_purchases,
+  COUNT(DISTINCT rg.gear_id) AS gear_last_30_days,
+  COUNT(DISTINCT g60.gear_id) AS gear_last_60_days,
+  COUNT(DISTINCT g90.gear_id) AS gear_last_90_days,
+  SUM(rg.gear_price) AS total_spent_last_30_days,
+  SUM(g60.gear_price) AS total_spent_last_60_days,
+  SUM(g90.gear_price) AS total_spent_last_90_days
+FROM
+  AthletePurchases
+JOIN
+  RecentGear rg ON AthletePurchases.athlete_name = rg.athlete_name
+JOIN
+  GearPast60Days g60 ON AthletePurchases.athlete_name = g60.athlete_name
+JOIN
+  GearPast90Days g90 ON AthletePurchases.athlete_name = g90.athlete_name
+GROUP BY
+  AthletePurchases.athlete_name,
+  AthletePurchases.total_purchases
+HAVING
+  COUNT(DISTINCT rg.gear_id) > 10
+ORDER BY
+  total_spent_last_30_days DESC
+LIMIT
+  10;";;

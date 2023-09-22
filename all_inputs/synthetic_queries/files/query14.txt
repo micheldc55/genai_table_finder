@@ -1,0 +1,33 @@
+WITH MedicinePrices AS (
+  SELECT m.MedicineID, m.MedicineName, mp.Price, mp.EffectiveDate,
+         LEAD(mp.EffectiveDate) OVER(PARTITION BY m.MedicineID ORDER BY mp.EffectiveDate) as NextEffectiveDate
+  FROM PharmaDatabase.dbo.Medicines m
+  JOIN PharmaDatabase.dbo.MedicinePrices mp ON m.MedicineID = mp.MedicineID
+),
+Doctors AS (
+  SELECT d.DoctorID, d.FirstName, d.LastName, d.Specialization,
+         p.PrescriptionID, p.MedicineID, p.CustomerID, p.PrescriptionDate
+  FROM PharmaDatabase.dbo.Doctors d
+  JOIN PharmaDatabase.dbo.Prescriptions p ON d.DoctorID = p.DoctorID
+  WHERE d.Specialization = 'Cardiologist'
+),
+AllowedMedicalPractitioners AS (
+  SELECT a.MedicineID, a.MedicineName, a.Price, a.EffectiveDate, a.NextEffectiveDate,
+         b.DoctorID, b.FirstName, b.LastName, b.PrescriptionID, b.CustomerID, b.PrescriptionDate
+  FROM MedicinePrices a
+  JOIN Doctors b ON a.MedicineID = b.MedicineID
+  WHERE b.PrescriptionDate BETWEEN a.EffectiveDate AND COALESCE(a.NextEffectiveDate, '9999-12-31')
+),
+CustomerMedsInvoice AS (
+  SELECT c.CustomerID, c.InvoiceID, c.InvoiceDate, c.TotalAmount,
+         (c.TotalAmount * 0.1) as VAT,
+         (c.TotalAmount * 1.1) as TotalAmountWithVAT
+  FROM PharmaDatabase.dbo.CustomerInvoices c
+  WHERE c.InvoiceDate >= '2023-01-01'
+)
+SELECT s1.MedicineName, s1.Price, s1.DoctorID, s1.FirstName as DoctorFirstName, 
+       s1.LastName as DoctorLastName, s1.PrescriptionID, s1.CustomerID, s1.PrescriptionDate, 
+       s2.InvoiceID, s2.InvoiceDate, s2.TotalAmount, s2.VAT, s2.TotalAmountWithVAT
+FROM AllowedMedicalPractitioners s1
+JOIN CustomerMedsInvoice s2 ON s1.CustomerID = s2.CustomerID
+ORDER BY s1.PrescriptionDate, s2.InvoiceDate;

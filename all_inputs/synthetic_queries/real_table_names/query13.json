@@ -1,0 +1,5 @@
+[
+    "SalesDatabase.dbo.Sales",
+    "ProductsDatabase.dbo.Products",
+    "CustomersDatabase.dbo.Customers"
+]

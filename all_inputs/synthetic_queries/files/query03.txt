@@ -1,0 +1,18 @@
+WITH 
+CustomerData AS (
+  SELECT CustomerID, FirstName, LastName
+  FROM Northwind.dbo.Customers
+),
+OrderData AS (
+  SELECT OrderID, CustomerID, OrderDate
+  FROM Northwind.dbo.Orders
+),
+LocalCustomerData AS (
+  SELECT * 
+  FROM (SELECT CustomerID, CONCAT(FirstName, ' ', LastName) as FullName FROM CustomerData) as sub
+  WHERE FullName LIKE 'J%'
+)
+SELECT o.OrderID, l.FullName, o.OrderDate
+FROM OrderData o
+JOIN LocalCustomerData l ON o.CustomerID = l.CustomerID
+WHERE YEAR(o.OrderDate) = 1997;

@@ -1,0 +1,21 @@
+WITH 
+EmployeeCTE AS (
+    SELECT EmployeeId, FirstName, LastName
+    FROM [HRDatabase].[dbo].[Employees]
+    WHERE DepartmentId = 3
+),
+SalesData AS (
+    SELECT SaleId, EmployeeId, SaleAmount
+    FROM Sales
+    WHERE SaleDate BETWEEN '2022-01-01' AND '2022-12-31'
+)
+SELECT 
+    e.FirstName, 
+    e.LastName, 
+    SUM(sd.SaleAmount) as TotalSales,
+    (SELECT AVG(SaleAmount) FROM SalesData) as AverageSale
+FROM EmployeeCTE e
+JOIN SalesData sd ON e.EmployeeId = sd.EmployeeId
+GROUP BY e.FirstName, e.LastName
+HAVING SUM(sd.SaleAmount) > (SELECT AVG(SaleAmount) FROM SalesData)
+ORDER BY TotalSales DESC;

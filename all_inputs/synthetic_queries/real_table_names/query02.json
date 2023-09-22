@@ -1,0 +1,5 @@
+[
+    "SalesDB.SalesTable",
+    "InventoryDB.InventoryTable",
+    "ProductDB.ProductTable"
+]

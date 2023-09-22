@@ -1,0 +1,29 @@
+{
+    "name": "Streamlit Dev Container",
+    "dockerFile": "Dockerfile",
+    "appPort": [8501],
+    "forwardPorts": [8501],
+    "postCreateCommand": "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root",
+    "containerEnv": { 
+        "SHELL": "/bin/bash"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+				"ms-vscode-remote.remote-containers",
+				"njpwerner.autodocstring",
+				"ms-python.black-formatter",
+				"BracketPairColorDLW.bracket-pair-color-dlw",
+				"ms-python.isort",
+				"ms-azuretools.vscode-docker",
+				"GitHub.vscode-pull-request-github",
+				"ms-toolsai.jupyter",
+				"ms-toolsai.vscode-jupyter-cell-tags",
+				"yzhang.markdown-all-in-one",
+				"ms-python.vscode-pylance"
+			]
+        }
+    }
+}

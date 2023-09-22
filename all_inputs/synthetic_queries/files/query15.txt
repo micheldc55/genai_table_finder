@@ -1,0 +1,32 @@
+WITH customerType AS (
+  SELECT c.CustomerID, c.FirstName, c.LastName, c.Age, ct.TypeID, ct.TypeName
+  FROM BankingDatabase.dbo.Customers c
+  JOIN BankingDatabase.dbo.CustomerTypes ct ON c.TypeID = ct.TypeID
+),
+employeeData AS (
+  SELECT e.EmployeeID, e.FirstName, e.LastName, e.Position,
+         ce.CustomerID, ce.AssignedDate
+  FROM BankingDatabase.dbo.Employees e
+  JOIN BankingDatabase.dbo.CustomerEmployees ce ON e.EmployeeID = ce.EmployeeID
+),
+assignedEmployeeData AS (
+  SELECT a.CustomerID, a.FirstName as CustomerFirstName, a.LastName as CustomerLastName, 
+         a.Age, a.TypeID, a.TypeName, b.EmployeeID, b.FirstName as EmployeeFirstName,
+         b.LastName as EmployeeLastName, b.Position, b.AssignedDate
+  FROM customerType a
+  JOIN employeeData b ON a.CustomerID = b.CustomerID
+),
+loanPriceMktMerge AS (
+  SELECT lp.TypeID, lp.LoanID, l.LoanName, lp.InterestRate, 
+         ma.AdID, ma.AdName, ma.StartDate, ma.EndDate
+  FROM BankingDatabase.dbo.LoanPrices lp
+  JOIN BankingDatabase.dbo.Loans l ON lp.LoanID = l.LoanID
+  JOIN BankingDatabase.dbo.MarketingAdvertisements ma ON lp.TypeID = ma.TargetTypeID
+)
+SELECT s1.CustomerID, s1.CustomerFirstName, s1.CustomerLastName, s1.Age, s1.TypeName,
+       s1.EmployeeID, s1.EmployeeFirstName, s1.EmployeeLastName, s1.Position,
+       s2.LoanID, s2.LoanName, s2.InterestRate, s2.AdID, s2.AdName
+FROM assignedEmployeeData s1
+JOIN loanPriceMktMerge s2 ON s1.TypeID = s2.TypeID
+WHERE s1.AssignedDate BETWEEN s2.StartDate AND s2.EndDate
+ORDER BY s1.CustomerID, s2.LoanID, s2.AdID;

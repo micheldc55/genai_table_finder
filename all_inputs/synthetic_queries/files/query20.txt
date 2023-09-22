@@ -1,0 +1,35 @@
+WITH CTE_StockPrices AS (
+  SELECT sp.StockID, s.StockName, sp.PriceDate, sp.OpenPrice, sp.ClosePrice,
+         (sp.ClosePrice - sp.OpenPrice) as PriceChange,
+         AVG(sp.ClosePrice) OVER(PARTITION BY sp.StockID ORDER BY sp.PriceDate
+                                  RANGE BETWEEN INTERVAL 30 DAY PRECEDING AND CURRENT ROW) as AvgClosePrice
+  FROM StockMarketDatabase.dbo.Stocks s
+  JOIN StockMarketDatabase.dbo.StockPrices sp ON s.StockID = sp.StockID
+  WHERE sp.PriceDate BETWEEN '2023-01-01' AND '2023-06-30'
+),
+CTE_Brokers AS (
+  SELECT b.BrokerID, b.FirstName, b.LastName, b.RegionID, r.RegionName,
+         tr.StockID, tr.TransactionDate, tr.TransactionType, tr.Quantity, tr.Price
+  FROM StockMarketDatabase.dbo.Brokers b
+  JOIN StockMarketDatabase.dbo.Regions r ON b.RegionID = r.RegionID
+  JOIN StockMarketDatabase.dbo.Transactions tr ON b.BrokerID = tr.BrokerID
+),
+SubQuery1 AS (
+  SELECT a.StockID, a.StockName, a.PriceDate, a.PriceChange, a.AvgClosePrice,
+         b.BrokerID, b.FirstName as BrokerFirstName, b.LastName as BrokerLastName, 
+         b.RegionName, b.TransactionDate, b.TransactionType, b.Quantity, b.Price
+  FROM CTE_StockPrices a
+  JOIN CTE_Brokers b ON a.StockID = b.StockID
+  WHERE a.PriceDate = b.TransactionDate
+),
+SubQuery2 AS (
+  SELECT i.IndexID, i.IndexName, si.StockID
+  FROM StockMarketDatabase.dbo.Indexes i
+  JOIN StockMarketDatabase.dbo.StockIndexes si ON i.IndexID = si.IndexID
+)
+SELECT s1.StockName, s1.PriceDate, s1.PriceChange, s1.AvgClosePrice,
+       s1.BrokerFirstName, s1.BrokerLastName, s1.RegionName, s1.TransactionType, s1.Quantity, s1.Price,
+       s2.IndexName
+FROM SubQuery1 s1
+JOIN SubQuery2 s2 ON s1.StockID = s2.StockID
+ORDER BY s1.PriceDate, s1.StockName, s1.BrokerLastName;

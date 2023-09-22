@@ -1,0 +1,5 @@
+[
+    "datascience_dev.targetcurves.metrics_tables_2023_07_no_deltas_10_flights_final_curve",
+    "datascience_dev.targetcurves.metrics_tables_2023_4_no_deltas_4_flights_final_curve",
+    "abfss://dbrprdlanding@frbinetraunitycatalog.dfs.core.windows.net/targetcurves/HistoricData/"
+]
